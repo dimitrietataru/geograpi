@@ -2,7 +2,7 @@ using Ace.Geograpi.Domain.Abstractions.Models.Interfaces;
 
 namespace Ace.Geograpi.Domain.Abstractions.Models;
 
-public class AbstractModel<TKey> : AbstractModel, IModel<TKey>
+public abstract class AbstractModel<TKey> : AbstractModel, IModel<TKey>
     where TKey : IEquatable<TKey>
 {
     public virtual TKey Id { get; set; } = default!;
