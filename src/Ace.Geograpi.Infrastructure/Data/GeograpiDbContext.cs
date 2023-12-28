@@ -1,10 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Ace.Geograpi.Infrastructure.Data.Entities;
 
 namespace Ace.Geograpi.Infrastructure.Data;
-internal class GeograpiDbContext
+
+internal sealed class GeograpiDbContext : DbContext
 {
+    public GeograpiDbContext(DbContextOptions options)
+        : base(options)
+    {
+    }
+
+    public DbSet<Continent> Continents { get; set; }
+    public DbSet<Country> Counties { get; set; }
 }

@@ -13,4 +13,13 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Ace.Geograpi.Domain\Ace.Geograpi.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

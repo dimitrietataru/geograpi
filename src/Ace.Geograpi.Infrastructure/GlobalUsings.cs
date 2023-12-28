@@ -1,5 +1,7 @@
 #pragma warning disable IDE0005 // Using directive is unnecessary
 
+global using AutoMapper;
+global using Microsoft.EntityFrameworkCore;
 global using System;
 global using System.Collections;
 global using System.Collections.Concurrent;
