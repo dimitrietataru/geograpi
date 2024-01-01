@@ -1,13 +1,11 @@
-using Ace.Geograpi.Domain.Abstractions.Query.Interfaces;
-
 namespace Ace.Geograpi.Domain.Abstractions.Query.Params;
 
-public abstract class ModelParams<TIdentifier> : ModelParams<TIdentifier, TIdentifier>
+public abstract class QueryParams<TIdentifier> : QueryParams<TIdentifier, TIdentifier>
     where TIdentifier : IEquatable<TIdentifier>
 {
 }
 
-public abstract class ModelParams<TIdentifier, TCollectionIdentifier> : IParams
+public abstract class QueryParams<TIdentifier, TCollectionIdentifier> : IQueryParams
     where TIdentifier : IEquatable<TIdentifier>
     where TCollectionIdentifier : IEquatable<TCollectionIdentifier>
 {

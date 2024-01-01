@@ -1,17 +1,18 @@
-using Ace.Geograpi.Domain.Abstractions.Query.Interfaces;
+using Ace.Geograpi.Domain.Abstractions.Query.Params;
 using Ace.Geograpi.Domain.Abstractions.Symbols;
 
 namespace Ace.Geograpi.Domain.Abstractions.Query;
 
-public sealed class Request<TQueryParams>
-    where TQueryParams : IParams
+#pragma warning disable IDE0290 // Use primary constructor
+public sealed class QueryRequest<TQueryParams>
+    where TQueryParams : IQueryParams
 {
-    public Request(TQueryParams queryParams)
+    public QueryRequest(TQueryParams queryParams)
     {
         QueryParams = queryParams;
     }
 
-    public Request(TQueryParams queryParams, int? page, int? size)
+    public QueryRequest(TQueryParams queryParams, int? page, int? size)
         : this(queryParams)
     {
         QueryParams = queryParams;
@@ -19,7 +20,7 @@ public sealed class Request<TQueryParams>
         Size = size;
     }
 
-    public Request(TQueryParams queryParams, int? page, int? size, string? sortBy, SortDirection? sortDirection)
+    public QueryRequest(TQueryParams queryParams, int? page, int? size, string? sortBy, SortDirection? sortDirection)
         : this(queryParams, page, size)
     {
         SortBy = sortBy;

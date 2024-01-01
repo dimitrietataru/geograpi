@@ -13,4 +13,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Ace.Geograpi.Domain\Ace.Geograpi.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
