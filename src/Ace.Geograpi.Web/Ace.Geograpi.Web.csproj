@@ -22,4 +22,10 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Ace.Geograpi.Application\Ace.Geograpi.Application.csproj" />
+    <ProjectReference Include="..\Ace.Geograpi.Domain\Ace.Geograpi.Domain.csproj" />
+    <ProjectReference Include="..\Ace.Geograpi.Infrastructure\Ace.Geograpi.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
