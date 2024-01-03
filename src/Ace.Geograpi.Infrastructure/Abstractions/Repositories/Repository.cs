@@ -1,5 +1,6 @@
 using Ace.Geograpi.Domain.Abstractions.Repositories;
 using Ace.Geograpi.Infrastructure.Abstractions.Data.Interfaces;
+using Ace.Geograpi.Infrastructure.Abstractions.Exceptions;
 
 namespace Ace.Geograpi.Infrastructure.Abstractions.Repositories;
 
@@ -24,11 +25,10 @@ public abstract class Repository<TDbContext, TEntity, TKey> : Repository<TDbCont
         return DbContext.Set<TEntity>();
     }
 
-    private protected virtual async Task<TEntity> FindAsync(TKey key)
+    private protected virtual async Task<TEntity> FindAsync(TKey id)
     {
-        var entity = await DbContext.Set<TEntity>().FindAsync(key).ConfigureAwait(false);
-
-        // TODO: Throw if not found
+        var entity = await DbContext.Set<TEntity>().FindAsync(id).ConfigureAwait(false);
+        _ = entity ?? throw new EntityNotFoundException<TEntity, TKey>(id);
 
         return entity!;
     }

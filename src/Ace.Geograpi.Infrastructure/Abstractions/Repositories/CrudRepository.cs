@@ -1,6 +1,7 @@
 using Ace.Geograpi.Domain.Abstractions.Models.Interfaces;
 using Ace.Geograpi.Domain.Abstractions.Repositories;
 using Ace.Geograpi.Infrastructure.Abstractions.Data.Interfaces;
+using Ace.Geograpi.Infrastructure.Abstractions.Exceptions;
 
 namespace Ace.Geograpi.Infrastructure.Abstractions.Repositories;
 
@@ -30,13 +31,21 @@ public abstract class CrudRepository<TDbContext, TEntity, TModel, TKey>
         return mapper.Map<List<TModel>>(entities);
     }
 
+    public virtual async Task<int> CountAsync(CancellationToken cancellation = default)
+    {
+        int count = await GetQueriable()
+            .AsNoTracking()
+            .CountAsync(cancellation);
+
+        return count;
+    }
+
     public virtual async Task<TModel> GetByIdAsync(TKey id, CancellationToken cancellation = default)
     {
         var entity = await GetQueriable()
             .AsNoTracking()
             .FirstOrDefaultAsync(e => e.Id.Equals(id), cancellation);
-
-        // TODO: throw if not found
+        _ = entity ?? throw new EntityNotFoundException<TEntity, TKey>(id);
 
         return mapper.Map<TModel>(entity);
     }
@@ -48,15 +57,6 @@ public abstract class CrudRepository<TDbContext, TEntity, TModel, TKey>
             .AnyAsync(e => e.Id.Equals(id), cancellation);
 
         return exists;
-    }
-
-    public virtual async Task<int> CountAsync(CancellationToken cancellation = default)
-    {
-        int count = await GetQueriable()
-            .AsNoTracking()
-            .CountAsync(cancellation);
-
-        return count;
     }
 
     public virtual async Task<TModel> CreateAsync(TModel model, CancellationToken cancellation = default)
