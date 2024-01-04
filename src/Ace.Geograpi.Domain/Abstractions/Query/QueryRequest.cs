@@ -1,10 +1,12 @@
+using Ace.Geograpi.Domain.Abstractions.Query.Pagination;
 using Ace.Geograpi.Domain.Abstractions.Query.Params;
+using Ace.Geograpi.Domain.Abstractions.Query.Sorting;
 using Ace.Geograpi.Domain.Abstractions.Symbols;
 
 namespace Ace.Geograpi.Domain.Abstractions.Query;
 
 #pragma warning disable IDE0290 // Use primary constructor
-public sealed class QueryRequest<TQueryParams>
+public sealed class QueryRequest<TQueryParams> : QueryRequest
     where TQueryParams : IQueryParams
 {
     public QueryRequest(TQueryParams queryParams)
@@ -15,7 +17,6 @@ public sealed class QueryRequest<TQueryParams>
     public QueryRequest(TQueryParams queryParams, int? page, int? size)
         : this(queryParams)
     {
-        QueryParams = queryParams;
         Page = page;
         Size = size;
     }
@@ -27,11 +28,14 @@ public sealed class QueryRequest<TQueryParams>
         SortDirection = sortDirection;
     }
 
-    public int? Page { get; init; }
-    public int? Size { get; init; }
-
-    public string? SortBy { get; init; }
-    public SortDirection? SortDirection { get; init; }
-
     public TQueryParams QueryParams { get; init; }
+}
+
+public abstract class QueryRequest : IPaginationRequest, ISortingRequest
+{
+    public virtual int? Page { get; init; }
+    public virtual int? Size { get; init; }
+
+    public virtual string? SortBy { get; init; }
+    public virtual SortDirection? SortDirection { get; init; }
 }

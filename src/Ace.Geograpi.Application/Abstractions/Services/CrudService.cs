@@ -28,6 +28,13 @@ public abstract class CrudService<TRepository, TModel, TKey, TQueryParams> : ICr
         return models;
     }
 
+    public virtual async Task<int> CountAsync(CancellationToken cancellation = default)
+    {
+        int count = await repository.CountAsync(cancellation);
+
+        return count;
+    }
+
     public virtual Task<QueryResponse<TModel>> GetAsync(QueryRequest<TQueryParams> request, CancellationToken cancellation)
     {
         throw new NotImplementedException();

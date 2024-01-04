@@ -17,4 +17,5 @@ public interface IQueryService<TModel, TKey, TQueryParams> : IQueryService<TMode
 public interface IQueryService<TModel>
 {
     Task<IEnumerable<TModel>> GetAllAsync(CancellationToken cancellation = default);
+    Task<int> CountAsync(CancellationToken cancellation = default);
 }

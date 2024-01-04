@@ -2,6 +2,7 @@ using Ace.Geograpi.Domain.Abstractions.Models.Interfaces;
 using Ace.Geograpi.Domain.Abstractions.Repositories;
 using Ace.Geograpi.Infrastructure.Abstractions.Data.Interfaces;
 using Ace.Geograpi.Infrastructure.Abstractions.Exceptions;
+using AutoMapper.QueryableExtensions;
 
 namespace Ace.Geograpi.Infrastructure.Abstractions.Repositories;
 
@@ -10,25 +11,26 @@ namespace Ace.Geograpi.Infrastructure.Abstractions.Repositories;
 public abstract class CrudRepository<TDbContext, TEntity, TModel, TKey>
     : Repository<TDbContext, TEntity, TKey>, ICrudRepository<TModel, TKey>
     where TDbContext : DbContext
-    where TModel : class, IModel<TKey>
     where TEntity : class, IEntity<TKey>
+    where TModel : IModel<TKey>
     where TKey : IEquatable<TKey>
 {
-    private readonly IMapper mapper;
-
     protected CrudRepository(TDbContext dbContext, IMapper mapper)
         : base(dbContext)
     {
-        this.mapper = mapper;
+        Mapper = mapper;
     }
+
+    protected virtual IMapper Mapper { get; }
 
     public virtual async Task<IEnumerable<TModel>> GetAllAsync(CancellationToken cancellation = default)
     {
-        var entities = await GetQueriable()
+        var result = await GetQueriable()
             .AsNoTracking()
+            .ProjectTo<TModel>(Mapper.ConfigurationProvider)
             .ToListAsync(cancellation);
 
-        return mapper.Map<List<TModel>>(entities);
+        return result;
     }
 
     public virtual async Task<int> CountAsync(CancellationToken cancellation = default)
@@ -42,12 +44,13 @@ public abstract class CrudRepository<TDbContext, TEntity, TModel, TKey>
 
     public virtual async Task<TModel> GetByIdAsync(TKey id, CancellationToken cancellation = default)
     {
-        var entity = await GetQueriable()
+        var result = await GetQueriable()
             .AsNoTracking()
+            .ProjectTo<TModel>(Mapper.ConfigurationProvider)
             .FirstOrDefaultAsync(e => e.Id.Equals(id), cancellation);
-        _ = entity ?? throw new EntityNotFoundException<TEntity, TKey>(id);
+        _ = result ?? throw new EntityNotFoundException<TEntity, TKey>(id);
 
-        return mapper.Map<TModel>(entity);
+        return result;
     }
 
     public virtual async Task<bool> ExistsAsync(TKey id, CancellationToken cancellation = default)
@@ -61,16 +64,17 @@ public abstract class CrudRepository<TDbContext, TEntity, TModel, TKey>
 
     public virtual async Task<TModel> CreateAsync(TModel model, CancellationToken cancellation = default)
     {
-        var entity = mapper.Map<TEntity>(model);
+        var entity = Mapper.Map<TEntity>(model);
 
         await CreateAsync(model, cancellation).ConfigureAwait(false);
 
-        return mapper.Map<TModel>(entity);
+        return Mapper.Map<TModel>(entity);
     }
 
     public virtual async Task UpdateAsync(TModel model, CancellationToken cancellation = default)
     {
         var entity = await FindAsync(model.Id);
+        Mapper.Map(model, entity);
 
         await UpdateAsync(entity, cancellation).ConfigureAwait(false);
     }

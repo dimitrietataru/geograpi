@@ -28,6 +28,15 @@ public abstract class CrudController<TService, TModel, TKey, TQueryParams> : Con
     }
 
     [HttpGet]
+    [Route("count")]
+    public virtual async Task<IActionResult> Count(CancellationToken cancellation)
+    {
+        var result = await service.CountAsync(cancellation);
+
+        return Ok(result);
+    }
+
+    [HttpGet]
     [Route("{id}")]
     public virtual async Task<IActionResult> GetById([FromRoute] TKey id, CancellationToken cancellation)
     {

@@ -15,11 +15,6 @@ public abstract class Repository<TDbContext, TEntity, TKey> : Repository<TDbCont
     {
     }
 
-    public sealed override async Task CommitAsync(CancellationToken cancellation = default)
-    {
-        _ = await DbContext.SaveChangesAsync(cancellation).ConfigureAwait(false);
-    }
-
     private protected virtual IQueryable<TEntity> GetQueriable()
     {
         return DbContext.Set<TEntity>();
@@ -30,7 +25,39 @@ public abstract class Repository<TDbContext, TEntity, TKey> : Repository<TDbCont
         var entity = await DbContext.Set<TEntity>().FindAsync(id).ConfigureAwait(false);
         _ = entity ?? throw new EntityNotFoundException<TEntity, TKey>(id);
 
-        return entity!;
+        return entity;
+    }
+}
+
+public abstract class Repository<TDbContext, TEntity> : IRepository<TEntity>
+    where TDbContext : DbContext
+    where TEntity : class, IEntity
+{
+    protected Repository(TDbContext dbContext)
+    {
+        DbContext = dbContext;
+    }
+
+    protected TDbContext DbContext { get; init; }
+
+    public virtual void Create(TEntity entity)
+    {
+        DbContext.Set<TEntity>().Add(entity);
+    }
+
+    public virtual void Update(TEntity entity)
+    {
+        DbContext.Set<TEntity>().Update(entity);
+    }
+
+    public virtual void Delete(TEntity entity)
+    {
+        DbContext.Set<TEntity>().Remove(entity);
+    }
+
+    public virtual async Task CommitAsync(CancellationToken cancellation = default)
+    {
+        _ = await DbContext.SaveChangesAsync(cancellation).ConfigureAwait(false);
     }
 
     private protected virtual async Task CreateAsync(TEntity entity, CancellationToken cancellation = default)
@@ -50,33 +77,4 @@ public abstract class Repository<TDbContext, TEntity, TKey> : Repository<TDbCont
         Delete(entity);
         await CommitAsync(cancellation).ConfigureAwait(false);
     }
-}
-
-public abstract class Repository<TDbContext, TEntity> : IRepository<TEntity>
-    where TDbContext : DbContext
-    where TEntity : class
-{
-    protected Repository(TDbContext dbContext)
-    {
-        DbContext = dbContext;
-    }
-
-    private protected TDbContext DbContext { get; }
-
-    public virtual void Create(TEntity entity)
-    {
-        DbContext.Set<TEntity>().Add(entity);
-    }
-
-    public virtual void Update(TEntity entity)
-    {
-        DbContext.Set<TEntity>().Update(entity);
-    }
-
-    public virtual void Delete(TEntity entity)
-    {
-        DbContext.Set<TEntity>().Remove(entity);
-    }
-
-    public abstract Task CommitAsync(CancellationToken cancellation = default);
 }
