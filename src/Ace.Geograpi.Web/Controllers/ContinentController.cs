@@ -1,15 +1,15 @@
 using Ace.Geograpi.Domain.Models;
-using Ace.Geograpi.Domain.RequestQueries;
+using Ace.Geograpi.Domain.QueryFilters;
 using Ace.Geograpi.Domain.Services;
-using Ace.Geograpi.Web.Abstractions;
+using CatNip.Presentation.Controllers;
 
 namespace Ace.Geograpi.Web.Controllers;
 
 [ApiController]
-public sealed class ContinenentController
-    : CrudController<IContinentService, Continent, int, ContinentRequestQuery>
+[Route("api/continents")]
+public sealed class ContinentController : AceController<IContinentService, Continent, int, ContinentQueryFilter>
 {
-    public ContinenentController(IContinentService service)
+    public ContinentController(IContinentService service)
         : base(service)
     {
     }

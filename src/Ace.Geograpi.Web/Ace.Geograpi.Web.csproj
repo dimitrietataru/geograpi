@@ -2,14 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>disable</ImplicitUsings>
+
     <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
 
     <UserSecretsId>030e3591-da93-4a01-8882-706b83209b84</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="CatNip.Presentation" Version="0.0.1-alpha" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.4" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
@@ -24,7 +26,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Ace.Geograpi.Application\Ace.Geograpi.Application.csproj" />
-    <ProjectReference Include="..\Ace.Geograpi.Domain\Ace.Geograpi.Domain.csproj" />
     <ProjectReference Include="..\Ace.Geograpi.Infrastructure\Ace.Geograpi.Infrastructure.csproj" />
   </ItemGroup>
 
