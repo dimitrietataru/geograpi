@@ -1,4 +1,4 @@
-using Ace.Geograpi.Infrastructure.Abstractions.Data;
+using CatNip.Infrastructure.Data.Entities;
 
 namespace Ace.Geograpi.Infrastructure.Data.Entities;
 
