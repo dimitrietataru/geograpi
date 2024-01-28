@@ -1,4 +1,4 @@
-using Ace.Geograpi.Domain.Abstractions.Models;
+using CatNip.Domain.Models;
 
 namespace Ace.Geograpi.Domain.Models;
 
