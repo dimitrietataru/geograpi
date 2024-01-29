@@ -17,6 +17,11 @@ internal sealed class ContinentRepository
     {
     }
 
+    protected sealed override IQueryable<Continent> BuildIncludeQuery(IQueryable<Continent> query)
+    {
+        return query.Include(c => c.Countries);
+    }
+
     protected sealed override IQueryable<Continent> BuildFilteringQuery(
         IQueryable<Continent> query, ContinentQueryFilter request)
     {

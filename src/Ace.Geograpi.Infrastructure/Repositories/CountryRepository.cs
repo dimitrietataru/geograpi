@@ -17,6 +17,11 @@ internal sealed class CountryRepository
     {
     }
 
+    protected sealed override IQueryable<Country> BuildIncludeQuery(IQueryable<Country> query)
+    {
+        return query;
+    }
+
     protected sealed override IQueryable<Country> BuildFilteringQuery(
         IQueryable<Country> query, CountryQueryFilter request)
     {

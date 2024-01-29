@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CatNip.Infrastructure" Version="0.1.0-alpha" />
+    <PackageReference Include="CatNip.Infrastructure" Version="0.1.1-alpha" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(Configuration)' == 'Debug'">
