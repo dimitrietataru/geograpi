@@ -19,7 +19,7 @@ internal sealed class CountryRepository
 
     protected sealed override IQueryable<Country> BuildIncludeQuery(IQueryable<Country> query)
     {
-        return query;
+        return query.Include(c => c.Continent);
     }
 
     protected sealed override IQueryable<Country> BuildFilteringQuery(
