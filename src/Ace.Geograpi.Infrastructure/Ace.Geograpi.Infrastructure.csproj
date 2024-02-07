@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AceCSharp.StructuredAutoMapper" Version="2.0.1" />
     <PackageReference Include="CatNip.Infrastructure" Version="0.2.0-alpha" />
   </ItemGroup>
 
