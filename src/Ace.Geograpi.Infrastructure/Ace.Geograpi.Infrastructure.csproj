@@ -23,4 +23,8 @@
     <ProjectReference Include="..\Ace.Geograpi.Domain\Ace.Geograpi.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <InternalsVisibleTo Include="$(AssemblyName).IntegrationTests" />
+  </ItemGroup>
+
 </Project>

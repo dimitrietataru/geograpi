@@ -5,15 +5,17 @@ VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1816803D-EF38-4CC6-B700-C29AB682BE9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ace.Geograpi.Domain", "Ace.Geograpi.Domain\Ace.Geograpi.Domain.csproj", "{90549718-F5E0-4E70-AEA0-DB98E099C6C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ace.Geograpi.Domain", "Ace.Geograpi.Domain\Ace.Geograpi.Domain.csproj", "{90549718-F5E0-4E70-AEA0-DB98E099C6C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ace.Geograpi.Application", "Ace.Geograpi.Application\Ace.Geograpi.Application.csproj", "{92B16D7E-6791-4634-B80E-59BB438430D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ace.Geograpi.Application", "Ace.Geograpi.Application\Ace.Geograpi.Application.csproj", "{92B16D7E-6791-4634-B80E-59BB438430D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ace.Geograpi.Infrastructure", "Ace.Geograpi.Infrastructure\Ace.Geograpi.Infrastructure.csproj", "{C70165FC-3A8A-4BFD-9185-2889D92436D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ace.Geograpi.Infrastructure", "Ace.Geograpi.Infrastructure\Ace.Geograpi.Infrastructure.csproj", "{C70165FC-3A8A-4BFD-9185-2889D92436D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ace.Geograpi.Web", "Ace.Geograpi.Web\Ace.Geograpi.Web.csproj", "{BFA19F36-375E-4FEF-8CD1-F68F058F4CF4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ace.Geograpi.Web", "Ace.Geograpi.Web\Ace.Geograpi.Web.csproj", "{BFA19F36-375E-4FEF-8CD1-F68F058F4CF4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{1D5D6737-0EC8-4131-80F7-5FBB4094DCA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ace.Geograpi.Infrastructure.IntegrationTests", "tests\Ace.Geograpi.Infrastructure.IntegrationTests\Ace.Geograpi.Infrastructure.IntegrationTests.csproj", "{238E27FD-B23C-4D1C-A9FD-9381F4F88F96}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,10 @@ Global
 		{BFA19F36-375E-4FEF-8CD1-F68F058F4CF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFA19F36-375E-4FEF-8CD1-F68F058F4CF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFA19F36-375E-4FEF-8CD1-F68F058F4CF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{238E27FD-B23C-4D1C-A9FD-9381F4F88F96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{238E27FD-B23C-4D1C-A9FD-9381F4F88F96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{238E27FD-B23C-4D1C-A9FD-9381F4F88F96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{238E27FD-B23C-4D1C-A9FD-9381F4F88F96}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +52,7 @@ Global
 		{92B16D7E-6791-4634-B80E-59BB438430D0} = {1816803D-EF38-4CC6-B700-C29AB682BE9D}
 		{C70165FC-3A8A-4BFD-9185-2889D92436D0} = {1816803D-EF38-4CC6-B700-C29AB682BE9D}
 		{BFA19F36-375E-4FEF-8CD1-F68F058F4CF4} = {1816803D-EF38-4CC6-B700-C29AB682BE9D}
+		{238E27FD-B23C-4D1C-A9FD-9381F4F88F96} = {1D5D6737-0EC8-4131-80F7-5FBB4094DCA8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BDE0623A-15C7-4487-9A9C-733B7509A096}
