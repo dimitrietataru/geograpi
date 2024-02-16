@@ -4,13 +4,13 @@ using CatNip.Infrastructure.Data.Configurations;
 
 namespace Ace.Geograpi.Infrastructure.Data.Configurations;
 
-internal sealed class CountryConfiguration : TraceableEntityConfiguration<Country, int>
+internal sealed class CountryConfiguration : TraceableEntityConfiguration<CountryEntity, int>
 {
     public static CountryConfiguration Instance => new();
 
     protected override string TableName => TableNames.Country;
 
-    protected override void ConfigureKeys(EntityTypeBuilder<Country> builder)
+    protected override void ConfigureKeys(EntityTypeBuilder<CountryEntity> builder)
     {
         base.ConfigureKeys(builder);
 
@@ -19,7 +19,7 @@ internal sealed class CountryConfiguration : TraceableEntityConfiguration<Countr
             .IsRequired();
     }
 
-    protected override void ConfigureRelationships(EntityTypeBuilder<Country> builder)
+    protected override void ConfigureRelationships(EntityTypeBuilder<CountryEntity> builder)
     {
         base.ConfigureRelationships(builder);
 
@@ -29,7 +29,7 @@ internal sealed class CountryConfiguration : TraceableEntityConfiguration<Countr
             .HasForeignKey(c => c.ContinentId);
     }
 
-    protected override void ConfigureColumns(EntityTypeBuilder<Country> builder)
+    protected override void ConfigureColumns(EntityTypeBuilder<CountryEntity> builder)
     {
         base.ConfigureColumns(builder);
 

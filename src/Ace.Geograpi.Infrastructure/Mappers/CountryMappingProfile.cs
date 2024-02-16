@@ -1,5 +1,5 @@
-using CountryEntity = Ace.Geograpi.Infrastructure.Data.Entities.Country;
-using CountryModel = Ace.Geograpi.Domain.Models.Country;
+using Ace.Geograpi.Domain.Models;
+using Ace.Geograpi.Infrastructure.Data.Entities;
 
 namespace Ace.Geograpi.Infrastructure.Mappers;
 

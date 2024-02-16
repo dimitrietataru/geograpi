@@ -1,10 +1,11 @@
+using Ace.Geograpi.Domain.Models;
+using Ace.Geograpi.Infrastructure.Data.Entities;
 using Ace.Geograpi.Infrastructure.Mappers;
-using ContinentEntity = Ace.Geograpi.Infrastructure.Data.Entities.Continent;
-using ContinentModel = Ace.Geograpi.Domain.Models.Continent;
 
 namespace Ace.Geograpi.Infrastructure.IntegrationTests.Mappers;
 
-public sealed class ContinentMappingProfileTests : BaseTwoWayProfileTests<ContinentMappingProfile, ContinentEntity, ContinentModel>
+public sealed class ContinentMappingProfileTests
+    : BaseTwoWayProfileTests<ContinentMappingProfile, ContinentEntity, ContinentModel>
 {
     protected sealed override Func<ContinentEntity> Left =>
         () =>

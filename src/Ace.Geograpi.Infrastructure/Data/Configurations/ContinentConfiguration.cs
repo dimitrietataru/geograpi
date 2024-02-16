@@ -4,13 +4,13 @@ using CatNip.Infrastructure.Data.Configurations;
 
 namespace Ace.Geograpi.Infrastructure.Data.Configurations;
 
-internal sealed class ContinentConfiguration : TraceableEntityConfiguration<Continent, int>
+internal sealed class ContinentConfiguration : TraceableEntityConfiguration<ContinentEntity, int>
 {
     public static ContinentConfiguration Instance => new();
 
     protected override string TableName => TableNames.Continent;
 
-    protected override void ConfigureColumns(EntityTypeBuilder<Continent> builder)
+    protected override void ConfigureColumns(EntityTypeBuilder<ContinentEntity> builder)
     {
         base.ConfigureColumns(builder);
 
@@ -20,8 +20,8 @@ internal sealed class ContinentConfiguration : TraceableEntityConfiguration<Cont
             .HasMaxLength(100);
     }
 
-    protected override IEnumerable<Continent> Seed
-        => new List<Continent>
+    protected override IEnumerable<ContinentEntity> Seed
+        => new List<ContinentEntity>
         {
             new()
             {

@@ -1,10 +1,10 @@
+using Ace.Geograpi.Domain.Models;
+using Ace.Geograpi.Infrastructure.Data.Entities;
 using Ace.Geograpi.Infrastructure.Mappers;
-using CountryEntity = Ace.Geograpi.Infrastructure.Data.Entities.Country;
-using CountryModel = Ace.Geograpi.Domain.Models.Country;
-
 namespace Ace.Geograpi.Infrastructure.IntegrationTests.Mappers;
 
-public sealed class CountryMappingProfileTests : BaseTwoWayProfileTests<CountryMappingProfile, CountryEntity, CountryModel>
+public sealed class CountryMappingProfileTests
+    : BaseTwoWayProfileTests<CountryMappingProfile, CountryEntity, CountryModel>
 {
     protected sealed override Func<CountryEntity> Left =>
         () =>

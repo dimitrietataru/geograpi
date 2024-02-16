@@ -4,6 +4,6 @@ using CatNip.Domain.Services;
 
 namespace Ace.Geograpi.Domain.Services;
 
-public interface IContinentService : IAceService<Continent, int, ContinentQueryFilter>
+public interface IContinentService : IAceService<ContinentModel, int, ContinentQueryFilter>
 {
 }

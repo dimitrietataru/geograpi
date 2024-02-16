@@ -20,6 +20,6 @@ internal sealed class GeograpiDbContext : DbContext
         modelBuilder.ApplyConfiguration(CountryConfiguration.Instance);
     }
 
-    public DbSet<Continent> Continents { get; set; }
-    public DbSet<Country> Counties { get; set; }
+    public DbSet<ContinentEntity> Continents { get; set; }
+    public DbSet<CountryEntity> Counties { get; set; }
 }

@@ -7,7 +7,7 @@ using CatNip.Application.Services;
 namespace Ace.Geograpi.Application.Services;
 
 internal sealed class ContinentService
-    : AceService<IContinentRepository, Continent, int, ContinentQueryFilter>, IContinentService
+    : AceService<IContinentRepository, ContinentModel, int, ContinentQueryFilter>, IContinentService
 {
     public ContinentService(IContinentRepository repository)
         : base(repository)

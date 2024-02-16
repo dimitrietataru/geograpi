@@ -1,5 +1,5 @@
-using ContinentEntity = Ace.Geograpi.Infrastructure.Data.Entities.Continent;
-using ContinentModel = Ace.Geograpi.Domain.Models.Continent;
+using Ace.Geograpi.Domain.Models;
+using Ace.Geograpi.Infrastructure.Data.Entities;
 
 namespace Ace.Geograpi.Infrastructure.Mappers;
 

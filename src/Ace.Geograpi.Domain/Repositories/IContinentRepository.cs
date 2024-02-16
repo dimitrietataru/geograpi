@@ -4,6 +4,6 @@ using CatNip.Domain.Repositories;
 
 namespace Ace.Geograpi.Domain.Repositories;
 
-public interface IContinentRepository : IAceRepository<Continent, int, ContinentQueryFilter>
+public interface IContinentRepository : IAceRepository<ContinentModel, int, ContinentQueryFilter>
 {
 }
