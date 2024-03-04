@@ -11,8 +11,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AceCSharp.StructuredAutoMapper.Abstractions.Test" Version="2.0.2" />
-    <PackageReference Include="coverlet.collector" Version="6.0.0">
+    <PackageReference Include="AceCSharp.DataFaker" Version="1.1.0" />
+    <PackageReference Include="AceCSharp.StructuredAutoMapper.Abstractions.Test" Version="2.1.0" />
+    <PackageReference Include="coverlet.collector" Version="6.0.1">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
