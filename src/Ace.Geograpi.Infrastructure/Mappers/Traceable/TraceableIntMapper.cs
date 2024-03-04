@@ -5,7 +5,7 @@ namespace Ace.Geograpi.Infrastructure.Mappers.Traceable;
 
 internal sealed class TraceableIntMapper : TwoWayProfile<TraceableEntity<int>, TraceableModel<int>>
 {
-    public override void ConfigureLeftToRightMapping()
+    public sealed override void ConfigureLeftToRightMapping()
     {
         CreateMap<TraceableEntity<int>, TraceableModel<int>>()
             .IgnoreAllPropertiesWithAnInaccessibleSetter()
@@ -31,5 +31,33 @@ internal sealed class TraceableIntMapper : TwoWayProfile<TraceableEntity<int>, T
             .ForMember(
                 model => model.DeletedBy,
                 options => options.MapFrom(entity => entity.DeletedBy));
+    }
+
+    public sealed override void ConfigureRightToLeftMapping()
+    {
+        CreateMap<TraceableModel<int>, TraceableEntity<int>>()
+            .IgnoreAllPropertiesWithAnInaccessibleSetter()
+            .IncludeAllDerived()
+            .ForMember(
+                entity => entity.CreatedAt,
+                options => options.Ignore())
+            .ForMember(
+                entity => entity.CreatedBy,
+                options => options.Ignore())
+            .ForMember(
+                entity => entity.UpdatedAt,
+                options => options.Ignore())
+            .ForMember(
+                entity => entity.UpdatedBy,
+                options => options.Ignore())
+            .ForMember(
+                entity => entity.IsDeleted,
+                options => options.Ignore())
+            .ForMember(
+                entity => entity.DeletedAt,
+                options => options.Ignore())
+            .ForMember(
+                entity => entity.DeletedBy,
+                options => options.Ignore());
     }
 }
