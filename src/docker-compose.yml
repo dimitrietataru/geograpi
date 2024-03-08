@@ -1,0 +1,28 @@
+version: '3.4'
+
+services:
+  ace.geograpi.api:
+    image: ${DOCKER_REGISTRY-}acegeograpiweb
+    container_name: ace.geograpi.api
+    restart: always
+    build:
+      context: .
+      dockerfile: Ace.Geograpi.Web/Dockerfile
+    depends_on:
+      - ace.geograpi.db
+    ports:
+      - "42000:42000"
+      - "43000:43000"
+
+  ace.geograpi.db:
+    image: postgres:latest
+    container_name: ace.geograpi.db
+    restart: always
+    environment:
+      - POSTGRES_DB=geograpi
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./.containers/ace-geograpi-db:/var/lib/postgresql/data
+    ports:
+      - 5432:5432

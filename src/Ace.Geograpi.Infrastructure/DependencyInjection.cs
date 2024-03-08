@@ -1,4 +1,5 @@
 using Ace.Geograpi.Domain.Repositories;
+using Ace.Geograpi.Infrastructure.Data;
 using Ace.Geograpi.Infrastructure.Mappers;
 using Ace.Geograpi.Infrastructure.Mappers.Traceable;
 using Ace.Geograpi.Infrastructure.Repositories;
@@ -9,6 +10,9 @@ public static class DependencyInjection
 {
     public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
+        services.AddDbContext<GeograpiDbContext>(
+            options => options.UseNpgsql(configuration.GetConnectionString("Database")));
+
         services.AddMappers();
 
         services.AddRepositories();

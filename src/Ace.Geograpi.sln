@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ace.Geograpi.Web", "Ace.Geo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{1D5D6737-0EC8-4131-80F7-5FBB4094DCA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ace.Geograpi.Infrastructure.IntegrationTests", "tests\Ace.Geograpi.Infrastructure.IntegrationTests\Ace.Geograpi.Infrastructure.IntegrationTests.csproj", "{238E27FD-B23C-4D1C-A9FD-9381F4F88F96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ace.Geograpi.Infrastructure.IntegrationTests", "tests\Ace.Geograpi.Infrastructure.IntegrationTests\Ace.Geograpi.Infrastructure.IntegrationTests.csproj", "{238E27FD-B23C-4D1C-A9FD-9381F4F88F96}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{AD796009-D3D0-4262-B369-7154857BC136}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{238E27FD-B23C-4D1C-A9FD-9381F4F88F96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{238E27FD-B23C-4D1C-A9FD-9381F4F88F96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{238E27FD-B23C-4D1C-A9FD-9381F4F88F96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD796009-D3D0-4262-B369-7154857BC136}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD796009-D3D0-4262-B369-7154857BC136}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD796009-D3D0-4262-B369-7154857BC136}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD796009-D3D0-4262-B369-7154857BC136}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
