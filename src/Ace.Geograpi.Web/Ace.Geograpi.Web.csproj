@@ -4,6 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
 
     <Nullable>enable</Nullable>
+    <WarningsAsErrors>nullable</WarningsAsErrors>
     <ImplicitUsings>disable</ImplicitUsings>
 
     <UserSecretsId>030e3591-da93-4a01-8882-706b83209b84</UserSecretsId>
