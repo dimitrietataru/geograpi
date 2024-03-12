@@ -7,7 +7,7 @@ using CatNip.Domain.Query;
 
 namespace Ace.Geograpi.Application.Services;
 
-internal sealed class ContinentService
+public sealed class ContinentService
     : AceService<IContinentRepository, ContinentModel, int, ContinentQueryFilter>, IContinentService
 {
     public ContinentService(IContinentRepository repository)

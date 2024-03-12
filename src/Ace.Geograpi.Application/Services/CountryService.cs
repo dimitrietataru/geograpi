@@ -6,7 +6,7 @@ using CatNip.Application.Services;
 
 namespace Ace.Geograpi.Application.Services;
 
-internal sealed class CountryService
+public sealed class CountryService
     : AceService<ICountryRepository, CountryModel, int, CountryQueryFilter>, ICountryService
 {
     public CountryService(ICountryRepository repository)
