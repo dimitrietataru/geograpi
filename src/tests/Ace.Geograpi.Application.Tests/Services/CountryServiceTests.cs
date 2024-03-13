@@ -6,7 +6,8 @@ using Ace.Geograpi.Domain.Repositories;
 
 namespace Ace.Geograpi.Application.Tests.Services;
 
-public sealed class CountryServiceTests : XUnitAceServiceTests<CountryService, ICountryRepository, CountryModel, int, CountryQueryFilter>
+public sealed class CountryServiceTests
+    : XUnitAceServiceTests<CountryService, ICountryRepository, CountryModel, int, CountryQueryFilter>
 {
     private readonly CountryService countryService;
     private readonly Mock<ICountryRepository> countryRepositoryMock;
