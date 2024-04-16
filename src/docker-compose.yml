@@ -26,3 +26,13 @@ services:
       - ./.containers/ace-geograpi-db:/var/lib/postgresql/data
     ports:
       - 5432:5432
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pg-admin
+    restart: always
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=dimitriettr@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=postgres
+    ports:
+      - 5050:80
