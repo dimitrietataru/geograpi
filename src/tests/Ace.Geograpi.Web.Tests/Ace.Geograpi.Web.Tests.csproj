@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CatNip.Presentation.Test" Version="0.9.9" />
+    <PackageReference Include="CatNip.Presentation.Test" Version="1.0.0" />
     <PackageReference Include="coverlet.collector" Version="6.0.1">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>

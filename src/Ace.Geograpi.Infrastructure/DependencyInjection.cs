@@ -11,7 +11,11 @@ public static class DependencyInjection
     public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<GeograpiDbContext>(
-            options => options.UseNpgsql(configuration.GetConnectionString("Database")));
+            options => options.UseNpgsql(configuration.GetConnectionString("Database"),
+            config =>
+            {
+                config.MigrationsAssembly("Ace.Geograpi.Infrastructure");
+            }));
 
         services.AddMappers();
 
