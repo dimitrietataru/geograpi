@@ -1,5 +1,6 @@
+using Ace.Geograpi.Infrastructure.Data.Configurations.Seed;
+using Ace.Geograpi.Infrastructure.Data.Configurations.Symbols;
 using Ace.Geograpi.Infrastructure.Data.Entities;
-using Ace.Geograpi.Infrastructure.Symbols;
 using CatNip.Infrastructure.Data.Configurations;
 
 namespace Ace.Geograpi.Infrastructure.Data.Configurations;
@@ -8,9 +9,11 @@ internal sealed class CountryConfiguration : TraceableEntityConfiguration<Countr
 {
     public static CountryConfiguration Instance => new();
 
-    protected override string TableName => TableNames.Country;
+    protected sealed override string TableName => TableNames.Country;
+    protected sealed override string? TableSchema => TableSchemas.Default;
+    protected sealed override IEnumerable<CountryEntity> Seed => CountryData.Seed;
 
-    protected override void ConfigureKeys(EntityTypeBuilder<CountryEntity> builder)
+    protected sealed override void ConfigureKeys(EntityTypeBuilder<CountryEntity> builder)
     {
         base.ConfigureKeys(builder);
 
@@ -19,7 +22,7 @@ internal sealed class CountryConfiguration : TraceableEntityConfiguration<Countr
             .IsRequired();
     }
 
-    protected override void ConfigureRelationships(EntityTypeBuilder<CountryEntity> builder)
+    protected sealed override void ConfigureRelationships(EntityTypeBuilder<CountryEntity> builder)
     {
         base.ConfigureRelationships(builder);
 
@@ -29,7 +32,7 @@ internal sealed class CountryConfiguration : TraceableEntityConfiguration<Countr
             .HasForeignKey(c => c.ContinentId);
     }
 
-    protected override void ConfigureColumns(EntityTypeBuilder<CountryEntity> builder)
+    protected sealed override void ConfigureColumns(EntityTypeBuilder<CountryEntity> builder)
     {
         base.ConfigureColumns(builder);
 

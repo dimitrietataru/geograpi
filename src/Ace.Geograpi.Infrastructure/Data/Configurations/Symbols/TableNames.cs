@@ -1,6 +1,6 @@
-namespace Ace.Geograpi.Infrastructure.Symbols;
+namespace Ace.Geograpi.Infrastructure.Data.Configurations.Symbols;
 
-public sealed class TableNames
+public static class TableNames
 {
     public const string Continent = "continents";
     public const string Country = "countries";
