@@ -1,5 +1,7 @@
 using Ace.Geograpi.Domain.Repositories;
 using Ace.Geograpi.Infrastructure.Data;
+using Ace.Geograpi.Infrastructure.Data.Migrations;
+using Ace.Geograpi.Infrastructure.Data.Migrations.Interfaces;
 using Ace.Geograpi.Infrastructure.Mappers;
 using Ace.Geograpi.Infrastructure.Mappers.Traceable;
 using Ace.Geograpi.Infrastructure.Repositories;
@@ -10,6 +12,13 @@ public static class DependencyInjection
 {
     public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
+        services.AddDatabase(configuration);
+        services.AddMappers();
+        services.AddRepositories();
+    }
+
+    internal static void AddDatabase(this IServiceCollection services, IConfiguration configuration)
+    {
         services.AddDbContext<GeograpiDbContext>(
             options => options.UseNpgsql(configuration.GetConnectionString("Database"),
             config =>
@@ -17,9 +26,7 @@ public static class DependencyInjection
                 config.MigrationsAssembly("Ace.Geograpi.Infrastructure");
             }));
 
-        services.AddMappers();
-
-        services.AddRepositories();
+        services.AddScoped<IGeograpiMigrationProvider, GeograpiMigrationProvider>();
     }
 
     internal static void AddMappers(this IServiceCollection services)

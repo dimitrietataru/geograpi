@@ -1,5 +1,6 @@
 using Ace.Geograpi.Application;
 using Ace.Geograpi.Infrastructure;
+using Ace.Geograpi.Web.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,8 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+
+    await app.ApplyDbMigrationsAsync();
 }
 
 app.UseHttpsRedirection();
