@@ -909,3 +909,10 @@ dotnet_diagnostic.CS1591.severity = warning
 dotnet_naming_rule.method_async_should_be_ends_with_async.severity = none
 [**[Tt]est{s,}**.cs]
 dotnet_naming_rule.method_async_should_be_ends_with_async.severity = none
+
+# EF Migrations
+[**[Mm]igration{s,}**.cs]
+csharp_style_namespace_declarations = file_scoped:none
+dotnet_style_prefer_collection_expression = true:none
+dotnet_diagnostic.CA1814.severity = none
+dotnet_diagnostic.CA1861.severity = none

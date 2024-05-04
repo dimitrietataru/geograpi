@@ -10,7 +10,10 @@ internal sealed class GeograpiDbContext : DbContext
     {
     }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    public DbSet<ContinentEntity> Continents { get; set; }
+    public DbSet<CountryEntity> Counties { get; set; }
+
+    protected sealed override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
 
@@ -19,7 +22,4 @@ internal sealed class GeograpiDbContext : DbContext
         modelBuilder.ApplyConfiguration(ContinentConfiguration.Instance);
         modelBuilder.ApplyConfiguration(CountryConfiguration.Instance);
     }
-
-    public DbSet<ContinentEntity> Continents { get; set; }
-    public DbSet<CountryEntity> Counties { get; set; }
 }
