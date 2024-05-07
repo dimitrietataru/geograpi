@@ -2,7 +2,7 @@ using Ace.Geograpi.Infrastructure.Data.Migrations.Interfaces;
 
 namespace Ace.Geograpi.Web.Extensions;
 
-public static class ApplicationBuilderExtensions
+public static partial class ApplicationBuilderExtensions
 {
     public static async Task ApplyDbMigrationsAsync(
         this IApplicationBuilder app, CancellationToken cancellation = default)

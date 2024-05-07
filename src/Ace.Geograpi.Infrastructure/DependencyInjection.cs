@@ -5,26 +5,37 @@ using Ace.Geograpi.Infrastructure.Data.Migrations.Interfaces;
 using Ace.Geograpi.Infrastructure.Mappers;
 using Ace.Geograpi.Infrastructure.Mappers.Traceable;
 using Ace.Geograpi.Infrastructure.Repositories;
+using Microsoft.Extensions.Hosting;
 
 namespace Ace.Geograpi.Infrastructure;
 
 public static class DependencyInjection
 {
-    public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
+    public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration, IHostEnvironment env)
     {
-        services.AddDatabase(configuration);
+        services.AddDatabase(configuration, env);
         services.AddMappers();
         services.AddRepositories();
     }
 
-    internal static void AddDatabase(this IServiceCollection services, IConfiguration configuration)
+    internal static void AddDatabase(this IServiceCollection services, IConfiguration configuration, IHostEnvironment env)
     {
-        services.AddDbContext<GeograpiDbContext>(
-            options => options.UseNpgsql(configuration.GetConnectionString("Database"),
-            config =>
+        services.AddDbContext<GeograpiDbContext>(options =>
+        {
+            options.UseNpgsql(
+                configuration.GetConnectionString("Database"),
+                npgsqlOptions =>
+                {
+                    npgsqlOptions.MigrationsAssembly("Ace.Geograpi.Infrastructure");
+                    ////npgsqlOptions.EnableRetryOnFailure();
+                });
+
+            if (env.IsDevelopment())
             {
-                config.MigrationsAssembly("Ace.Geograpi.Infrastructure");
-            }));
+                options.EnableDetailedErrors();
+                options.EnableSensitiveDataLogging();
+            }
+        });
 
         services.AddScoped<IGeograpiMigrationProvider, GeograpiMigrationProvider>();
     }

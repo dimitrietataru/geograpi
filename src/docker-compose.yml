@@ -10,6 +10,8 @@ services:
       dockerfile: Ace.Geograpi.Web/Dockerfile
     depends_on:
       - ace.geograpi.db
+    volumes:
+      - ./.containers/ace-geograpi-api-logs:/app/Logs
     ports:
       - "42000:42000"
       - "43000:43000"
