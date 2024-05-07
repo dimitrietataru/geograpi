@@ -5,20 +5,20 @@ using Ace.Geograpi.Infrastructure.Data.Migrations.Interfaces;
 using Ace.Geograpi.Infrastructure.Mappers;
 using Ace.Geograpi.Infrastructure.Mappers.Traceable;
 using Ace.Geograpi.Infrastructure.Repositories;
-using Microsoft.Extensions.Hosting;
 
 namespace Ace.Geograpi.Infrastructure;
 
 public static class DependencyInjection
 {
-    public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration, IHostEnvironment env)
+    public static void AddInfrastructure(this IHostApplicationBuilder builder)
     {
-        services.AddDatabase(configuration, env);
-        services.AddMappers();
-        services.AddRepositories();
+        builder.Services.AddDatabase(builder.Configuration, builder.Environment);
+        builder.Services.AddMappers();
+        builder.Services.AddRepositories();
     }
 
-    internal static void AddDatabase(this IServiceCollection services, IConfiguration configuration, IHostEnvironment env)
+    internal static void AddDatabase(
+        this IServiceCollection services, IConfiguration configuration, IHostEnvironment env)
     {
         services.AddDbContext<GeograpiDbContext>(options =>
         {

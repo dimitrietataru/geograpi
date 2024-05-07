@@ -4,10 +4,10 @@ using Ace.Geograpi.Web.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddGeograpiLogger(builder.Configuration);
+builder.AddGeograpiLogger();
 
-builder.Services.AddApplication(builder.Configuration);
-builder.Services.AddInfrastructure(builder.Configuration, builder.Environment);
+builder.AddApplication();
+builder.AddInfrastructure();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
