@@ -1,8 +1,8 @@
 using Serilog;
 
-namespace Ace.Geograpi.Web.Extensions;
+namespace Ace.Geograpi.Web;
 
-public static partial class HostApplicationBuilderExtensions
+public static partial class AppConfiguration
 {
     public static void AddGeograpiLogger(this IHostApplicationBuilder builder)
     {
@@ -15,5 +15,10 @@ public static partial class HostApplicationBuilderExtensions
             .ReadFrom.Configuration(builder.Configuration)
             .ReadFrom.Services(services)
             .Enrich.FromLogContext());
+    }
+
+    public static void UseGeograpiLogger(this IApplicationBuilder app)
+    {
+        app.UseSerilogRequestLogging();
     }
 }

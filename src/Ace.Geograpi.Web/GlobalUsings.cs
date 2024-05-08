@@ -1,5 +1,7 @@
 #pragma warning disable IDE0005 // Using directive is unnecessary
 
+global using Asp.Versioning;
+
 global using Microsoft.AspNetCore;
 global using Microsoft.AspNetCore.Authentication;
 global using Microsoft.AspNetCore.Authorization;

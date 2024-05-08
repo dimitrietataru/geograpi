@@ -9,7 +9,9 @@ using CatNip.Presentation.Symbols;
 namespace Ace.Geograpi.Web.Controllers;
 
 [ApiController]
-[Route("api/continents")]
+[ApiVersion("1.0")]
+[Route("api/v{version:apiVersion}/continents")]
+[Produces("application/json")]
 public sealed class ContinentController : AceController<IContinentService, ContinentModel, int, ContinentQueryFilter>
 {
     public ContinentController(IContinentService service)

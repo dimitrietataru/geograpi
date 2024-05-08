@@ -6,7 +6,9 @@ using CatNip.Presentation.Controllers;
 namespace Ace.Geograpi.Web.Controllers;
 
 [ApiController]
-[Route("api/countries")]
+[ApiVersion("1.0")]
+[Route("api/v{version:apiVersion}/countries")]
+[Produces("application/json")]
 public sealed class CountryController : AceController<ICountryService, CountryModel, int, CountryQueryFilter>
 {
     public CountryController(ICountryService service)
