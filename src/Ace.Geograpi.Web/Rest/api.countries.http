@@ -1,0 +1,57 @@
+@uri={{scheme}}://{{hostname}}:{{port}}
+
+@id=144
+@tempId=??
+
+###
+
+GET {{uri}}/api/v1/countries
+
+###
+
+GET {{uri}}/api/v1/countries/count
+
+###
+
+GET {{uri}}/api/v1/countries/{{id}}
+
+###
+
+GET {{uri}}/api/v1/countries/filter?page=1&size=3
+###
+GET {{uri}}/api/v1/countries/filter?sortBy=Name&sortDirection=Descending
+###
+GET {{uri}}/api/v1/countries/filter?name=Romania
+###
+GET {{uri}}/api/v1/countries/filter?ids=1&ids=2&ids=3
+
+###
+
+GET {{uri}}/api/v1/countries/filter/count?ids=1&ids=2&ids=3
+###
+GET {{uri}}/api/v1/countries/filter/count?name=Romania
+
+###
+
+POST {{uri}}/api/v1/countries
+Content-Type: application/json
+
+{
+    "continentId": 1
+    "name": "Foo",
+}
+
+###
+
+PUT {{uri}}/api/v1/countries/{{tempId}}
+Content-Type: application/json
+
+{
+    "id": {{tempId}},
+    "continentId": 1,
+    "name": "Bar"
+}
+
+###
+
+DELETE {{uri}}/api/v1/countries/{{tempId}}

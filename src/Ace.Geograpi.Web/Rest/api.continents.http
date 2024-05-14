@@ -1,0 +1,55 @@
+@uri={{scheme}}://{{hostname}}:{{port}}
+
+@id=5
+@tempId=??
+
+###
+
+GET {{uri}}/api/v1/continents
+
+###
+
+GET {{uri}}/api/v1/continents/count
+
+###
+
+GET {{uri}}/api/v1/continents/{{id}}
+
+###
+
+GET {{uri}}/api/v1/continents/filter?page=1&size=3
+###
+GET {{uri}}/api/v1/continents/filter?sortBy=Name&sortDirection=Descending
+###
+GET {{uri}}/api/v1/continents/filter?name=Europe
+###
+GET {{uri}}/api/v1/continents/filter?ids=1&ids=2&ids=3
+
+###
+
+GET {{uri}}/api/v1/continents/filter/count?ids=1&ids=2&ids=3
+###
+GET {{uri}}/api/v1/continents/filter/count?name=Europe
+
+###
+
+POST {{uri}}/api/v1/continents
+Content-Type: application/json
+
+{
+    "name": "Foo"
+}
+
+###
+
+PUT {{uri}}/api/v1/continents/{{tempId}}
+Content-Type: application/json
+
+{
+    "id": {{tempId}},
+    "name": "Bar"
+}
+
+###
+
+DELETE {{uri}}/api/v1/continents/{{tempId}}
