@@ -1,10 +1,9 @@
 # Geography Open API
 
-## Run the project
+## Gettings started
 * From Visual Studio, set the _docker-compose_ project as Startup Project, then Start Debugging
-
+* From CLI, execute the following
 ``` powershell
-cd .
 docker compose up
 ```
 
