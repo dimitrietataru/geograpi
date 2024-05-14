@@ -9,9 +9,7 @@ services:
       context: .
       dockerfile: Ace.Geograpi.Web/Dockerfile
     depends_on:
-      ace.geograpi.db:
-        condition: service_started
-        restart: true
+      - "ace.geograpi.db"
     ports:
       - 42000:443
       - 43000:80
@@ -36,9 +34,8 @@ services:
     container_name: pg-admin
     restart: always
     depends_on:
-      ace.geograpi.db:
-        condition: service_started
-        restart: true
+      - "ace.geograpi.db"
+      - "ace.geograpi.api"
     environment:
       - PGADMIN_DEFAULT_EMAIL=admin@geograpi.com
       - PGADMIN_DEFAULT_PASSWORD=postgres
