@@ -4,23 +4,11 @@ services:
   ace.geograpi.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
-      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_HTTP_PORTS=80
+      - ASPNETCORE_HTTPS_PORTS=443
       - ASPNETCORE_Kestrel__Certificates__Default__Password=certificatepass
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
       - ~/.aspnet/https:/https:ro
-      - ./.containers/ace-geograpi-api-logs:/app/Logs
-
-  ace.geograpi.db:
-    environment:
-      - POSTGRES_DB=geograpi
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-    volumes:
-      - ./.containers/ace-geograpi-db:/var/lib/postgresql/data
-
-  pgadmin:
-    volumes:
-      - ./.containers/pg-admin:/var/lib/pgadmin
