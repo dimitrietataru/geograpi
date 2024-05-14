@@ -10,22 +10,14 @@ services:
       dockerfile: Ace.Geograpi.Web/Dockerfile
     depends_on:
       - ace.geograpi.db
-    volumes:
-      - ./.containers/ace-geograpi-api-logs:/app/Logs
     ports:
-      - "42000:42000"
-      - "43000:43000"
+      - 42000:443
+      - 43000:80
 
   ace.geograpi.db:
     image: postgres:latest
     container_name: ace.geograpi.db
     restart: always
-    environment:
-      - POSTGRES_DB=geograpi
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-    volumes:
-      - ./.containers/ace-geograpi-db:/var/lib/postgresql/data
     ports:
       - 5432:5432
 
@@ -33,10 +25,7 @@ services:
     image: dpage/pgadmin4:latest
     container_name: pg-admin
     restart: always
-    environment:
-      - PGADMIN_DEFAULT_EMAIL=dimitriettr@gmail.com
-      - PGADMIN_DEFAULT_PASSWORD=postgres
+    depends_on:
+      - ace.geograpi.db
     ports:
       - 5050:80
-    volumes:
-      - ./.containers/pg-admin:/var/lib/pgadmin
