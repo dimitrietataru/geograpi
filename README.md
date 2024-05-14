@@ -1,5 +1,13 @@
 # Geography Open API
 
+## Run the project
+* From Visual Studio, set the _docker-compose_ project as Startup Project, then Start Debugging
+
+``` powershell
+cd .
+docker compose up
+```
+
 ### Related projects
 * [catnip-domain](https://github.com/dimitrietataru/catnip-domain)
 * [catnip-application](https://github.com/dimitrietataru/catnip-application)
