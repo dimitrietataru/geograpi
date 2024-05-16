@@ -13,6 +13,7 @@ builder.Services.AddGeograpiCors();
 builder.Services.AddControllers();
 builder.Services.AddGeograpiApiVersioning();
 builder.Services.AddGeograpiSwagger();
+builder.Services.AddGeograpiExceptionHandlers();
 
 var app = builder.Build();
 
@@ -25,6 +26,7 @@ if (app.Environment.IsDevelopment() || app.Environment.IsEnvironment("Docker"))
 }
 
 app.UseGeograpiLogger();
+app.UseExceptionHandler();
 app.UseHttpsRedirection();
 app.UseGeograpiCorsRestrictive();
 app.UseAuthorization();
