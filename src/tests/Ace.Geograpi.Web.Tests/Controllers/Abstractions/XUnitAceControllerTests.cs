@@ -15,18 +15,6 @@ public abstract class XUnitAceControllerTests<TController, TService, TModel, TId
     where TFiltering : IFilteringRequest
 {
     [Fact]
-    public override async Task GivenFilterWhenDataExistsThenReturnsData()
-    {
-        await base.GivenFilterWhenDataExistsThenReturnsData();
-    }
-
-    [Fact]
-    public override async Task GivenFilterCountWhenDataExistsThenReturnsCount()
-    {
-        await base.GivenFilterCountWhenDataExistsThenReturnsCount();
-    }
-
-    [Fact]
     public override async Task GivenGetAllWhenDataExistsThenReturnsData()
     {
         await base.GivenGetAllWhenDataExistsThenReturnsData();

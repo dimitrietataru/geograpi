@@ -20,24 +20,8 @@ public sealed class ContinentController : AceController<IContinentService, Conti
     }
 
     [HttpGet]
-    [ProducesResponseType<ContinentModel[]>((int)HttpStatusCode.OK)]
-    public sealed override async Task<IActionResult> GetAll(CancellationToken cancellation)
-    {
-        return await base.GetAll(cancellation);
-    }
-
-    [HttpGet]
-    [Route(DefaultRoutes.Count)]
-    [ProducesResponseType<int>((int)HttpStatusCode.OK)]
-    public sealed override async Task<IActionResult> Count(CancellationToken cancellation)
-    {
-        return await base.Count(cancellation);
-    }
-
-    [HttpGet]
-    [Route(DefaultRoutes.Filter)]
     [ProducesResponseType<QueryResponse<ContinentModel>>((int)HttpStatusCode.OK)]
-    public sealed override async Task<IActionResult> Filter(
+    public sealed override async Task<IActionResult> GetAll(
         [FromQuery] int? page,
         [FromQuery] int? size,
         [FromQuery] string? sortBy,
@@ -45,16 +29,16 @@ public sealed class ContinentController : AceController<IContinentService, Conti
         [FromQuery] ContinentQueryFilter filter,
         CancellationToken cancellation)
     {
-        return await base.Filter(page, size, sortBy, sortDirection, filter, cancellation);
+        return await base.GetAll(page, size, sortBy, sortDirection, filter, cancellation);
     }
 
     [HttpGet]
-    [Route(DefaultRoutes.FilterCount)]
+    [Route(DefaultRoutes.Count)]
     [ProducesResponseType<int>((int)HttpStatusCode.OK)]
-    public sealed override async Task<IActionResult> FilterCount(
+    public sealed override async Task<IActionResult> Count(
         [FromQuery] ContinentQueryFilter filter, CancellationToken cancellation)
     {
-        return await base.FilterCount(filter, cancellation);
+        return await base.Count(filter, cancellation);
     }
 
     [HttpGet]

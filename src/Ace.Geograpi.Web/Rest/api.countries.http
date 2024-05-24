@@ -6,30 +6,26 @@
 ###
 
 GET {{uri}}/api/v1/countries
+###
+GET {{uri}}/api/v1/countries?page=1&size=3
+###
+GET {{uri}}/api/v1/countries?sortBy=Name&sortDirection=Descending
+###
+GET {{uri}}/api/v1/countries?name=Romania
+###
+GET {{uri}}/api/v1/countries?ids=1&ids=2&ids=3
 
 ###
 
 GET {{uri}}/api/v1/countries/count
+###
+GET {{uri}}/api/v1/countries/count?ids=1&ids=2&ids=3
+###
+GET {{uri}}/api/v1/countries/count?name=Romania
 
 ###
 
 GET {{uri}}/api/v1/countries/{{id}}
-
-###
-
-GET {{uri}}/api/v1/countries/filter?page=1&size=3
-###
-GET {{uri}}/api/v1/countries/filter?sortBy=Name&sortDirection=Descending
-###
-GET {{uri}}/api/v1/countries/filter?name=Romania
-###
-GET {{uri}}/api/v1/countries/filter?ids=1&ids=2&ids=3
-
-###
-
-GET {{uri}}/api/v1/countries/filter/count?ids=1&ids=2&ids=3
-###
-GET {{uri}}/api/v1/countries/filter/count?name=Romania
 
 ###
 

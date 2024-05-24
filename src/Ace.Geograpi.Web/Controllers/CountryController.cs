@@ -15,11 +15,4 @@ public sealed class CountryController : AceController<ICountryService, CountryMo
         : base(service)
     {
     }
-
-    [HttpGet]
-    [ProducesResponseType<CountryModel[]>((int)HttpStatusCode.OK)]
-    public sealed override async Task<IActionResult> GetAll(CancellationToken cancellation)
-    {
-        return await base.GetAll(cancellation);
-    }
 }

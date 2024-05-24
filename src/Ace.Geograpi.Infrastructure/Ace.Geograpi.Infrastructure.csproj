@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="AceCSharp.StructuredAutoMapper" Version="2.1.0" />
-    <PackageReference Include="CatNip.Infrastructure" Version="1.2.0" />
+    <PackageReference Include="CatNip.Infrastructure" Version="1.2.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.5">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

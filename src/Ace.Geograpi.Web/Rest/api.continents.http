@@ -6,30 +6,26 @@
 ###
 
 GET {{uri}}/api/v1/continents
+###
+GET {{uri}}/api/v1/continents?page=1&size=3
+###
+GET {{uri}}/api/v1/continents?sortBy=Name&sortDirection=Descending
+###
+GET {{uri}}/api/v1/continents?name=Europe
+###
+GET {{uri}}/api/v1/continents?ids=1&ids=2&ids=3
 
 ###
 
 GET {{uri}}/api/v1/continents/count
+###
+GET {{uri}}/api/v1/continents/count?ids=1&ids=2&ids=3
+###
+GET {{uri}}/api/v1/continents/count?name=Europe
 
 ###
 
 GET {{uri}}/api/v1/continents/{{id}}
-
-###
-
-GET {{uri}}/api/v1/continents/filter?page=1&size=3
-###
-GET {{uri}}/api/v1/continents/filter?sortBy=Name&sortDirection=Descending
-###
-GET {{uri}}/api/v1/continents/filter?name=Europe
-###
-GET {{uri}}/api/v1/continents/filter?ids=1&ids=2&ids=3
-
-###
-
-GET {{uri}}/api/v1/continents/filter/count?ids=1&ids=2&ids=3
-###
-GET {{uri}}/api/v1/continents/filter/count?name=Europe
 
 ###
 
