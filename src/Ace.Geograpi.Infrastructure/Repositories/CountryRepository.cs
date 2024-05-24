@@ -44,6 +44,12 @@ internal sealed class CountryRepository
         return query;
     }
 
+    protected sealed override IQueryable<CountryEntity> BuildDefaultSortingQuery(
+        IQueryable<CountryEntity> query)
+    {
+        return query.OrderBy(e => e.Name);
+    }
+
     protected sealed override IQueryable<CountryEntity> BuildSortingQuery(
         IQueryable<CountryEntity> query, ISortingRequest sortingRequest)
     {

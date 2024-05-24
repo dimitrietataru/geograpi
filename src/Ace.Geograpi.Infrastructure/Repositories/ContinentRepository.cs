@@ -121,6 +121,12 @@ internal sealed class ContinentRepository
         return query;
     }
 
+    protected sealed override IQueryable<ContinentEntity> BuildDefaultSortingQuery(
+        IQueryable<ContinentEntity> query)
+    {
+        return query.OrderBy(e => e.Name);
+    }
+
     protected sealed override IQueryable<ContinentEntity> BuildSortingQuery(
         IQueryable<ContinentEntity> query, ISortingRequest sortingRequest)
     {
