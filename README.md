@@ -1,5 +1,7 @@
 # Geography Open API
 
+[![build](https://github.com/dimitrietataru/geograpi/actions/workflows/build.yml/badge.svg)](https://github.com/dimitrietataru/geograpi/actions/workflows/build.yml)
+
 ## Getting started
 * From Visual Studio
 ```
