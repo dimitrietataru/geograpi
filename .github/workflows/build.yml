@@ -39,11 +39,11 @@ jobs:
     - name: dotnet build
       run: dotnet build $SOLUTION --configuration $CONFIG --no-restore
 
-    - name: dotnet test - application unit tests
+    - name: dotnet test > application unit tests
       run: dotnet test $TEST_PROJECT_APPLICATION --configuration $CONFIG --no-restore --no-build --verbosity normal
 
-    - name: dotnet test - infrastructure integration tests
+    - name: dotnet test > infrastructure integration tests
       run: dotnet test $TEST_PROJECT_INFRASTRUCTURE --configuration $CONFIG --no-restore --no-build --verbosity normal
 
-    - name: dotnet test - web unit tests
+    - name: dotnet test > web unit tests
       run: dotnet test $TEST_PROJECT_WEB --configuration $CONFIG --no-restore --no-build --verbosity normal
