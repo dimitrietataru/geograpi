@@ -1,0 +1,49 @@
+name: build-CI
+
+on:
+  create:
+    branches: 
+      - feature/**
+  push:
+    branches:
+    - ace
+    - main
+    - develop
+    - feature/**
+    - bugfix/**
+
+jobs:
+  build:
+
+    env:
+      CONFIG: 'Release'
+      SOLUTION: 'src/Ace.Geograpi.sln'
+      TEST_PROJECT_APPLICATION: 'src\tests\Ace.Geograpi.Application.Tests/Ace.Geograpi.Application.Tests.csproj'
+      TEST_PROJECT_INFRASTRUCTURE: 'src\tests\Ace.Geograpi.Infrastructure.IntegrationTests/Ace.Geograpi.Infrastructure.IntegrationTests.csproj'
+      TEST_PROJECT_WEB: 'src\tests\Ace.Geograpi.Web.Tests/Ace.Geograpi.Web.Tests.csproj'
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+
+    - name: dotnet restore
+      run: dotnet restore $SOLUTION
+
+    - name: dotnet build
+      run: dotnet build $SOLUTION --configuration $CONFIG --no-restore
+
+    - name: dotnet test - application unit tests
+      run: dotnet test $TEST_PROJECT_APPLICATION --configuration $CONFIG --no-restore --no-build --verbosity normal
+
+    - name: dotnet test - infrastructure integration tests
+      run: dotnet test $TEST_PROJECT_INFRASTRUCTURE --configuration $CONFIG --no-restore --no-build --verbosity normal
+
+    - name: dotnet test - web unit tests
+      run: dotnet test $TEST_PROJECT_WEB --configuration $CONFIG --no-restore --no-build --verbosity normal
