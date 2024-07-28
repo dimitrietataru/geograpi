@@ -1,6 +1,5 @@
 using Ace.Geograpi.Application.Services;
 using Ace.Geograpi.Domain.Services;
-using Microsoft.Extensions.Hosting;
 
 namespace Ace.Geograpi.Application;
 
