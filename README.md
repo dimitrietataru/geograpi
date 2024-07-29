@@ -26,8 +26,41 @@ docker compose up
 * [ace-csharp-structured-automapper](https://github.com/dimitrietataru/ace-csharp-structured-automapper)
 
 ### NuGet Packages
-* [Serilog](https://github.com/serilog/serilog)
-* [Serilog.AspNetCore](https://github.com/serilog/serilog-aspnetcore)
+* Coding standards. Analyzers
+  * [Microsoft.CodeAnalysis.NetAnalyzers](https://github.com/dotnet/roslyn-analyzers)
+* Data
+  * EF Core
+    * [Microsoft.EntityFrameworkCore](https://github.com/dotnet/efcore)    
+    * [Microsoft.EntityFrameworkCore.Relational](https://github.com/dotnet/efcore)
+    * [Microsoft.EntityFrameworkCore.Design](https://github.com/dotnet/efcore)
+    * [Microsoft.EntityFrameworkCore.Tools](https://github.com/dotnet/efcore)
+    * [Npgsql.EntityFrameworkCore.PostgreSQL](https://github.com/npgsql/efcore.pg)
+  * [AutoMapper](https://github.com/AutoMapper/AutoMapper)
+  * [Bogus](https://github.com/bchavez/Bogus)
+* Testing
+  * Framework
+    * [xunit](https://github.com/xunit/xunit)
+    * [xunit.runner.visualstudio](https://github.com/xunit/visualstudio.xunit)
+    * [Microsoft.NET.Test.Sdk](https://github.com/microsoft/vstest)
+  * Reports
+    * [coverlet.collector](https://github.com/coverlet-coverage/coverlet)
+    * [ReportGenerator](https://github.com/danielpalme/ReportGenerator)
+  * [FluentAssertions](https://github.com/fluentassertions/fluentassertions)
+  * [Moq](https://github.com/devlooped/moq)
+* Logging and Monitoring
+  * [Serilog](https://github.com/serilog/serilog)
+  * [Serilog.AspNetCore](https://github.com/serilog/serilog-aspnetcore)
+* API
+  * [Asp.Versioning.Mvc](https://github.com/dotnet/aspnet-api-versioning)
+  * [Asp.Versioning.Mvc.ApiExplorer](https://github.com/dotnet/aspnet-api-versioning)
+  * [Microsoft.AspNetCore.OpenApi](https://github.com/dotnet/aspnetcore)
+  * [Swashbuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore)
+* ASP .NET
+  * [Microsoft.AspNetCore.Authentication.JwtBearer](https://github.com/dotnet/aspnetcore)
+  * [Microsoft.Extensions.Hosting.Abstractions](https://github.com/dotnet/runtime)
+  * [Microsoft.VisualStudio.Azure.Containers.Tools.Targets](https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/docker/visual-studio-tools-for-docker?view=aspnetcore-2.1)
+
+---
 
 ### License
 GeogrAPI is Copyright © 2023 [Dimitrie Tataru](https://github.com/dimitrietataru) and other contributors under the [MIT license](https://github.com/dimitrietataru/geograpi/blob/ace/LICENSE).
