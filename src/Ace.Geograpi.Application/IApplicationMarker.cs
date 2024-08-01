@@ -1,5 +1,5 @@
 namespace Ace.Geograpi.Application;
 
-internal interface IApplicationMarker
+public interface IApplicationMarker
 {
 }
