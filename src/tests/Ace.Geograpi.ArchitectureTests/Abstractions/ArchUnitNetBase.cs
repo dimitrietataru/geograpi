@@ -4,19 +4,19 @@ using ArchUnitNET.Fluent.Syntax.Elements.Types;
 using ArchUnitNET.Fluent.Syntax.Elements.Types.Classes;
 using ArchUnitNET.Loader;
 using CatNip.Domain.Models.Interfaces;
+using CatNip.Domain.Services;
 
 namespace Ace.Geograpi.ArchitectureTests.Abstractions;
 
 public abstract class ArchUnitNetBase : AbstractArchitectureTest
 {
-    protected static readonly Architecture architecture =
-        new ArchLoader()
-            .LoadAssemblies(
-                domainAssembly,
-                applicationAssembly,
-                infrastructureAssembly,
-                webAssembly)
-            .Build();
+    protected static readonly Architecture architecture = new ArchLoader()
+        .LoadAssemblies(
+            domainAssembly,
+            applicationAssembly,
+            infrastructureAssembly,
+            webAssembly)
+        .Build();
 
     protected static readonly IObjectProvider<IType> domainLayer =
         ArchRuleDefinition.Types().That().ResideInAssembly(domainAssembly).As("Domain");
@@ -41,9 +41,22 @@ public abstract class ArchUnitNetBase : AbstractArchitectureTest
     protected static readonly GivenClassesConjunctionWithDescription domainModels =
         ArchRuleDefinition
             .Classes()
-            .That().ImplementInterface(typeof(IModel))
+            .That().ResideInAssembly(domainAssembly)
+            .And().ImplementInterface(typeof(IModel))
             ////.Or().ImplementInterface(typeof(IModel<>))
             ////.Or().AreAssignableTo(typeof(TraceableModel<>))
             ////.Or().AreAssignableTo(typeof(TraceableModel<,>))
             .As("Domain models");
+
+    protected static readonly GivenClassesConjunctionWithDescription applicationServices =
+        ArchRuleDefinition
+            .Classes()
+            .That().ResideInAssembly(applicationAssembly)
+            .And().ImplementInterface(typeof(ICrudService<>))
+            ////.Or().ImplementInterface(typeof(ICrudService<,>))
+            .Or().ImplementInterface(typeof(IAceService<,,>))
+            ////.Or().AreAssignableTo(typeof(CrudService<,>))
+            ////.Or().AreAssignableTo(typeof(CrudService<,,>))
+            ////.Or().AreAssignableTo(typeof(AceService<,,,>))
+            .As("Application services");
 }
