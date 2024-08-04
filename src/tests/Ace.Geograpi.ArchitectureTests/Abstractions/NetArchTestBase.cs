@@ -1,3 +1,5 @@
+using Ace.CSharp.StructuredAutoMapper.Abstractions;
+using AutoMapper;
 using CatNip.Application.Services;
 using CatNip.Domain.Models;
 using CatNip.Domain.Models.Interfaces;
@@ -50,6 +52,13 @@ public abstract class NetArchTestBase : AbstractArchitectureTest
         .Or().Inherit(typeof(Entity<>))
         .Or().Inherit(typeof(TraceableEntity<>))
         .Or().Inherit(typeof(TraceableEntity<,>));
+
+    protected static readonly PredicateList infrastructureMappers = infrastructureTypes
+        .That().ImplementInterface(typeof(IOneWayProfile<,>))
+        .Or().ImplementInterface(typeof(ITwoWayProfile<,>))
+        .Or().Inherit(typeof(AbstractOneWayProfile<,>))
+        .Or().Inherit(typeof(AbstractTwoWayProfile<,>))
+        .Or().Inherit(typeof(Profile));
 
     protected static readonly PredicateList infrastructureRepositories = infrastructureTypes
         .That().ImplementInterface(typeof(ICrudRepository<>))

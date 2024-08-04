@@ -44,7 +44,7 @@ public static class DependencyInjection
     {
         services.AddAutoMapper(config =>
         {
-            config.AddProfile<TraceableIntMapper>();
+            config.AddProfile<TraceableIntMappingProfile>();
 
             config.AddProfile<ContinentMappingProfile>();
             config.AddProfile<CountryMappingProfile>();

@@ -48,7 +48,7 @@ public sealed class ContinentMappingProfileTests
         };
 
     protected sealed override IEnumerable<Type> RelatedMappingProfiles =>
-        new List<Type> { typeof(CountryMappingProfile), typeof(TraceableIntMapper) };
+        new List<Type> { typeof(CountryMappingProfile), typeof(TraceableIntMappingProfile) };
 
     [Fact]
     public sealed override void GivenMapFromLeftToRightWhenSourceIsNullThenHandlesGracefully()

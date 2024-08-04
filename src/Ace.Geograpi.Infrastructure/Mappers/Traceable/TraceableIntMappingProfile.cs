@@ -3,7 +3,7 @@ using CatNip.Infrastructure.Data.Entities;
 
 namespace Ace.Geograpi.Infrastructure.Mappers.Traceable;
 
-internal sealed class TraceableIntMapper : TwoWayProfile<TraceableEntity<int>, TraceableModel<int>>
+public sealed class TraceableIntMappingProfile : TwoWayProfile<TraceableEntity<int>, TraceableModel<int>>
 {
     public sealed override void ConfigureLeftToRightMapping()
     {

@@ -1,8 +1,10 @@
+using Ace.CSharp.StructuredAutoMapper.Abstractions;
 using ArchUnitNET.Domain;
 using ArchUnitNET.Fluent;
 using ArchUnitNET.Fluent.Syntax.Elements.Types;
 using ArchUnitNET.Fluent.Syntax.Elements.Types.Classes;
 using ArchUnitNET.Loader;
+using AutoMapper;
 using CatNip.Domain.Models.Interfaces;
 using CatNip.Domain.Repositories;
 using CatNip.Domain.Services;
@@ -88,6 +90,17 @@ public abstract class ArchUnitNetBase : AbstractArchitectureTest
             ////.Or().AreAssignableTo(typeof(TraceableEntity<>))
             ////.Or().AreAssignableTo(typeof(TraceableEntity<,>))
             .As("Infrastructure data entities");
+
+    protected static readonly GivenClassesConjunctionWithDescription infrastructureMappers =
+        ArchRuleDefinition
+            .Classes()
+            .That().ResideInAssembly(infrastructureAssembly)
+            .And().ImplementInterface(typeof(IOneWayProfile<,>))
+            .Or().ImplementInterface(typeof(ITwoWayProfile<,>))
+            ////.Or().AreAssignableTo(typeof(AbstractOneWayProfile<,>))
+            ////.Or().AreAssignableTo(typeof(AbstractTwoWayProfile<,>))
+            .Or().AreAssignableTo(typeof(Profile))
+            .As("Infrastructure mappers");
 
     protected static readonly GivenClassesConjunctionWithDescription infrastructureRepositories =
         ArchRuleDefinition
