@@ -4,6 +4,7 @@ using ArchUnitNET.Fluent.Syntax.Elements.Types;
 using ArchUnitNET.Fluent.Syntax.Elements.Types.Classes;
 using ArchUnitNET.Loader;
 using CatNip.Domain.Models.Interfaces;
+using CatNip.Domain.Repositories;
 using CatNip.Domain.Services;
 
 namespace Ace.Geograpi.ArchitectureTests.Abstractions;
@@ -59,4 +60,16 @@ public abstract class ArchUnitNetBase : AbstractArchitectureTest
             ////.Or().AreAssignableTo(typeof(CrudService<,,>))
             ////.Or().AreAssignableTo(typeof(AceService<,,,>))
             .As("Application services");
+
+    protected static readonly GivenClassesConjunctionWithDescription infrastructureRepositories =
+        ArchRuleDefinition
+            .Classes()
+            .That().ResideInAssembly(infrastructureAssembly)
+            .And().ImplementInterface(typeof(ICrudRepository<>))
+            ////.Or().ImplementInterface(typeof(ICrudRepository<,>))
+            .Or().ImplementInterface(typeof(IAceRepository<,,>))
+            ////.Or().AreAssignableTo(typeof(CrudRepository<,,>))
+            ////.Or().AreAssignableTo(typeof(CrudRepository<,,,>))
+            ////.Or().AreAssignableTo(typeof(AceRepository<,,,,>))
+            .As("Infrastructure repositories");
 }
