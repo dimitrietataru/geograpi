@@ -1,6 +1,6 @@
 using Ace.Geograpi.ArchitectureTests.Abstractions;
 
-namespace Ace.Geograpi.ArchitectureTests.Layers.Application;
+namespace Ace.Geograpi.ArchitectureTests.Layers.Application.Services;
 
 public sealed class ApplicationServiceNetArchTestTests : NetArchTestBase
 {

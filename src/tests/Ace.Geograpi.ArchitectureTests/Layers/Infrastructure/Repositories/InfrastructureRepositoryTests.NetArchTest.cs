@@ -1,6 +1,6 @@
 using Ace.Geograpi.ArchitectureTests.Abstractions;
 
-namespace Ace.Geograpi.ArchitectureTests.Layers.Infrastructure;
+namespace Ace.Geograpi.ArchitectureTests.Layers.Infrastructure.Repositories;
 
 public sealed class InfrastructureRepositoryNetArchTestTests : NetArchTestBase
 {

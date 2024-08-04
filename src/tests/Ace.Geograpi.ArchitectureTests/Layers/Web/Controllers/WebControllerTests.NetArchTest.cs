@@ -1,6 +1,6 @@
 using Ace.Geograpi.ArchitectureTests.Abstractions;
 
-namespace Ace.Geograpi.ArchitectureTests.Layers.Web;
+namespace Ace.Geograpi.ArchitectureTests.Layers.Web.Controllers;
 
 public sealed class WebControllerNetArchTestTests : NetArchTestBase
 {

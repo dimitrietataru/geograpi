@@ -1,6 +1,6 @@
 using Ace.Geograpi.ArchitectureTests.Abstractions;
 
-namespace Ace.Geograpi.ArchitectureTests.Layers.Domain;
+namespace Ace.Geograpi.ArchitectureTests.Layers.Domain.Models;
 
 public sealed class DomainModelNetArchTestTests : NetArchTestBase
 {

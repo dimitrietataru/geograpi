@@ -1,7 +1,7 @@
 using Ace.Geograpi.ArchitectureTests.Abstractions;
 using ArchUnitNET.xUnit;
 
-namespace Ace.Geograpi.ArchitectureTests.Layers.Application;
+namespace Ace.Geograpi.ArchitectureTests.Layers.Application.Services;
 
 public sealed class ApplicationServiceArchUnitNetTests : ArchUnitNetBase
 {

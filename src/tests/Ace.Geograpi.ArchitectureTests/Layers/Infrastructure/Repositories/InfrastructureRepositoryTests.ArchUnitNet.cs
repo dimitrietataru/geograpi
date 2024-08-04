@@ -1,7 +1,7 @@
 using Ace.Geograpi.ArchitectureTests.Abstractions;
 using ArchUnitNET.xUnit;
 
-namespace Ace.Geograpi.ArchitectureTests.Layers.Infrastructure;
+namespace Ace.Geograpi.ArchitectureTests.Layers.Infrastructure.Repositories;
 
 public sealed class InfrastructureRepositoryArchUnitNetTests : ArchUnitNetBase
 {

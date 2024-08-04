@@ -1,7 +1,7 @@
 using Ace.Geograpi.ArchitectureTests.Abstractions;
 using ArchUnitNET.xUnit;
 
-namespace Ace.Geograpi.ArchitectureTests.Layers.Web;
+namespace Ace.Geograpi.ArchitectureTests.Layers.Web.Controllers;
 
 public sealed class WebControllerArchUnitNetTests : ArchUnitNetBase
 {
