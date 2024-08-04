@@ -13,7 +13,7 @@ internal sealed class GeograpiDbContext : DbContext
     public DbSet<ContinentEntity> Continents { get; set; }
     public DbSet<CountryEntity> Counties { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    protected sealed override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         base.OnConfiguring(optionsBuilder);
     }
