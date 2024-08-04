@@ -4,6 +4,7 @@ using CatNip.Domain.Models.Interfaces;
 using CatNip.Domain.Repositories;
 using CatNip.Domain.Services;
 using CatNip.Infrastructure.Repositories;
+using CatNip.Presentation.Controllers;
 using NetArchTest.Rules;
 
 namespace Ace.Geograpi.ArchitectureTests.Abstractions;
@@ -36,4 +37,9 @@ public abstract class NetArchTestBase : AbstractArchitectureTest
         .Or().Inherit(typeof(CrudRepository<,,>))
         .Or().Inherit(typeof(CrudRepository<,,,>))
         .Or().Inherit(typeof(AceRepository<,,,,>));
+
+    protected static readonly PredicateList webControllers = webTypes
+        .That().Inherit(typeof(CrudController<,>))
+        .Or().Inherit(typeof(CrudController<,,>))
+        .Or().Inherit(typeof(AceController<,,,>));
 }

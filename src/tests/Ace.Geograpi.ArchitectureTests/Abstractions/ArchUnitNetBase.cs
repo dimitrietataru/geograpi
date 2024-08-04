@@ -6,6 +6,7 @@ using ArchUnitNET.Loader;
 using CatNip.Domain.Models.Interfaces;
 using CatNip.Domain.Repositories;
 using CatNip.Domain.Services;
+using CatNip.Presentation.Controllers;
 
 namespace Ace.Geograpi.ArchitectureTests.Abstractions;
 
@@ -72,4 +73,13 @@ public abstract class ArchUnitNetBase : AbstractArchitectureTest
             ////.Or().AreAssignableTo(typeof(CrudRepository<,,,>))
             ////.Or().AreAssignableTo(typeof(AceRepository<,,,,>))
             .As("Infrastructure repositories");
+
+    protected static readonly GivenClassesConjunctionWithDescription webControllers =
+        ArchRuleDefinition
+            .Classes()
+            .That().ResideInAssembly(webAssembly)
+            ////.And().AreAssignableTo(typeof(CrudController<,>))
+            .And().AreAssignableTo(typeof(CrudController<,,>))
+            .Or().AreAssignableTo(typeof(AceController<,,,>))
+            .As("Web controllers");
 }

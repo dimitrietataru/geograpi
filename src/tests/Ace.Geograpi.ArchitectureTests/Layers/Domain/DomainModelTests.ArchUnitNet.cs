@@ -3,7 +3,7 @@ using ArchUnitNET.xUnit;
 
 namespace Ace.Geograpi.ArchitectureTests.Layers.Domain;
 
-public sealed class DomainModelArchUnitTests : ArchUnitNetBase
+public sealed class DomainModelArchUnitNetTests : ArchUnitNetBase
 {
     [Fact]
     internal static void DomainModelsShouldHaveModelPostfix()
