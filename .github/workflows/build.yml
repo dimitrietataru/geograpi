@@ -18,6 +18,7 @@ jobs:
     env:
       CONFIG: 'Release'
       SOLUTION: 'src/Ace.Geograpi.sln'
+      TEST_PROJECT_ARCHITECTURE: 'src\tests\Ace.Geograpi.ArchitectureTests/Ace.Geograpi.ArchitectureTests.csproj'
       TEST_PROJECT_APPLICATION: 'src\tests\Ace.Geograpi.Application.Tests/Ace.Geograpi.Application.Tests.csproj'
       TEST_PROJECT_INFRASTRUCTURE: 'src\tests\Ace.Geograpi.Infrastructure.IntegrationTests/Ace.Geograpi.Infrastructure.IntegrationTests.csproj'
       TEST_PROJECT_WEB: 'src\tests\Ace.Geograpi.Web.Tests/Ace.Geograpi.Web.Tests.csproj'
@@ -38,6 +39,9 @@ jobs:
 
     - name: dotnet build
       run: dotnet build $SOLUTION --configuration $CONFIG --no-restore
+
+    - name: dotnet test > architecture tests
+      run: dotnet test $TEST_PROJECT_ARCHITECTURE --configuration $CONFIG --no-restore --no-build --verbosity normal
 
     - name: dotnet test > application unit tests
       run: dotnet test $TEST_PROJECT_APPLICATION --configuration $CONFIG --no-restore --no-build --verbosity normal
