@@ -3,8 +3,10 @@ using CatNip.Domain.Models;
 using CatNip.Domain.Models.Interfaces;
 using CatNip.Domain.Repositories;
 using CatNip.Domain.Services;
+using CatNip.Infrastructure.Data.Configurations;
 using CatNip.Infrastructure.Repositories;
 using CatNip.Presentation.Controllers;
+using Microsoft.EntityFrameworkCore;
 using NetArchTest.Rules;
 
 namespace Ace.Geograpi.ArchitectureTests.Abstractions;
@@ -29,6 +31,13 @@ public abstract class NetArchTestBase : AbstractArchitectureTest
         .Or().Inherit(typeof(CrudService<,>))
         .Or().Inherit(typeof(CrudService<,,>))
         .Or().Inherit(typeof(AceService<,,,>));
+
+    protected static readonly PredicateList infrastructureDataConfigurations = infrastructureTypes
+        .That().ImplementInterface(typeof(IEntityTypeConfiguration<>))
+        .Or().Inherit(typeof(TraceableEntityConfiguration<,>))
+        .Or().Inherit(typeof(TraceableEntityConfiguration<,,>))
+        .Or().Inherit(typeof(EntityConfiguration<>))
+        .Or().Inherit(typeof(EntityConfiguration<,>));
 
     protected static readonly PredicateList infrastructureRepositories = infrastructureTypes
         .That().ImplementInterface(typeof(ICrudRepository<>))

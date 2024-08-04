@@ -7,6 +7,7 @@ using CatNip.Domain.Models.Interfaces;
 using CatNip.Domain.Repositories;
 using CatNip.Domain.Services;
 using CatNip.Presentation.Controllers;
+using Microsoft.EntityFrameworkCore;
 
 namespace Ace.Geograpi.ArchitectureTests.Abstractions;
 
@@ -61,6 +62,17 @@ public abstract class ArchUnitNetBase : AbstractArchitectureTest
             ////.Or().AreAssignableTo(typeof(CrudService<,,>))
             ////.Or().AreAssignableTo(typeof(AceService<,,,>))
             .As("Application services");
+
+    protected static readonly GivenClassesConjunctionWithDescription infrastructureDataConfigurations =
+        ArchRuleDefinition
+            .Classes()
+            .That().ResideInAssembly(infrastructureAssembly)
+            .And().ImplementInterface(typeof(IEntityTypeConfiguration<>))
+            ////.Or().AreAssignableTo(typeof(TraceableEntityConfiguration<,>))
+            ////.Or().AreAssignableTo(typeof(TraceableEntityConfiguration<,,>))
+            ////.Or().AreAssignableTo(typeof(EntityConfiguration<>))
+            ////.Or().AreAssignableTo(typeof(EntityConfiguration<,>))
+            .As("Infrastructure data configurations");
 
     protected static readonly GivenClassesConjunctionWithDescription infrastructureRepositories =
         ArchRuleDefinition
