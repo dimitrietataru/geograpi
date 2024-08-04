@@ -1,12 +1,12 @@
 using Ace.Geograpi.ArchitectureTests.Abstractions;
 using ArchUnitNET.xUnit;
 
-namespace Ace.Geograpi.ArchitectureTests.Domain;
+namespace Ace.Geograpi.ArchitectureTests.Layers.Domain;
 
 public sealed class DomainModelArchUnitTests : ArchUnitNetBase
 {
     [Fact]
-    public static void DomainModelsShouldHaveModelPostfix()
+    internal static void DomainModelsShouldHaveModelPostfix()
     {
         // Arrange
         var rule = domainModels.Should().HaveNameEndingWith("Model");
@@ -16,7 +16,7 @@ public sealed class DomainModelArchUnitTests : ArchUnitNetBase
     }
 
     [Fact]
-    public static void DomainModelsShouldBePublic()
+    internal static void DomainModelsShouldBePublic()
     {
         // Arrange
         var rule = domainModels.Should().BePublic();
@@ -26,7 +26,7 @@ public sealed class DomainModelArchUnitTests : ArchUnitNetBase
     }
 
     [Fact]
-    public static void DomainModelsShouldBeSealed()
+    internal static void DomainModelsShouldBeSealed()
     {
         // Arrange
         var rule = domainModels.Should().BeSealed();

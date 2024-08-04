@@ -6,7 +6,7 @@ namespace Ace.Geograpi.ArchitectureTests.Layers;
 public sealed class LayerArchUnitNetTests : ArchUnitNetBase
 {
     [Fact]
-    public static void DomainShouldNotHaveDependencyOnApplication()
+    internal static void DomainShouldNotHaveDependencyOnApplication()
     {
         // Arrange
         var rule = domainTypes.Should().NotDependOnAny(applicationLayer);
@@ -16,7 +16,7 @@ public sealed class LayerArchUnitNetTests : ArchUnitNetBase
     }
 
     [Fact]
-    public static void DomainShouldNotHaveDependencyOnInfrastructure()
+    internal static void DomainShouldNotHaveDependencyOnInfrastructure()
     {
         // Arrange
         var rule = domainTypes.Should().NotDependOnAny(infrastructureLayer);
@@ -26,7 +26,7 @@ public sealed class LayerArchUnitNetTests : ArchUnitNetBase
     }
 
     [Fact]
-    public static void DomainShouldNotHaveDependencyOnWeb()
+    internal static void DomainShouldNotHaveDependencyOnWeb()
     {
         // Arrange
         var rule = domainTypes.Should().NotDependOnAny(webLayer);
@@ -36,7 +36,7 @@ public sealed class LayerArchUnitNetTests : ArchUnitNetBase
     }
 
     [Fact]
-    public static void ApplicationShouldNotHaveDependencyOnInfrastructure()
+    internal static void ApplicationShouldNotHaveDependencyOnInfrastructure()
     {
         // Arrange
         var rule = applicationTypes.Should().NotDependOnAny(infrastructureLayer);
@@ -46,7 +46,7 @@ public sealed class LayerArchUnitNetTests : ArchUnitNetBase
     }
 
     [Fact]
-    public static void ApplicationShouldNotHaveDependencyOnWeb()
+    internal static void ApplicationShouldNotHaveDependencyOnWeb()
     {
         // Arrange
         var rule = applicationTypes.Should().NotDependOnAny(webLayer);
@@ -56,7 +56,7 @@ public sealed class LayerArchUnitNetTests : ArchUnitNetBase
     }
 
     [Fact]
-    public static void InfrastructureShouldNotHaveDependencyOnApplication()
+    internal static void InfrastructureShouldNotHaveDependencyOnApplication()
     {
         // Arrange
         var rule = infrastructureTypes.Should().NotDependOnAny(applicationLayer);
@@ -66,7 +66,7 @@ public sealed class LayerArchUnitNetTests : ArchUnitNetBase
     }
 
     [Fact]
-    public static void InfrastructureShouldNotHaveDependencyOnWeb()
+    internal static void InfrastructureShouldNotHaveDependencyOnWeb()
     {
         // Arrange
         var rule = infrastructureTypes.Should().NotDependOnAny(webLayer);
