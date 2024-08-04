@@ -4,6 +4,8 @@ using CatNip.Domain.Models.Interfaces;
 using CatNip.Domain.Repositories;
 using CatNip.Domain.Services;
 using CatNip.Infrastructure.Data.Configurations;
+using CatNip.Infrastructure.Data.Entities;
+using CatNip.Infrastructure.Data.Entities.Interfaces;
 using CatNip.Infrastructure.Repositories;
 using CatNip.Presentation.Controllers;
 using Microsoft.EntityFrameworkCore;
@@ -38,6 +40,16 @@ public abstract class NetArchTestBase : AbstractArchitectureTest
         .Or().Inherit(typeof(TraceableEntityConfiguration<,,>))
         .Or().Inherit(typeof(EntityConfiguration<>))
         .Or().Inherit(typeof(EntityConfiguration<,>));
+
+    protected static readonly PredicateList infrastructureDataEntities = infrastructureTypes
+        .That().ImplementInterface(typeof(IEntity))
+        .Or().ImplementInterface(typeof(IEntity<>))
+        .Or().ImplementInterface(typeof(ITraceableEntity<>))
+        .Or().ImplementInterface(typeof(ITraceableEntity<,>))
+        .Or().Inherit(typeof(Entity))
+        .Or().Inherit(typeof(Entity<>))
+        .Or().Inherit(typeof(TraceableEntity<>))
+        .Or().Inherit(typeof(TraceableEntity<,>));
 
     protected static readonly PredicateList infrastructureRepositories = infrastructureTypes
         .That().ImplementInterface(typeof(ICrudRepository<>))

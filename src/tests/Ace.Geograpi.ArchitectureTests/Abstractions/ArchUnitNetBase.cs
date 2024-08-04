@@ -6,6 +6,7 @@ using ArchUnitNET.Loader;
 using CatNip.Domain.Models.Interfaces;
 using CatNip.Domain.Repositories;
 using CatNip.Domain.Services;
+using CatNip.Infrastructure.Data.Entities.Interfaces;
 using CatNip.Presentation.Controllers;
 using Microsoft.EntityFrameworkCore;
 
@@ -73,6 +74,20 @@ public abstract class ArchUnitNetBase : AbstractArchitectureTest
             ////.Or().AreAssignableTo(typeof(EntityConfiguration<>))
             ////.Or().AreAssignableTo(typeof(EntityConfiguration<,>))
             .As("Infrastructure data configurations");
+
+    protected static readonly GivenClassesConjunctionWithDescription infrastructureDataEntities =
+        ArchRuleDefinition
+            .Classes()
+            .That().ResideInAssembly(infrastructureAssembly)
+            .And().ImplementInterface(typeof(IEntity))
+            ////.Or().ImplementInterface(typeof(IEntity<>))
+            ////.Or().ImplementInterface(typeof(ITraceableEntity<>))
+            ////.Or().ImplementInterface(typeof(ITraceableEntity<,>))
+            ////.Or().AreAssignableTo(typeof(Entity))
+            ////.Or().AreAssignableTo(typeof(Entity<>))
+            ////.Or().AreAssignableTo(typeof(TraceableEntity<>))
+            ////.Or().AreAssignableTo(typeof(TraceableEntity<,>))
+            .As("Infrastructure data entities");
 
     protected static readonly GivenClassesConjunctionWithDescription infrastructureRepositories =
         ArchRuleDefinition
