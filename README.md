@@ -42,6 +42,9 @@ docker compose up
     * [xunit](https://github.com/xunit/xunit)
     * [xunit.runner.visualstudio](https://github.com/xunit/visualstudio.xunit)
     * [Microsoft.NET.Test.Sdk](https://github.com/microsoft/vstest)
+  * Architecture
+    * [ArchUnitNET](https://github.com/TNG/ArchUnitNET)
+    * [NetArchTest](https://github.com/BenMorris/NetArchTest)
   * Reports
     * [coverlet.collector](https://github.com/coverlet-coverage/coverlet)
     * [ReportGenerator](https://github.com/danielpalme/ReportGenerator)
