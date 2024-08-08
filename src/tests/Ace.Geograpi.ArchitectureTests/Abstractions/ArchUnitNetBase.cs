@@ -120,6 +120,8 @@ public abstract class ArchUnitNetBase : AbstractArchitectureTest
             .That().ResideInAssembly(webAssembly)
             ////.And().AreAssignableTo(typeof(CrudController<,>))
             ////.And().AreAssignableTo(typeof(CrudController<,,>))
-            .And().AreAssignableTo(typeof(AceController<,,,>))
+            ////.And().AreAssignableTo(typeof(CrudController<,,,>))
+            ////.And().AreAssignableTo(typeof(AceController<,,,>))
+            .And().AreAssignableTo(typeof(AceController<,,,,>))
             .As("Web controllers");
 }

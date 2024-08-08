@@ -71,5 +71,7 @@ public abstract class NetArchTestBase : AbstractArchitectureTest
     protected static readonly PredicateList webControllers = webTypes
         .That().Inherit(typeof(CrudController<,>))
         .Or().Inherit(typeof(CrudController<,,>))
-        .Or().Inherit(typeof(AceController<,,,>));
+        .Or().Inherit(typeof(CrudController<,,,>))
+        .Or().Inherit(typeof(AceController<,,,>))
+        .Or().Inherit(typeof(AceController<,,,,>));
 }
