@@ -3,6 +3,7 @@ using Ace.Geograpi.Infrastructure.Data;
 using Ace.Geograpi.Infrastructure.Data.Migrations;
 using Ace.Geograpi.Infrastructure.Data.Migrations.Interfaces;
 using Ace.Geograpi.Infrastructure.Mappers;
+using Ace.Geograpi.Infrastructure.Mappers.Root;
 using Ace.Geograpi.Infrastructure.Mappers.Traceable;
 using Ace.Geograpi.Infrastructure.Repositories;
 
@@ -44,10 +45,14 @@ public static class DependencyInjection
     {
         services.AddAutoMapper(config =>
         {
+            config.AddProfile<ModelIntMappingProfile>();
             config.AddProfile<TraceableIntMappingProfile>();
 
             config.AddProfile<ContinentMappingProfile>();
             config.AddProfile<CountryMappingProfile>();
+
+            config.AddProfile<ContinentRootMappingProfile>();
+            config.AddProfile<CountryRootMappingProfile>();
         });
     }
 
