@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="AceCSharp.Extensions" Version="1.1.2" />
-    <PackageReference Include="CatNip.Domain" Version="1.0.0" />
+    <PackageReference Include="CatNip.Domain" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(Configuration)' == 'Debug'">
