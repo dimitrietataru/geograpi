@@ -1,4 +1,5 @@
 using Ace.Geograpi.Domain.Models;
+using Ace.Geograpi.Domain.Models.Root;
 using Ace.Geograpi.Domain.QueryFilters;
 using Ace.Geograpi.Domain.Services;
 using CatNip.Domain.Query;
@@ -12,7 +13,7 @@ namespace Ace.Geograpi.Web.Controllers;
 [ApiVersion("1.0")]
 [Route("api/v{version:apiVersion}/continents")]
 [Produces("application/json")]
-public sealed class ContinentController : AceController<IContinentService, ContinentModel, int, ContinentQueryFilter>
+public sealed class ContinentController : AceController<IContinentService, ContinentModel, ContinentRootModel, int, ContinentQueryFilter>
 {
     public ContinentController(IContinentService service)
         : base(service)
@@ -20,7 +21,7 @@ public sealed class ContinentController : AceController<IContinentService, Conti
     }
 
     [HttpGet]
-    [ProducesResponseType<QueryResponse<ContinentModel>>((int)HttpStatusCode.OK)]
+    [ProducesResponseType<QueryResponse<ContinentRootModel>>((int)HttpStatusCode.OK)]
     public sealed override async Task<IActionResult> GetAll(
         [FromQuery] int? page,
         [FromQuery] int? size,

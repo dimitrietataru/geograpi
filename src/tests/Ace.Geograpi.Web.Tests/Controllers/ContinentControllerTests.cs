@@ -1,4 +1,5 @@
 using Ace.Geograpi.Domain.Models;
+using Ace.Geograpi.Domain.Models.Root;
 using Ace.Geograpi.Domain.QueryFilters;
 using Ace.Geograpi.Domain.Services;
 using Ace.Geograpi.Web.Controllers;
@@ -7,7 +8,7 @@ using Ace.Geograpi.Web.Tests.Controllers.Abstractions;
 namespace Ace.Geograpi.Web.Tests.Controllers;
 
 public sealed class ContinentControllerTests
-    : XUnitAceControllerTests<ContinentController, IContinentService, ContinentModel, int, ContinentQueryFilter>
+    : XUnitAceControllerTests<ContinentController, IContinentService, ContinentModel, ContinentRootModel, int, ContinentQueryFilter>
 {
     private readonly ContinentController continentController;
     private readonly Mock<IContinentService> continentServiceMock;
