@@ -21,7 +21,7 @@ public sealed class CountryRootMappingProfileTests
             model.Name.Should().Be(entity.Name);
         };
 
-    protected sealed override IEnumerable<Type> RelatedtMappingProfiles =>
+    protected sealed override IEnumerable<Type> RelatedMappingProfiles =>
         [typeof(ModelIntMappingProfile)];
 
     [Fact]

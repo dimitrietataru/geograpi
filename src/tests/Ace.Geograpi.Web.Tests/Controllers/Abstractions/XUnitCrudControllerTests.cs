@@ -6,7 +6,7 @@ using CatNip.Presentation.Test.Controllers;
 namespace Ace.Geograpi.Web.Tests.Controllers.Abstractions;
 
 public abstract class XUnitCrudControllerTests<TController, TService, TModel, TModelRoot, TId>
-    : BaseCrudControllerTests<TController, TService, TModelRoot, TModel, TId>
+    : BaseCrudControllerTests<TController, TService, TModel, TModelRoot, TId>
     where TController : CrudController<TService, TModel, TModelRoot, TId>
     where TService : class, ICrudService<TModel, TId>
     where TModel : IModel<TId>
