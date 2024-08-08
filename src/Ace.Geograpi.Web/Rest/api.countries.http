@@ -1,9 +1,7 @@
 @uri={{scheme}}://{{hostname}}:{{port}}
 
 @id=144
-@tempId=??
-
-###
+@tempId=999
 
 GET {{uri}}/api/v1/countries
 ###
