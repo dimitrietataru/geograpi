@@ -10,9 +10,6 @@ public sealed class CountryMappingProfile : TwoWayProfile<CountryEntity, Country
         CreateMap<CountryEntity, CountryModel>()
             .IgnoreAllPropertiesWithAnInaccessibleSetter()
             .ForMember(
-                model => model.Id,
-                options => options.MapFrom(entity => entity.Id))
-            .ForMember(
                 model => model.ContinentId,
                 options => options.MapFrom(entity => entity.ContinentId))
             .ForMember(
@@ -24,9 +21,6 @@ public sealed class CountryMappingProfile : TwoWayProfile<CountryEntity, Country
     {
         CreateMap<CountryModel, CountryEntity>()
             .IgnoreAllPropertiesWithAnInaccessibleSetter()
-            .ForMember(
-                entity => entity.Id,
-                options => options.Ignore())
             .ForMember(
                 entity => entity.ContinentId,
                 options => options.MapFrom(model => model.ContinentId))
