@@ -1,8 +1,8 @@
-using Ace.CSharp.StructuredAutoMapper.Abstractions;
-using AutoMapper;
 using CatNip.Application.Services;
 using CatNip.Domain.Models;
 using CatNip.Domain.Models.Interfaces;
+using CatNip.Domain.Query;
+using CatNip.Domain.Query.Filtering;
 using CatNip.Domain.Repositories;
 using CatNip.Domain.Services;
 using CatNip.Infrastructure.Data.Configurations;
@@ -10,7 +10,6 @@ using CatNip.Infrastructure.Data.Entities;
 using CatNip.Infrastructure.Data.Entities.Interfaces;
 using CatNip.Infrastructure.Repositories;
 using CatNip.Presentation.Controllers;
-using Microsoft.EntityFrameworkCore;
 using NetArchTest.Rules;
 
 namespace Ace.Geograpi.ArchitectureTests.Abstractions;
@@ -27,6 +26,21 @@ public abstract class NetArchTestBase : AbstractArchitectureTest
         .Or().ImplementInterface(typeof(IModel<>))
         .Or().Inherit(typeof(TraceableModel<>))
         .Or().Inherit(typeof(TraceableModel<,>));
+
+    protected static readonly PredicateList domainQueryFilters = domainTypes
+        .That().ImplementInterface(typeof(IFilteringRequest))
+        .Or().Inherit(typeof(QueryFilter<>))
+        .Or().Inherit(typeof(QueryFilter<,>));
+
+    protected static readonly PredicateList domainRepositories = domainTypes
+        .That().ImplementInterface(typeof(ICrudRepository<>))
+        .Or().ImplementInterface(typeof(ICrudRepository<,>))
+        .Or().ImplementInterface(typeof(IAceRepository<,,>));
+
+    protected static readonly PredicateList domainServices = domainTypes
+        .That().ImplementInterface(typeof(ICrudService<>))
+        .Or().ImplementInterface(typeof(ICrudService<,>))
+        .Or().ImplementInterface(typeof(IAceService<,,>));
 
     protected static readonly PredicateList applicationServices = applicationTypes
         .That().ImplementInterface(typeof(ICrudService<>))

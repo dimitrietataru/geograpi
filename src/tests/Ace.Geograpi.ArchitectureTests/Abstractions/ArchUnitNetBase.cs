@@ -1,16 +1,15 @@
-using Ace.CSharp.StructuredAutoMapper.Abstractions;
 using ArchUnitNET.Domain;
 using ArchUnitNET.Fluent;
 using ArchUnitNET.Fluent.Syntax.Elements.Types;
 using ArchUnitNET.Fluent.Syntax.Elements.Types.Classes;
+using ArchUnitNET.Fluent.Syntax.Elements.Types.Interfaces;
 using ArchUnitNET.Loader;
-using AutoMapper;
 using CatNip.Domain.Models.Interfaces;
+using CatNip.Domain.Query.Filtering;
 using CatNip.Domain.Repositories;
 using CatNip.Domain.Services;
 using CatNip.Infrastructure.Data.Entities.Interfaces;
 using CatNip.Presentation.Controllers;
-using Microsoft.EntityFrameworkCore;
 
 namespace Ace.Geograpi.ArchitectureTests.Abstractions;
 
@@ -53,6 +52,33 @@ public abstract class ArchUnitNetBase : AbstractArchitectureTest
             ////.Or().AreAssignableTo(typeof(TraceableModel<>))
             ////.Or().AreAssignableTo(typeof(TraceableModel<,>))
             .As("Domain models");
+
+    protected static readonly GivenClassesConjunctionWithDescription domainQueryFilters =
+        ArchRuleDefinition
+            .Classes()
+            .That().ResideInAssembly(domainAssembly)
+            .And().ImplementInterface(typeof(IFilteringRequest))
+            ////.Or().AreAssignableTo(typeof(QueryFilter<>))
+            ////.Or().AreAssignableTo(typeof(QueryFilter<,>))
+            .As("Domain query filters");
+
+    protected static readonly GivenInterfacesConjunction domainRepositories =
+        ArchRuleDefinition
+            .Interfaces()
+            .That().ResideInAssembly(domainAssembly)
+            ////.And().ImplementInterface(typeof(ICrudRepository<>))
+            .And().ImplementInterface(typeof(ICrudRepository<,>))
+            ////.And().ImplementInterface(typeof(IAceRepository<,,>))
+            .As("Domain repositories");
+
+    protected static readonly GivenInterfacesConjunction domainServices =
+        ArchRuleDefinition
+            .Interfaces()
+            .That().ResideInAssembly(domainAssembly)
+            ////.And().ImplementInterface(typeof(ICrudService<>))
+            .And().ImplementInterface(typeof(ICrudService<,>))
+            ////.And().ImplementInterface(typeof(IAceService<,,>))
+            .As("Domain services");
 
     protected static readonly GivenClassesConjunctionWithDescription applicationServices =
         ArchRuleDefinition

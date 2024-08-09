@@ -1,0 +1,37 @@
+using Ace.Geograpi.ArchitectureTests.Abstractions;
+using ArchUnitNET.xUnit;
+
+namespace Ace.Geograpi.ArchitectureTests.Layers.Domain.Services;
+
+public sealed class DomainServiceArchUnitNetTests : ArchUnitNetBase
+{
+    [Fact]
+    internal static void DomainServicesShouldHaveISuffix()
+    {
+        // Arrange
+        var rule = domainServices.Should().HaveNameStartingWith("I");
+
+        // Act / Assert
+        rule.Check(architecture);
+    }
+
+    [Fact]
+    internal static void DomainServicesShouldHaveServicePostfix()
+    {
+        // Arrange
+        var rule = domainServices.Should().HaveNameEndingWith("Service");
+
+        // Act / Assert
+        rule.Check(architecture);
+    }
+
+    [Fact]
+    internal static void DomainServicesShouldBePublic()
+    {
+        // Arrange
+        var rule = domainServices.Should().BePublic();
+
+        // Act / Assert
+        rule.Check(architecture);
+    }
+}
