@@ -7,8 +7,8 @@
           <Format>json,cobertura</Format>
           <UseSourceLink>true</UseSourceLink>
           <IncludeTestAssembly>false</IncludeTestAssembly>
-          <Include>[Ace.Geograpi.Application]*</Include>
-          <ExcludeByFile>**/*.g.cs,**/GlobalUsings.cs,**/DependencyInjection.cs</ExcludeByFile>
+          <Include>[Ace.Geograpi.Web]*</Include>
+          <ExcludeByFile>**/*.g.cs,**/GlobalUsings.cs,**/AppConfiguration*.cs,**/Program.cs</ExcludeByFile>
         </Configuration>
       </DataCollector>
     </DataCollectors>
