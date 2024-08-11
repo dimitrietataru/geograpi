@@ -7,7 +7,7 @@
           <Format>json,cobertura</Format>
           <UseSourceLink>true</UseSourceLink>
           <IncludeTestAssembly>false</IncludeTestAssembly>
-          <Exclude>[Ace.Geograpi.Domain]*</Exclude>
+          <Include>[Ace.Geograpi.Application]*</Include>
           <ExcludeByFile>**/DependencyInjection.cs,**/GlobalUsings.cs,**/IApplicationMarker.cs</ExcludeByFile>
         </Configuration>
       </DataCollector>
