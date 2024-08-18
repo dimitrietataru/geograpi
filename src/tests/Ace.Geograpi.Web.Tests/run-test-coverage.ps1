@@ -6,4 +6,5 @@ dotnet test --collect:"XPlat Code Coverage" --settings .\runsettings --results-d
 dotnet "$env:USERPROFILE\$ReportGeneratorPath" "-reports:$Root\raw\$Project\*\coverage.cobertura.xml" "-targetdir:$Root\reports\$Project" "-historydir:$Root\reports\.history\$Project" -reporttypes:Html;
 dotnet "$env:USERPROFILE\$ReportGeneratorPath" "-reports:$Root\raw\$Project\*\coverage.cobertura.xml" "-targetdir:$Root\reports\$Project" "-historydir:$Root\reports\.history\$Project" -reporttypes:Badges;
 
-Read-Host -Prompt "Press any key to continue.."
+Write-Host "`n" "Test coverage for $Project completed." "`n";
+Start-Sleep -Seconds 2;
