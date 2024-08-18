@@ -37,6 +37,9 @@ docker compose up
     * [Npgsql.EntityFrameworkCore.PostgreSQL](https://github.com/npgsql/efcore.pg)
   * [AutoMapper](https://github.com/AutoMapper/AutoMapper)
   * [Bogus](https://github.com/bchavez/Bogus)
+* Validation
+  * [FluentValidation](https://github.com/FluentValidation/FluentValidation)
+  * [FluentValidation.AspNetCore](https://github.com/FluentValidation/FluentValidation.AspNetCore)
 * Testing
   * Framework
     * [xunit](https://github.com/xunit/xunit)
