@@ -10,7 +10,7 @@ builder.AddApplication();
 builder.AddInfrastructure();
 
 builder.Services.AddGeograpiCors();
-builder.Services.AddControllers();
+builder.Services.AddGeograpiControllers();
 builder.Services.AddGeograpiApiVersioning();
 builder.Services.AddGeograpiSwagger();
 builder.Services.AddGeograpiExceptionHandlers();

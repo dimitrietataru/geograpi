@@ -31,8 +31,8 @@ POST {{uri}}/api/v1/countries
 Content-Type: application/json
 
 {
-    "continentId": 1
-    "name": "Foo",
+    "continentId": 1,
+    "name": "Foo"
 }
 
 ###
