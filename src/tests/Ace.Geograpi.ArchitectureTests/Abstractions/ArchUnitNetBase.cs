@@ -92,6 +92,14 @@ public abstract class ArchUnitNetBase : AbstractArchitectureTest
             ////.Or().AreAssignableTo(typeof(AceService<,,,>))
             .As("Application services");
 
+    protected static readonly GivenClassesConjunctionWithDescription applicationValidators =
+        ArchRuleDefinition
+            .Classes()
+            .That().ResideInAssembly(applicationAssembly)
+            .And().ImplementInterface(typeof(IValidator<>))
+            ////.Or().AreAssignableTo(typeof(AbstractValidator<>))
+            .As("Application validators");
+
     protected static readonly GivenClassesConjunctionWithDescription infrastructureDataConfigurations =
         ArchRuleDefinition
             .Classes()

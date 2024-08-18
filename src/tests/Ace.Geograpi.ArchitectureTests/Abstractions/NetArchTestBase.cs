@@ -50,6 +50,10 @@ public abstract class NetArchTestBase : AbstractArchitectureTest
         .Or().Inherit(typeof(CrudService<,,>))
         .Or().Inherit(typeof(AceService<,,,>));
 
+    protected static readonly PredicateList applicationValidators = applicationTypes
+        .That().ImplementInterface(typeof(IValidator<>))
+        .Or().Inherit(typeof(AbstractValidator<>));
+
     protected static readonly PredicateList infrastructureDataConfigurations = infrastructureTypes
         .That().ImplementInterface(typeof(IEntityTypeConfiguration<>))
         .Or().Inherit(typeof(TraceableEntityConfiguration<,>))
