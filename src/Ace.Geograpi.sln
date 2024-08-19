@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ace.Geograpi.Application.Te
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ace.Geograpi.Infrastructure.IntegrationTests", "tests\Ace.Geograpi.Infrastructure.IntegrationTests\Ace.Geograpi.Infrastructure.IntegrationTests.csproj", "{238E27FD-B23C-4D1C-A9FD-9381F4F88F96}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ace.Geograpi.Web.IntegrationTests", "tests\Ace.Geograpi.Web.IntegrationTests\Ace.Geograpi.Web.IntegrationTests.csproj", "{2304C134-3E6B-4020-99DA-731C5171005A}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ace.Geograpi.Web.Tests", "tests\Ace.Geograpi.Web.Tests\Ace.Geograpi.Web.Tests.csproj", "{2EC9AAE1-8E19-4A00-98DA-1D8308165AE8}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{AD796009-D3D0-4262-B369-7154857BC136}"
@@ -59,6 +61,10 @@ Global
 		{238E27FD-B23C-4D1C-A9FD-9381F4F88F96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{238E27FD-B23C-4D1C-A9FD-9381F4F88F96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{238E27FD-B23C-4D1C-A9FD-9381F4F88F96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2304C134-3E6B-4020-99DA-731C5171005A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2304C134-3E6B-4020-99DA-731C5171005A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2304C134-3E6B-4020-99DA-731C5171005A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2304C134-3E6B-4020-99DA-731C5171005A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2EC9AAE1-8E19-4A00-98DA-1D8308165AE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2EC9AAE1-8E19-4A00-98DA-1D8308165AE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2EC9AAE1-8E19-4A00-98DA-1D8308165AE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -79,6 +85,7 @@ Global
 		{B257C929-BACD-4750-A7F3-F05299E2A742} = {1D5D6737-0EC8-4131-80F7-5FBB4094DCA8}
 		{FF1EA0BE-982C-405C-86E2-6B97DD7D896A} = {1D5D6737-0EC8-4131-80F7-5FBB4094DCA8}
 		{238E27FD-B23C-4D1C-A9FD-9381F4F88F96} = {1D5D6737-0EC8-4131-80F7-5FBB4094DCA8}
+        {2304C134-3E6B-4020-99DA-731C5171005A} = {1D5D6737-0EC8-4131-80F7-5FBB4094DCA8}
 		{2EC9AAE1-8E19-4A00-98DA-1D8308165AE8} = {1D5D6737-0EC8-4131-80F7-5FBB4094DCA8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
