@@ -21,6 +21,7 @@ jobs:
       TEST_PROJECT_ARCHITECTURE: 'src\tests\Ace.Geograpi.ArchitectureTests/Ace.Geograpi.ArchitectureTests.csproj'
       TEST_PROJECT_APPLICATION: 'src\tests\Ace.Geograpi.Application.Tests/Ace.Geograpi.Application.Tests.csproj'
       TEST_PROJECT_INFRASTRUCTURE: 'src\tests\Ace.Geograpi.Infrastructure.IntegrationTests/Ace.Geograpi.Infrastructure.IntegrationTests.csproj'
+      TEST_PROJECT_WEB_INTEGRATION: 'src\tests\Ace.Geograpi.Web.IntegrationTests/Ace.Geograpi.Web.IntegrationTests.csproj'
       TEST_PROJECT_WEB: 'src\tests\Ace.Geograpi.Web.Tests/Ace.Geograpi.Web.Tests.csproj'
 
     runs-on: ubuntu-latest
@@ -48,6 +49,9 @@ jobs:
 
     - name: dotnet test > infrastructure integration tests
       run: dotnet test $TEST_PROJECT_INFRASTRUCTURE --configuration $CONFIG --no-restore --no-build --verbosity normal
+
+    - name: dotnet test > web integration tests
+      run: dotnet test $TEST_PROJECT_WEB_INTEGRATION --configuration $CONFIG --no-restore --no-build --verbosity normal
 
     - name: dotnet test > web unit tests
       run: dotnet test $TEST_PROJECT_WEB --configuration $CONFIG --no-restore --no-build --verbosity normal
