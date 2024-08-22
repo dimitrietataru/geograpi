@@ -1,15 +1,13 @@
 using Ace.Geograpi.Domain.Models.Root;
-using Ace.Geograpi.Web.IntegrationTests.Abstractions;
 using CatNip.Domain.Query;
 
 namespace Ace.Geograpi.Web.IntegrationTests.Controllers;
 
-public sealed class ContinentControllerTests : AbstractWebTest
+public sealed class ContinentControllerTests : IClassFixture<TestWebApplicationFactory>
 {
     private readonly HttpClient geograpiClient;
 
     public ContinentControllerTests(TestWebApplicationFactory webAppFactory)
-        : base(webAppFactory)
     {
         geograpiClient = webAppFactory.CreateClient();
     }
