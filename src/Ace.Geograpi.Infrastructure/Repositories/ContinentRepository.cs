@@ -26,6 +26,14 @@ internal sealed class ContinentRepository
         return continents;
     }
 
+    public sealed override async Task<IEnumerable<TModelRoot>> GetAllAsync<TModelRoot>(
+        CancellationToken cancellation = default)
+    {
+        var continents = await base.GetAllAsync<TModelRoot>(cancellation);
+
+        return continents;
+    }
+
     public sealed override async Task<int> CountAsync(
         CancellationToken cancellation = default)
     {
@@ -38,6 +46,14 @@ internal sealed class ContinentRepository
         QueryRequest<ContinentQueryFilter> request, CancellationToken cancellation = default)
     {
         var result = await base.GetAsync(request, cancellation);
+
+        return result;
+    }
+
+    public sealed override async Task<QueryResponse<TModelRoot>> GetAsync<TModelRoot>(
+        QueryRequest<ContinentQueryFilter> request, CancellationToken cancellation = default)
+    {
+        var result = await base.GetAsync<TModelRoot>(request, cancellation);
 
         return result;
     }
