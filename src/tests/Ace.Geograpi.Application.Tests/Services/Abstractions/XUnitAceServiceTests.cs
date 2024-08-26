@@ -6,6 +6,28 @@ using CatNip.Domain.Repositories;
 
 namespace Ace.Geograpi.Application.Tests.Services.Abstractions;
 
+public abstract class XUnitAceServiceTests<TService, TRepository, TModel, TModelRoot, TId, TFiltering>
+    : XUnitAceServiceTests<TService, TRepository, TModel, TId, TFiltering>
+    where TService : AceService<TRepository, TModel, TId, TFiltering>
+    where TRepository : class, IAceRepository<TModel, TId, TFiltering>
+    where TModel : IModel<TId>
+    where TModelRoot : IModel<TId>
+    where TId : IEquatable<TId>
+    where TFiltering : IFilteringRequest
+{
+    [Fact]
+    public virtual async Task GivenGetFilteredTModelRootWhenDataExistsThenReturnsData()
+    {
+        await base.GivenGetFilteredTWhenDataExistsThenReturnsData<TModelRoot>();
+    }
+
+    [Fact]
+    public virtual async Task GivenGetAllTModelRootWhenDataExistsThenReturnsData()
+    {
+        await base.GivenGetAllTWhenDataExistsThenReturnsData<TModelRoot>();
+    }
+}
+
 public abstract class XUnitAceServiceTests<TService, TRepository, TModel, TId, TFiltering>
     : BaseAceServiceTests<TService, TRepository, TModel, TId, TFiltering>
     where TService : AceService<TRepository, TModel, TId, TFiltering>

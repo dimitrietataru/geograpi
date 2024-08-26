@@ -1,13 +1,20 @@
 using Ace.Geograpi.Application.Services;
 using Ace.Geograpi.Application.Tests.Services.Abstractions;
 using Ace.Geograpi.Domain.Models;
+using Ace.Geograpi.Domain.Models.Root;
 using Ace.Geograpi.Domain.QueryFilters;
 using Ace.Geograpi.Domain.Repositories;
 
 namespace Ace.Geograpi.Application.Tests.Services;
 
 public sealed class CountryServiceTests
-    : XUnitAceServiceTests<CountryService, ICountryRepository, CountryModel, int, CountryQueryFilter>
+    : XUnitAceServiceTests<
+        CountryService,
+        ICountryRepository,
+        CountryModel,
+        CountryRootModel,
+        int,
+        CountryQueryFilter>
 {
     private readonly CountryService countryService;
     private readonly Mock<ICountryRepository> countryRepositoryMock;

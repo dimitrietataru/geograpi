@@ -5,6 +5,21 @@ using CatNip.Domain.Repositories;
 
 namespace Ace.Geograpi.Application.Tests.Services.Abstractions;
 
+public abstract class XUnitCrudServiceTests<TService, TRepository, TModel, TModelRoot, TId>
+    : XUnitCrudServiceTests<TService, TRepository, TModel, TId>
+    where TService : CrudService<TRepository, TModel, TId>
+    where TRepository : class, ICrudRepository<TModel, TId>
+    where TModel : IModel<TId>
+    where TModelRoot : IModel
+    where TId : IEquatable<TId>
+{
+    [Fact]
+    public virtual async Task GivenGetAllTModelRootWhenDataExistsThenReturnsData()
+    {
+        await base.GivenGetAllTWhenDataExistsThenReturnsData<TModelRoot>();
+    }
+}
+
 public abstract class XUnitCrudServiceTests<TService, TRepository, TModel, TId>
     : BaseCrudServiceTests<TService, TRepository, TModel, TId>
     where TService : CrudService<TRepository, TModel, TId>

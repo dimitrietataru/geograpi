@@ -1,13 +1,20 @@
 using Ace.Geograpi.Application.Services;
 using Ace.Geograpi.Application.Tests.Services.Abstractions;
 using Ace.Geograpi.Domain.Models;
+using Ace.Geograpi.Domain.Models.Root;
 using Ace.Geograpi.Domain.QueryFilters;
 using Ace.Geograpi.Domain.Repositories;
 
 namespace Ace.Geograpi.Application.Tests.Services;
 
 public sealed class ContinentServiceTests
-    : XUnitAceServiceTests<ContinentService, IContinentRepository, ContinentModel, int, ContinentQueryFilter>
+    : XUnitAceServiceTests<
+        ContinentService,
+        IContinentRepository,
+        ContinentModel,
+        ContinentRootModel,
+        int,
+        ContinentQueryFilter>
 {
     private readonly ContinentService continentService;
     private readonly Mock<IContinentRepository> continentRepositoryMock;
