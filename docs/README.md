@@ -21,5 +21,15 @@
   * [ArchUnitNET](https://github.com/TNG/ArchUnitNET)
   * [NetArchTest](https://github.com/BenMorris/NetArchTest)
   * [Bulletproof your Software Architecture with ArchUnitNET - Milan Jovanović](https://www.youtube.com/watch?v=R_srbvA6IQM)
-  * [How to Create Better .NET Applications with Architecture Tests - Milan Jovanović](https://www.youtube.com/watch?v=eWjNLYNS-og)
-  * [How to Write Architecture Tests for the Clean Architecture - Milan Jovanović](https://www.youtube.com/watch?v=_D6Kai4RdGY)
+  * [.NET Applications with Architecture Tests - Milan Jovanović](https://www.youtube.com/watch?v=eWjNLYNS-og)
+  * [Write Architecture Tests for the Clean Architecture - Milan Jovanović](https://www.youtube.com/watch?v=_D6Kai4RdGY)
+
+## Integration tests
+  * [Testcontainers](https://github.com/testcontainers/testcontainers-dotnet)
+  * [Testcontainers.PostgreSql](https://github.com/testcontainers/testcontainers-dotnet/tree/develop/src/Testcontainers.PostgreSql)
+  * [Use Docker for Integration Testing in .NET - Milan Jovanović](https://www.youtube.com/watch?v=tj5ZCtvgXKY)
+  * [Functional Testing in ASP.NET Core - Milan Jovanović](https://www.youtube.com/watch?v=ASa8wXMXwrQ)
+  * [Run Integration Tests in your CI/CD Pipeline - Milan Jovanović](https://www.youtube.com/watch?v=YtF0rzIYgEk)
+  * [Use Docker for Testing in .NET - Nick Chapsas](https://www.youtube.com/watch?v=8IRNC7qZBmk)
+  * [Testing Entity Framework Core in .NET - Nick Chapsas](https://www.youtube.com/watch?v=m7r2qyUabTs)
+  * [The Testing Technique Everyone Should Use in .NET - Nick Chapsas](https://www.youtube.com/watch?v=dasbRVz5MXo)

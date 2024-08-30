@@ -48,6 +48,9 @@ docker compose up
   * Architecture
     * [ArchUnitNET](https://github.com/TNG/ArchUnitNET)
     * [NetArchTest](https://github.com/BenMorris/NetArchTest)
+  * Integration
+    * [Testcontainers](https://github.com/testcontainers/testcontainers-dotnet)
+    * [Testcontainers.PostgreSql](https://github.com/testcontainers/testcontainers-dotnet/tree/develop/src/Testcontainers.PostgreSql)
   * Reports
     * [coverlet.collector](https://github.com/coverlet-coverage/coverlet)
     * [ReportGenerator](https://github.com/danielpalme/ReportGenerator)
