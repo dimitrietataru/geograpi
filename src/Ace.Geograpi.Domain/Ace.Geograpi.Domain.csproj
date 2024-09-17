@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AceCSharp.Extensions" Version="1.1.2" />
+    <PackageReference Include="AceCSharp.Extensions" Version="1.1.3" />
     <PackageReference Include="CatNip.Domain" Version="2.0.1" />
   </ItemGroup>
 
