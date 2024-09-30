@@ -1,9 +1,6 @@
 name: build-CI
 
 on:
-  create:
-    branches: 
-      - feature/**
   push:
     branches:
     - ace
@@ -11,6 +8,10 @@ on:
     - develop
     - feature/**
     - bugfix/**
+    tags-ignore:
+      - '**'
+    paths-ignore:
+      - 'README.md'
 
 jobs:
   build:
