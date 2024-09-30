@@ -3,12 +3,18 @@ using Ace.Geograpi.Domain.Models.Root;
 using Ace.Geograpi.Domain.QueryFilters;
 using Ace.Geograpi.Domain.Services;
 using Ace.Geograpi.Web.Controllers;
-using Ace.Geograpi.Web.Tests.Controllers.Abstractions;
+using CatNip.Presentation.Test.XUnit.Controllers;
 
 namespace Ace.Geograpi.Web.Tests.Controllers;
 
 public sealed class CountryControllerTests
-    : XUnitAceControllerTests<CountryController, ICountryService, CountryModel, CountryRootModel, int, CountryQueryFilter>
+    : AceControllerTests<
+        CountryController,
+        ICountryService,
+        CountryModel,
+        CountryRootModel,
+        int,
+        CountryQueryFilter>
 {
     private readonly CountryController countryController;
     private readonly Mock<ICountryService> countryServiceMock;
