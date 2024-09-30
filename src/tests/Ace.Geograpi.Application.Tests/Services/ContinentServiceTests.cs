@@ -1,14 +1,14 @@
 using Ace.Geograpi.Application.Services;
-using Ace.Geograpi.Application.Tests.Services.Abstractions;
 using Ace.Geograpi.Domain.Models;
 using Ace.Geograpi.Domain.Models.Root;
 using Ace.Geograpi.Domain.QueryFilters;
 using Ace.Geograpi.Domain.Repositories;
+using CatNip.Application.Test.XUnit.Services;
 
 namespace Ace.Geograpi.Application.Tests.Services;
 
 public sealed class ContinentServiceTests
-    : XUnitAceServiceTests<
+    : AceServiceTests<
         ContinentService,
         IContinentRepository,
         ContinentModel,
