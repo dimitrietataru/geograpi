@@ -2,7 +2,7 @@ using Ace.Geograpi.Infrastructure.Data;
 
 namespace Ace.Geograpi.Web.IntegrationTests;
 
-public sealed class TestWebApplicationFactory : WebApplicationFactory<Program>, IAsyncLifetime
+public sealed class WebIntegrationTestFactory : WebApplicationFactory<Program>, IAsyncLifetime
 {
     private readonly PostgreSqlContainer dbContainer = new PostgreSqlBuilder()
         .WithImage("postgres:latest")
