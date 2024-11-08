@@ -14,7 +14,8 @@ public static partial class AppConfiguration
         builder.Services.AddSerilog((services, config) => config
             .ReadFrom.Configuration(builder.Configuration)
             .ReadFrom.Services(services)
-            .Enrich.FromLogContext());
+            .Enrich.FromLogContext(),
+            preserveStaticLogger: true);
     }
 
     public static void UseGeograpiLogger(this IApplicationBuilder app)
