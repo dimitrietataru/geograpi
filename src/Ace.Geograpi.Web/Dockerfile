@@ -1,9 +1,9 @@
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
 WORKDIR /app
 EXPOSE 43000
 EXPOSE 42000
 
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG CONFIG=Release
 WORKDIR /src
 COPY ["Ace.Geograpi.Web/Ace.Geograpi.Web.csproj", "Ace.Geograpi.Web/"]
