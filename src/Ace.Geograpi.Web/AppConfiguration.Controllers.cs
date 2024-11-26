@@ -2,7 +2,7 @@ using FluentValidation.AspNetCore;
 
 namespace Ace.Geograpi.Web;
 
-public static partial class AppConfiguration
+internal static partial class AppConfiguration
 {
     public static void AddGeograpiControllers(this IServiceCollection services)
     {

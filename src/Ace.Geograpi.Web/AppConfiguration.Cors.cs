@@ -1,6 +1,6 @@
 namespace Ace.Geograpi.Web;
 
-public static partial class AppConfiguration
+internal static partial class AppConfiguration
 {
     internal const string CorsPolicyPermissive = "permissive";
     internal const string CorsPolicyRestrictive = "restrictive";

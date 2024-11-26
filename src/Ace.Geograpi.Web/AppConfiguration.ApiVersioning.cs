@@ -1,6 +1,6 @@
 namespace Ace.Geograpi.Web;
 
-public static partial class AppConfiguration
+internal static partial class AppConfiguration
 {
     public static void AddGeograpiApiVersioning(this IServiceCollection services)
     {

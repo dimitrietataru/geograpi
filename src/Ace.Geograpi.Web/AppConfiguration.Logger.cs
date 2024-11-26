@@ -2,7 +2,7 @@ using Serilog;
 
 namespace Ace.Geograpi.Web;
 
-public static partial class AppConfiguration
+internal static partial class AppConfiguration
 {
     public static void AddGeograpiLogger(this IHostApplicationBuilder builder)
     {

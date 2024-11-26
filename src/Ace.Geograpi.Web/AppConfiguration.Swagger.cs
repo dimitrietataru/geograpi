@@ -2,7 +2,7 @@ using Microsoft.OpenApi.Models;
 
 namespace Ace.Geograpi.Web;
 
-public static partial class AppConfiguration
+internal static partial class AppConfiguration
 {
     public static void AddGeograpiSwagger(this IServiceCollection services)
     {

@@ -2,7 +2,7 @@ using Ace.Geograpi.Web.ExceptionHandlers;
 
 namespace Ace.Geograpi.Web;
 
-public static partial class AppConfiguration
+internal static partial class AppConfiguration
 {
     public static void AddGeograpiExceptionHandlers(this IServiceCollection services)
     {
