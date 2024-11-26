@@ -26,6 +26,13 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup Condition="'$(Configuration)' == 'Debug'">
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="9.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\..\Ace.Geograpi.Application\Ace.Geograpi.Application.csproj" />
     <ProjectReference Include="..\..\Ace.Geograpi.Domain\Ace.Geograpi.Domain.csproj" />

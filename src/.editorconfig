@@ -125,6 +125,15 @@ csharp_style_prefer_readonly_struct_member = true:suggestion
 # Code Style | General | Parameter preferences
 dotnet_code_quality_unused_parameters = non_public:warning
 
+# Code Style | General | Style
+dotnet_diagnostic.IDE0301.severity = warning
+dotnet_diagnostic.IDE0302.severity = suggestion
+dotnet_diagnostic.IDE0303.severity = warning
+dotnet_diagnostic.IDE0304.severity = warning
+dotnet_diagnostic.IDE0305.severity = warning
+dotnet_diagnostic.IDE0320.severity = suggestion
+dotnet_diagnostic.IDE0330.severity = error
+
 # Code Style | General | New line preferences
 dotnet_style_allow_multiple_blank_lines_experimental = false:warning
 csharp_style_allow_embedded_statements_on_same_line_experimental = false:warning
@@ -570,6 +579,8 @@ dotnet_diagnostic.CA1510.severity = warning
 dotnet_diagnostic.CA1511.severity = warning
 dotnet_diagnostic.CA1512.severity = warning
 dotnet_diagnostic.CA1513.severity = warning
+dotnet_diagnostic.CA1514.severity = warning
+dotnet_diagnostic.CA1515.severity = warning
 
 # Microsoft.CodeAnalysis.NetAnalyzers | Naming
 dotnet_diagnostic.CA1700.severity = suggestion
@@ -650,6 +661,8 @@ dotnet_diagnostic.CA1867.severity = suggestion
 dotnet_diagnostic.CA1868.severity = warning
 dotnet_diagnostic.CA1869.severity = warning
 dotnet_diagnostic.CA1870.severity = warning
+dotnet_diagnostic.CA1871.severity = warning
+dotnet_diagnostic.CA1872.severity = warning
 
 # Microsoft.CodeAnalysis.NetAnalyzers | Reliability
 dotnet_diagnostic.CA2000.severity = suggestion
@@ -668,6 +681,7 @@ dotnet_diagnostic.CA2018.severity = warning
 dotnet_diagnostic.CA2019.severity = suggestion
 dotnet_diagnostic.CA2020.severity = suggestion
 dotnet_diagnostic.CA2021.severity = warning
+dotnet_diagnostic.CA2022.severity = warning
 
 # Microsoft.CodeAnalysis.NetAnalyzers | Security
 dotnet_diagnostic.CA2100.severity = warning
@@ -767,6 +781,7 @@ dotnet_diagnostic.CA5404.severity = warning
 dotnet_diagnostic.CA5405.severity = warning
 
 # Microsoft.CodeAnalysis.NetAnalyzers | Usage
+dotnet_diagnostic.CA1801.severity = warning
 dotnet_diagnostic.CA1816.severity = suggestion
 dotnet_diagnostic.CA2200.severity = warning
 dotnet_diagnostic.CA2201.severity = warning
@@ -810,6 +825,10 @@ dotnet_diagnostic.CA2258.severity = warning
 dotnet_diagnostic.CA2259.severity = warning
 dotnet_diagnostic.CA2260.severity = warning
 dotnet_diagnostic.CA2261.severity = warning
+dotnet_diagnostic.CA2262.severity = warning
+dotnet_diagnostic.CA2263.severity = warning
+dotnet_diagnostic.CA2264.severity = warning
+dotnet_diagnostic.CA2265.severity = warning
 
 # Microsoft.CodeAnalysis Exceptions
 ## CA1002: Do not expose generic lists
