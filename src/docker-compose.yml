@@ -10,6 +10,7 @@ services:
       dockerfile: Ace.Geograpi.Web/Dockerfile
     depends_on:
       - "ace.geograpi.db"
+      - "ace.geograpi.mq"
     ports:
       - 42000:443
       - 43000:80
@@ -28,6 +29,23 @@ services:
       - 5432:5432
     volumes:
       - ./.containers/ace-geograpi-db:/var/lib/postgresql/data
+
+  ace.geograpi.mq:
+    image: rabbitmq:4-management-alpine
+    container_name: ace.geograpi.mq
+    hostname: ace.geograpi.rabbitmq
+    depends_on:
+      - "ace.geograpi.db"
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+      - RABBITMQ_DEFAULT_VHOST=/
+    ports:
+        - 5672:5672
+        - 15672:15672
+    volumes:
+        - ./.containers/rabbitmq/data/:/var/lib/rabbitmq/
+        - ./.containers/rabbitmq/log/:/var/log/rabbitmq
 
   pgadmin:
     image: dpage/pgadmin4:latest
