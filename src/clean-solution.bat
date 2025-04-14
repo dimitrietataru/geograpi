@@ -16,11 +16,11 @@ rmdir /s /q .\tests\Ace.Geograpi.Application.Tests\obj
 rmdir /s /q .\tests\Ace.Geograpi.Infrastructure.IntegrationTests\bin
 rmdir /s /q .\tests\Ace.Geograpi.Infrastructure.IntegrationTests\obj
 
-rmdir /s /q .\tests\Ace.Geograpi.Infrastructure.IntegrationTests\bin
-rmdir /s /q .\tests\Ace.Geograpi.Infrastructure.IntegrationTests\obj
-
 rmdir /s /q .\tests\Ace.Geograpi.Web.Tests\bin
 rmdir /s /q .\tests\Ace.Geograpi.Web.Tests\obj
+
+rmdir /s /q .\tests\Ace.Geograpi.Web.IntegrationTests\bin
+rmdir /s /q .\tests\Ace.Geograpi.Web.IntegrationTests\obj
 
 rmdir /s /q .\tests\Ace.Geograpi.ArchitectureTests\bin
 rmdir /s /q .\tests\Ace.Geograpi.ArchitectureTests\obj
