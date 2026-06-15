@@ -4,7 +4,7 @@ namespace Ace.Geograpi.Web.IntegrationTests;
 
 public sealed class WebIntegrationTestFactory : WebApplicationFactory<Program>, IAsyncLifetime
 {
-    private readonly PostgreSqlContainer dbContainer = new PostgreSqlBuilder()
+    private readonly PostgreSqlContainer dbContainer = new PostgreSqlBuilder("postgres:latest")
         .WithImage("postgres:latest")
         .WithDatabase("geograpi")
         .WithUsername("postgres")
