@@ -1,6 +1,7 @@
 using Ace.Geograpi.Application;
 using Ace.Geograpi.Infrastructure;
 using Ace.Geograpi.Web;
+using Ace.Geograpi.Web.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +18,7 @@ builder.Services.AddGeograpiExceptionHandlers();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment() || app.Environment.IsEnvironment("Docker"))
+if (app.Environment.IsDevelopment() || app.Environment.IsDocker())
 {
     app.UseGeograpiCorsPermissive();
     app.UseGeograpiSwagger();
