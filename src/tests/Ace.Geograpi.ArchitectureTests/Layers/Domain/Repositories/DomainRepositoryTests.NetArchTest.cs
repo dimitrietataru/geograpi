@@ -1,9 +1,23 @@
 using Ace.Geograpi.ArchitectureTests.Abstractions;
+using Ace.Geograpi.ArchitectureTests.Symbols;
 
 namespace Ace.Geograpi.ArchitectureTests.Layers.Domain.Repositories;
 
 public sealed class DomainRepositoryNetArchTestTests : NetArchTestBase
 {
+    [Fact]
+    internal static void DomainRepositoriesShouldMatchNamespace()
+    {
+        // Arrange
+        var rule = domainRepositories.Should().ResideInNamespaceMatching(NamespacePatterns.DomainRepositories);
+
+        // Act
+        var result = rule.GetResult();
+
+        // Assert
+        result.IsSuccessful.Should().BeTrue();
+    }
+
     [Fact]
     internal static void DomainRepositoriesShouldHaveISuffix()
     {

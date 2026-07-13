@@ -4,6 +4,7 @@ using ArchUnitNET.Fluent.Syntax.Elements.Types;
 using ArchUnitNET.Fluent.Syntax.Elements.Types.Classes;
 using ArchUnitNET.Fluent.Syntax.Elements.Types.Interfaces;
 using ArchUnitNET.Loader;
+using CatNip.Domain.Events;
 using CatNip.Domain.Models.Interfaces;
 using CatNip.Domain.Query.Filtering;
 using CatNip.Domain.Repositories;
@@ -42,6 +43,13 @@ public abstract class ArchUnitNetBase : AbstractArchitectureTest
         ArchRuleDefinition.Types().That().ResideInAssembly(webAssembly).As("Web");
     protected static readonly GivenTypesConjunctionWithDescription webTypes =
         ArchRuleDefinition.Types().That().Are(webLayer).As("Web types");
+
+    protected static readonly GivenClassesConjunctionWithDescription domainEvents =
+        ArchRuleDefinition
+            .Classes()
+            .That().ResideInAssembly(domainAssembly)
+            .And().ImplementInterface(typeof(IEvent))
+            .As("Domain events");
 
     protected static readonly GivenClassesConjunctionWithDescription domainModels =
         ArchRuleDefinition

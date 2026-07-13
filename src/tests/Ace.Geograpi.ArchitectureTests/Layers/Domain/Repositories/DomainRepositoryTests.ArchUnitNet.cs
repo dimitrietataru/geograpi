@@ -1,10 +1,21 @@
 using Ace.Geograpi.ArchitectureTests.Abstractions;
+using Ace.Geograpi.ArchitectureTests.Symbols;
 using ArchUnitNET.xUnit;
 
 namespace Ace.Geograpi.ArchitectureTests.Layers.Domain.Repositories;
 
 public sealed class DomainRepositoryArchUnitNetTests : ArchUnitNetBase
 {
+    [Fact]
+    internal static void DomainRepositoriesShouldMatchNamespace()
+    {
+        // Arrange
+        var rule = domainRepositories.Should().ResideInNamespaceMatching(NamespacePatterns.DomainRepositories);
+
+        // Act / Assert
+        rule.Check(architecture);
+    }
+
     [Fact]
     internal static void DomainRepositoriesShouldHaveISuffix()
     {

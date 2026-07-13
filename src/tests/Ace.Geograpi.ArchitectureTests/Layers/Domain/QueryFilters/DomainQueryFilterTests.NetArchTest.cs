@@ -1,9 +1,23 @@
 using Ace.Geograpi.ArchitectureTests.Abstractions;
+using Ace.Geograpi.ArchitectureTests.Symbols;
 
 namespace Ace.Geograpi.ArchitectureTests.Layers.Domain.QueryFilters;
 
 public sealed class DomainQueryFilterNetArchTestTests : NetArchTestBase
 {
+    [Fact]
+    internal static void DomainQueryFiltersShouldMatchNamespace()
+    {
+        // Arrange
+        var rule = domainQueryFilters.Should().ResideInNamespaceMatching(NamespacePatterns.DomainQueryFilters);
+
+        // Act
+        var result = rule.GetResult();
+
+        // Assert
+        result.IsSuccessful.Should().BeTrue();
+    }
+
     [Fact]
     internal static void DomainQueryFiltersShouldHaveQueryFilterPostfix()
     {

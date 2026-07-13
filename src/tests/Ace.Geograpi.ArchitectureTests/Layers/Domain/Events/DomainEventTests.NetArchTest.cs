@@ -1,15 +1,15 @@
 using Ace.Geograpi.ArchitectureTests.Abstractions;
 using Ace.Geograpi.ArchitectureTests.Symbols;
 
-namespace Ace.Geograpi.ArchitectureTests.Layers.Domain.Models;
+namespace Ace.Geograpi.ArchitectureTests.Layers.Domain.Events;
 
-public sealed class DomainModelNetArchTestTests : NetArchTestBase
+public sealed class DomainEventNetArchTestTests : NetArchTestBase
 {
     [Fact]
-    internal static void DomainModelsShouldMatchNamespace()
+    internal static void DomainEventsShouldMatchNamespace()
     {
         // Arrange
-        var rule = domainModels.Should().ResideInNamespaceMatching(NamespacePatterns.DomainModels);
+        var rule = domainEvents.Should().ResideInNamespaceMatching(NamespacePatterns.DomainEvents);
 
         // Act
         var result = rule.GetResult();
@@ -19,10 +19,10 @@ public sealed class DomainModelNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void DomainModelsShouldHaveModelPostfix()
+    internal static void DomainEventsShouldHaveEventPostfix()
     {
         // Arrange
-        var rule = domainModels.Should().HaveNameEndingWith("Model", StringComparison.Ordinal);
+        var rule = domainEvents.Should().HaveNameEndingWith("Event", StringComparison.Ordinal);
 
         // Act
         var result = rule.GetResult();
@@ -32,10 +32,10 @@ public sealed class DomainModelNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void DomainModelsShouldBePublic()
+    internal static void DomainEventsShouldBePublic()
     {
         // Arrange
-        var rule = domainModels.Should().BePublic();
+        var rule = domainEvents.Should().BePublic();
 
         // Act
         var result = rule.GetResult();
@@ -45,10 +45,10 @@ public sealed class DomainModelNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void DomainModelsShouldBeSealed()
+    internal static void DomainEventsShouldBeSealed()
     {
         // Arrange
-        var rule = domainModels.Should().BeSealed();
+        var rule = domainEvents.Should().BeSealed();
 
         // Act
         var result = rule.GetResult();
