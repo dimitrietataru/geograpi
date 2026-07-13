@@ -886,6 +886,10 @@ dotnet_diagnostic.CA1724.severity = none
 ## CA1812: Avoid uninstantiated internal classes
 [*.{cs,vb}]
 dotnet_code_quality.CA1812.ignore_internalsvisibleto = true
+[**[Cc]onsumer{s,}**.cs]
+dotnet_diagnostic.CA1812.severity = none
+[**[Cc]onsumer[Dd]efinition{s,}**.cs]
+dotnet_diagnostic.CA1812.severity = none
 [**[Dd]b[Cc]ontext{s,}**.cs]
 dotnet_diagnostic.CA1812.severity = none
 [**[Ee]ntit{y,i}{e,}{s,}**.cs]
