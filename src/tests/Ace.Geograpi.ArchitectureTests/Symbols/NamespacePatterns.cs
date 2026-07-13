@@ -21,4 +21,6 @@ internal static class NamespacePatterns
     public const string InfrastructureDataEntities = @"^.*\.Infrastructure\.Data\.Entities(\..+)?$";
     public const string InfrastructureMappers = @"^.*\.Infrastructure\.Mappers(\..+)?$";
     public const string InfrastructureRepositories = @"^.*\.Infrastructure\.Repositories(\..+)?$";
+
+    public const string WebControllers = @"^.*\.Web\.Controllers(\..+)?$";
 }
