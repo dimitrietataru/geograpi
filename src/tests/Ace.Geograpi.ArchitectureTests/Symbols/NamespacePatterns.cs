@@ -16,4 +16,9 @@ internal static class NamespacePatterns
 
     public const string ApplicationServices = @"^.*\.Application\.Services(\..+)?$";
     public const string ApplicationValidators = @"^.*\.Application\.Validators(\..+)?$";
+
+    public const string InfrastructureDataConfigurations = @"^.*\.Infrastructure\.Data\.Configurations(\..+)?$";
+    public const string InfrastructureDataEntities = @"^.*\.Infrastructure\.Data\.Entities(\..+)?$";
+    public const string InfrastructureMappers = @"^.*\.Infrastructure\.Mappers(\..+)?$";
+    public const string InfrastructureRepositories = @"^.*\.Infrastructure\.Repositories(\..+)?$";
 }

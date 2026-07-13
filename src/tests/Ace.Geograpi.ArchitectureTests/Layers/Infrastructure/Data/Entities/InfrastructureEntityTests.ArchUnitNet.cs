@@ -1,10 +1,21 @@
 using Ace.Geograpi.ArchitectureTests.Abstractions;
+using Ace.Geograpi.ArchitectureTests.Symbols;
 using ArchUnitNET.xUnit;
 
 namespace Ace.Geograpi.ArchitectureTests.Layers.Infrastructure.Data.Entities;
 
 public sealed class InfrastructureEntityArchUnitNetTests : ArchUnitNetBase
 {
+    [Fact]
+    internal static void InfrastructureEntitiesShouldMatchNamespace()
+    {
+        // Arrange
+        var rule = infrastructureDataEntities.Should().ResideInNamespaceMatching(NamespacePatterns.InfrastructureDataEntities);
+
+        // Act / Assert
+        rule.Check(architecture);
+    }
+
     [Fact]
     internal static void InfrastructureEntitiesShouldHaveEntityPostfix()
     {

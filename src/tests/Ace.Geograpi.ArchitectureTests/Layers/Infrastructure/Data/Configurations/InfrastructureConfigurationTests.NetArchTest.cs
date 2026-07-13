@@ -1,9 +1,23 @@
 using Ace.Geograpi.ArchitectureTests.Abstractions;
+using Ace.Geograpi.ArchitectureTests.Symbols;
 
 namespace Ace.Geograpi.ArchitectureTests.Layers.Infrastructure.Data.Configurations;
 
 public sealed class InfrastructureConfigurationNetArchTestTests : NetArchTestBase
 {
+    [Fact]
+    internal static void InfrastructureConfigurationsShouldMatchNamespace()
+    {
+        // Arrange
+        var rule = infrastructureDataConfigurations.Should().ResideInNamespaceMatching(NamespacePatterns.InfrastructureDataConfigurations);
+
+        // Act
+        var result = rule.GetResult();
+
+        // Assert
+        result.IsSuccessful.Should().BeTrue();
+    }
+
     [Fact]
     internal static void InfrastructureConfigurationsShouldHaveConfigurationPostfix()
     {
