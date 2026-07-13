@@ -4,8 +4,17 @@ namespace Ace.Geograpi.Infrastructure.MessageBus.Consumers.Countries;
 
 internal sealed class CountryUpdatedEventConsumer : IConsumer<CountryUpdatedEvent>
 {
+    private readonly ILogger<CountryUpdatedEventConsumer> logger;
+
+    public CountryUpdatedEventConsumer(ILogger<CountryUpdatedEventConsumer> logger)
+    {
+        this.logger = logger;
+    }
+
     public Task Consume(ConsumeContext<CountryUpdatedEvent> context)
     {
-        throw new NotImplementedException();
+        logger.LogInformation("Received {EventName} event", nameof(CountryUpdatedEvent));
+
+        return Task.CompletedTask;
     }
 }
