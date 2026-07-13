@@ -13,4 +13,7 @@ internal static class NamespacePatterns
     public const string DomainQueryFilters = @"^.*\.Domain\.QueryFilters(\..+)?$";
     public const string DomainRepositories = @"^.*\.Domain\.Repositories(\..+)?$";
     public const string DomainServices = @"^.*\.Domain\.Services(\..+)?$";
+
+    public const string ApplicationServices = @"^.*\.Application\.Services(\..+)?$";
+    public const string ApplicationValidators = @"^.*\.Application\.Validators(\..+)?$";
 }
