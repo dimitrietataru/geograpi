@@ -6,6 +6,7 @@ using Ace.Geograpi.Infrastructure.Data.Migrations;
 using Ace.Geograpi.Infrastructure.Data.Migrations.Interfaces;
 using Ace.Geograpi.Infrastructure.ImportExport;
 using Ace.Geograpi.Infrastructure.Mappers;
+using Ace.Geograpi.Infrastructure.Mappers.Exchange;
 using Ace.Geograpi.Infrastructure.Mappers.Root;
 using Ace.Geograpi.Infrastructure.Mappers.Traceable;
 using Ace.Geograpi.Infrastructure.MessageBus;
@@ -100,6 +101,9 @@ public static class DependencyInjection
 
             config.AddProfile<ContinentRootMappingProfile>();
             config.AddProfile<CountryRootMappingProfile>();
+
+            config.AddProfile<ContinentExchangeMappingProfile>();
+            config.AddProfile<CountryExchangeMappingProfile>();
         });
     }
 
