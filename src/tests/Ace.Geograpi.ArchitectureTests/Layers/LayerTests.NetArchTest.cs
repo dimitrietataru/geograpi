@@ -8,7 +8,7 @@ public sealed class LayerNetArchTestTests : NetArchTestBase
     internal void DomainShouldNotHaveDependencyOnApplication()
     {
         // Arrange
-        var rule = domainTypes.Should().NotHaveDependencyOn(applicationAssembly.GetName().Name);
+        var rule = DomainTypes.Should().NotHaveDependencyOn(applicationAssembly.GetName().Name);
 
         // Act
         var result = rule.GetResult();
@@ -21,7 +21,7 @@ public sealed class LayerNetArchTestTests : NetArchTestBase
     internal void DomainShouldNotHaveDependencyOnInfrastructure()
     {
         // Arrange
-        var rule = domainTypes.Should().NotHaveDependencyOn(infrastructureAssembly.GetName().Name);
+        var rule = DomainTypes.Should().NotHaveDependencyOn(infrastructureAssembly.GetName().Name);
 
         // Act
         var result = rule.GetResult();
@@ -34,7 +34,7 @@ public sealed class LayerNetArchTestTests : NetArchTestBase
     internal void DomainShouldNotHaveDependencyOnWeb()
     {
         // Arrange
-        var rule = domainTypes.Should().NotHaveDependencyOn(webAssembly.GetName().Name);
+        var rule = DomainTypes.Should().NotHaveDependencyOn(webAssembly.GetName().Name);
 
         // Act
         var result = rule.GetResult();
@@ -47,7 +47,7 @@ public sealed class LayerNetArchTestTests : NetArchTestBase
     internal void ApplicationShouldNotHaveDependencyOnInfrastructure()
     {
         // Arrange
-        var rule = applicationTypes.Should().NotHaveDependencyOn(infrastructureAssembly.GetName().Name);
+        var rule = ApplicationTypes.Should().NotHaveDependencyOn(infrastructureAssembly.GetName().Name);
 
         // Act
         var result = rule.GetResult();
@@ -60,7 +60,7 @@ public sealed class LayerNetArchTestTests : NetArchTestBase
     internal void ApplicationShouldNotHaveDependencyOnWeb()
     {
         // Arrange
-        var rule = applicationTypes.Should().NotHaveDependencyOn(webAssembly.GetName().Name);
+        var rule = DomainTypes.Should().NotHaveDependencyOn(webAssembly.GetName().Name);
 
         // Act
         var result = rule.GetResult();
@@ -73,7 +73,7 @@ public sealed class LayerNetArchTestTests : NetArchTestBase
     internal void InfrastructureShouldNotHaveDependencyOnApplication()
     {
         // Arrange
-        var rule = infrastructureTypes.Should().NotHaveDependencyOn(applicationAssembly.GetName().Name);
+        var rule = InfrastructureTypes.Should().NotHaveDependencyOn(applicationAssembly.GetName().Name);
 
         // Act
         var result = rule.GetResult();
@@ -86,7 +86,7 @@ public sealed class LayerNetArchTestTests : NetArchTestBase
     internal void InfrastructureShouldNotHaveDependencyOnWeb()
     {
         // Arrange
-        var rule = infrastructureTypes.Should().NotHaveDependencyOn(webAssembly.GetName().Name);
+        var rule = InfrastructureTypes.Should().NotHaveDependencyOn(webAssembly.GetName().Name);
 
         // Act
         var result = rule.GetResult();
