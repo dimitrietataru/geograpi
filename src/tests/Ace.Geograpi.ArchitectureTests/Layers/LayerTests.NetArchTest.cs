@@ -5,7 +5,7 @@ namespace Ace.Geograpi.ArchitectureTests.Layers;
 public sealed class LayerNetArchTestTests : NetArchTestBase
 {
     [Fact]
-    internal static void DomainShouldNotHaveDependencyOnApplication()
+    internal void DomainShouldNotHaveDependencyOnApplication()
     {
         // Arrange
         var rule = domainTypes.Should().NotHaveDependencyOn(applicationAssembly.GetName().Name);
@@ -18,7 +18,7 @@ public sealed class LayerNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void DomainShouldNotHaveDependencyOnInfrastructure()
+    internal void DomainShouldNotHaveDependencyOnInfrastructure()
     {
         // Arrange
         var rule = domainTypes.Should().NotHaveDependencyOn(infrastructureAssembly.GetName().Name);
@@ -31,7 +31,7 @@ public sealed class LayerNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void DomainShouldNotHaveDependencyOnWeb()
+    internal void DomainShouldNotHaveDependencyOnWeb()
     {
         // Arrange
         var rule = domainTypes.Should().NotHaveDependencyOn(webAssembly.GetName().Name);
@@ -44,7 +44,7 @@ public sealed class LayerNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void ApplicationShouldNotHaveDependencyOnInfrastructure()
+    internal void ApplicationShouldNotHaveDependencyOnInfrastructure()
     {
         // Arrange
         var rule = applicationTypes.Should().NotHaveDependencyOn(infrastructureAssembly.GetName().Name);
@@ -57,7 +57,7 @@ public sealed class LayerNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void ApplicationShouldNotHaveDependencyOnWeb()
+    internal void ApplicationShouldNotHaveDependencyOnWeb()
     {
         // Arrange
         var rule = applicationTypes.Should().NotHaveDependencyOn(webAssembly.GetName().Name);
@@ -70,7 +70,7 @@ public sealed class LayerNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void InfrastructureShouldNotHaveDependencyOnApplication()
+    internal void InfrastructureShouldNotHaveDependencyOnApplication()
     {
         // Arrange
         var rule = infrastructureTypes.Should().NotHaveDependencyOn(applicationAssembly.GetName().Name);
@@ -83,7 +83,7 @@ public sealed class LayerNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void InfrastructureShouldNotHaveDependencyOnWeb()
+    internal void InfrastructureShouldNotHaveDependencyOnWeb()
     {
         // Arrange
         var rule = infrastructureTypes.Should().NotHaveDependencyOn(webAssembly.GetName().Name);

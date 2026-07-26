@@ -6,7 +6,7 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Infrastructure.ImportExport.Mapp
 public sealed class InfrastructureCsvMapNetArchTestTests : NetArchTestBase
 {
     [Fact]
-    internal static void InfrastructureCsvMapsShouldMatchNamespace()
+    internal void InfrastructureCsvMapsShouldMatchNamespace()
     {
         // Arrange
         var rule = infrastructureCsvMaps.Should().ResideInNamespaceMatching(NamespacePatterns.InfrastructureCsvMaps);
@@ -19,7 +19,7 @@ public sealed class InfrastructureCsvMapNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void InfrastructureCsvMapsShouldHaveMappingProfilePostfix()
+    internal void InfrastructureCsvMapsShouldHaveMappingProfilePostfix()
     {
         // Arrange
         var rule = infrastructureCsvMaps.Should().HaveNameEndingWith("CsvMap", StringComparison.Ordinal);
@@ -32,7 +32,7 @@ public sealed class InfrastructureCsvMapNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void InfrastructureCsvMapsShouldBeInternal()
+    internal void InfrastructureCsvMapsShouldBeInternal()
     {
         // Arrange
         var rule = infrastructureCsvMaps.Should().NotBePublic();
@@ -45,7 +45,7 @@ public sealed class InfrastructureCsvMapNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void InfrastructureCsvMapsShouldBeSealed()
+    internal void InfrastructureCsvMapsShouldBeSealed()
     {
         // Arrange
         var rule = infrastructureCsvMaps.Should().BeSealed();

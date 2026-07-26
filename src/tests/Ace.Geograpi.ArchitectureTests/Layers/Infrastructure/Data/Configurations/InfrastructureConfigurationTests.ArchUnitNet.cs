@@ -7,7 +7,7 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Infrastructure.Data.Configuratio
 public sealed class InfrastructureConfigurationArchUnitNetTests : ArchUnitNetBase
 {
     [Fact]
-    internal static void InfrastructureConfigurationsShouldMatchNamespace()
+    internal void InfrastructureConfigurationsShouldMatchNamespace()
     {
         // Arrange
         var rule = infrastructureDataConfigurations.Should().ResideInNamespaceMatching(NamespacePatterns.InfrastructureDataConfigurations);
@@ -17,7 +17,7 @@ public sealed class InfrastructureConfigurationArchUnitNetTests : ArchUnitNetBas
     }
 
     [Fact]
-    internal static void InfrastructureConfigurationsShouldHaveConfigurationPostfix()
+    internal void InfrastructureConfigurationsShouldHaveConfigurationPostfix()
     {
         // Arrange
         var rule = infrastructureDataConfigurations.Should().HaveNameEndingWith("Configuration");
@@ -27,7 +27,7 @@ public sealed class InfrastructureConfigurationArchUnitNetTests : ArchUnitNetBas
     }
 
     [Fact]
-    internal static void InfrastructureConfigurationsShouldBeInternal()
+    internal void InfrastructureConfigurationsShouldBeInternal()
     {
         // Arrange
         var rule = infrastructureDataConfigurations.Should().BeInternal();
@@ -37,7 +37,7 @@ public sealed class InfrastructureConfigurationArchUnitNetTests : ArchUnitNetBas
     }
 
     [Fact]
-    internal static void InfrastructureConfigurationsShouldBeSealed()
+    internal void InfrastructureConfigurationsShouldBeSealed()
     {
         // Arrange
         var rule = infrastructureDataConfigurations.Should().BeSealed();

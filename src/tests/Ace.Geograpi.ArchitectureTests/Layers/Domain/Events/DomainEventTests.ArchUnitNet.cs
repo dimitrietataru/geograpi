@@ -7,7 +7,7 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Domain.Events;
 public sealed class DomainEventArchUnitNetTests : ArchUnitNetBase
 {
     [Fact]
-    internal static void DomainEventsShouldMatchNamespace()
+    internal void DomainEventsShouldMatchNamespace()
     {
         // Arrange
         var rule = domainEvents.Should().ResideInNamespaceMatching(NamespacePatterns.DomainEvents);
@@ -17,7 +17,7 @@ public sealed class DomainEventArchUnitNetTests : ArchUnitNetBase
     }
 
     [Fact]
-    internal static void DomainEventsShouldHaveEventPostfix()
+    internal void DomainEventsShouldHaveEventPostfix()
     {
         // Arrange
         var rule = domainEvents.Should().HaveNameEndingWith("Event");
@@ -27,7 +27,7 @@ public sealed class DomainEventArchUnitNetTests : ArchUnitNetBase
     }
 
     [Fact]
-    internal static void DomainEventsShouldBePublic()
+    internal void DomainEventsShouldBePublic()
     {
         // Arrange
         var rule = domainEvents.Should().BePublic();
@@ -37,7 +37,7 @@ public sealed class DomainEventArchUnitNetTests : ArchUnitNetBase
     }
 
     [Fact]
-    internal static void DomainEventsShouldBeSealed()
+    internal void DomainEventsShouldBeSealed()
     {
         // Arrange
         var rule = domainEvents.Should().BeSealed();

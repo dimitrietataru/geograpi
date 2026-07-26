@@ -6,7 +6,7 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Domain.Repositories;
 public sealed class DomainRepositoryNetArchTestTests : NetArchTestBase
 {
     [Fact]
-    internal static void DomainRepositoriesShouldMatchNamespace()
+    internal void DomainRepositoriesShouldMatchNamespace()
     {
         // Arrange
         var rule = domainRepositories.Should().ResideInNamespaceMatching(NamespacePatterns.DomainRepositories);
@@ -19,7 +19,7 @@ public sealed class DomainRepositoryNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void DomainRepositoriesShouldHaveISuffix()
+    internal void DomainRepositoriesShouldHaveISuffix()
     {
         // Arrange
         var rule = domainRepositories.Should().HaveNameStartingWith("I", StringComparison.Ordinal);
@@ -32,7 +32,7 @@ public sealed class DomainRepositoryNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void DomainRepositoriesShouldHaveRepositoryPostfix()
+    internal void DomainRepositoriesShouldHaveRepositoryPostfix()
     {
         // Arrange
         var rule = domainRepositories.Should().HaveNameEndingWith("Repository", StringComparison.Ordinal);
@@ -45,7 +45,7 @@ public sealed class DomainRepositoryNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void DomainRepositoriesShouldBePublic()
+    internal void DomainRepositoriesShouldBePublic()
     {
         // Arrange
         var rule = domainRepositories.Should().BePublic();

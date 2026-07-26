@@ -6,7 +6,7 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Application.Services;
 public sealed class ApplicationServiceNetArchTestTests : NetArchTestBase
 {
     [Fact]
-    internal static void ApplicationServicesShouldMatchNamespace()
+    internal void ApplicationServicesShouldMatchNamespace()
     {
         // Arrange
         var rule = applicationServices.Should().ResideInNamespaceMatching(NamespacePatterns.ApplicationServices);
@@ -19,7 +19,7 @@ public sealed class ApplicationServiceNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void ApplicationServicesShouldHaveServicePostfix()
+    internal void ApplicationServicesShouldHaveServicePostfix()
     {
         // Arrange
         var rule = applicationServices.Should().HaveNameEndingWith("Service", StringComparison.Ordinal);
@@ -32,7 +32,7 @@ public sealed class ApplicationServiceNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void ApplicationServicesShouldBePublic()
+    internal void ApplicationServicesShouldBePublic()
     {
         // Arrange
         var rule = applicationServices.Should().BePublic();
@@ -45,7 +45,7 @@ public sealed class ApplicationServiceNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void ApplicationServicesShouldBeSealed()
+    internal void ApplicationServicesShouldBeSealed()
     {
         // Arrange
         var rule = applicationServices.Should().BeSealed();

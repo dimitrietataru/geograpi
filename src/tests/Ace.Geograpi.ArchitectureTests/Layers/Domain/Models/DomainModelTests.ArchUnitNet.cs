@@ -7,7 +7,7 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Domain.Models;
 public sealed class DomainModelArchUnitNetTests : ArchUnitNetBase
 {
     [Fact]
-    internal static void DomainModelsShouldMatchNamespace()
+    internal void DomainModelsShouldMatchNamespace()
     {
         // Arrange
         var rule = domainModels.Should().ResideInNamespaceMatching(NamespacePatterns.DomainModels);
@@ -17,7 +17,7 @@ public sealed class DomainModelArchUnitNetTests : ArchUnitNetBase
     }
 
     [Fact]
-    internal static void DomainModelsShouldHaveModelPostfix()
+    internal void DomainModelsShouldHaveModelPostfix()
     {
         // Arrange
         var rule = domainModels.Should().HaveNameEndingWith("Model");
@@ -27,7 +27,7 @@ public sealed class DomainModelArchUnitNetTests : ArchUnitNetBase
     }
 
     [Fact]
-    internal static void DomainModelsShouldBePublic()
+    internal void DomainModelsShouldBePublic()
     {
         // Arrange
         var rule = domainModels.Should().BePublic();
@@ -37,7 +37,7 @@ public sealed class DomainModelArchUnitNetTests : ArchUnitNetBase
     }
 
     [Fact]
-    internal static void DomainModelsShouldBeSealed()
+    internal void DomainModelsShouldBeSealed()
     {
         // Arrange
         var rule = domainModels.Should().BeSealed();

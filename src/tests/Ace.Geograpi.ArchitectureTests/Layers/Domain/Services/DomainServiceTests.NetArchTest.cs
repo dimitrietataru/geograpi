@@ -6,7 +6,7 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Domain.Services;
 public sealed class DomainServiceNetArchTestTests : NetArchTestBase
 {
     [Fact]
-    internal static void DomainServicesShouldMatchNamespace()
+    internal void DomainServicesShouldMatchNamespace()
     {
         // Arrange
         var rule = domainServices.Should().ResideInNamespaceMatching(NamespacePatterns.DomainServices);
@@ -19,7 +19,7 @@ public sealed class DomainServiceNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void DomainServicesShouldHaveISuffix()
+    internal void DomainServicesShouldHaveISuffix()
     {
         // Arrange
         var rule = domainServices.Should().HaveNameStartingWith("I", StringComparison.Ordinal);
@@ -32,7 +32,7 @@ public sealed class DomainServiceNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void DomainServicesShouldHaveServicePostfix()
+    internal void DomainServicesShouldHaveServicePostfix()
     {
         // Arrange
         var rule = domainServices.Should().HaveNameEndingWith("Service", StringComparison.Ordinal);
@@ -45,7 +45,7 @@ public sealed class DomainServiceNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void DomainServicesShouldBePublic()
+    internal void DomainServicesShouldBePublic()
     {
         // Arrange
         var rule = domainServices.Should().BePublic();

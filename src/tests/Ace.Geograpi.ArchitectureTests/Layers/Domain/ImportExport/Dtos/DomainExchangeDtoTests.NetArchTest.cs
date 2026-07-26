@@ -6,7 +6,7 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Domain.ImportExport.Dtos;
 public sealed class DomainExchangeDtoNetArchTestTests : NetArchTestBase
 {
     [Fact]
-    internal static void DomainExchangeDtosShouldMatchNamespace()
+    internal void DomainExchangeDtosShouldMatchNamespace()
     {
         // Arrange
         var rule = domainExchangeDtos.Should().ResideInNamespaceMatching(NamespacePatterns.DomainExchangeDtos);
@@ -19,7 +19,7 @@ public sealed class DomainExchangeDtoNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void DomainExchangeDtosShouldHaveModelPostfix()
+    internal void DomainExchangeDtosShouldHaveModelPostfix()
     {
         // Arrange
         var rule = domainExchangeDtos.Should().HaveNameEndingWith("ExchangeDto", StringComparison.Ordinal);
@@ -32,7 +32,7 @@ public sealed class DomainExchangeDtoNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void DomainExchangeDtosShouldBePublic()
+    internal void DomainExchangeDtosShouldBePublic()
     {
         // Arrange
         var rule = domainExchangeDtos.Should().BePublic();
@@ -45,7 +45,7 @@ public sealed class DomainExchangeDtoNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void DomainExchangeDtosShouldBeSealed()
+    internal void DomainExchangeDtosShouldBeSealed()
     {
         // Arrange
         var rule = domainExchangeDtos.Should().BeSealed();
@@ -58,7 +58,7 @@ public sealed class DomainExchangeDtoNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void DomainExchangeDtosShouldHavePublicGettersAndSetters()
+    internal void DomainExchangeDtosShouldHavePublicGettersAndSetters()
     {
         // Arrange
         var types = domainExchangeDtos.GetTypes();

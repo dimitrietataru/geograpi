@@ -6,7 +6,7 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Domain.QueryFilters;
 public sealed class DomainQueryFilterNetArchTestTests : NetArchTestBase
 {
     [Fact]
-    internal static void DomainQueryFiltersShouldMatchNamespace()
+    internal void DomainQueryFiltersShouldMatchNamespace()
     {
         // Arrange
         var rule = domainQueryFilters.Should().ResideInNamespaceMatching(NamespacePatterns.DomainQueryFilters);
@@ -19,7 +19,7 @@ public sealed class DomainQueryFilterNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void DomainQueryFiltersShouldHaveQueryFilterPostfix()
+    internal void DomainQueryFiltersShouldHaveQueryFilterPostfix()
     {
         // Arrange
         var rule = domainQueryFilters.Should().HaveNameEndingWith("QueryFilter", StringComparison.Ordinal);
@@ -32,7 +32,7 @@ public sealed class DomainQueryFilterNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void DomainQueryFiltersShouldBePublic()
+    internal void DomainQueryFiltersShouldBePublic()
     {
         // Arrange
         var rule = domainQueryFilters.Should().BePublic();
@@ -45,7 +45,7 @@ public sealed class DomainQueryFilterNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void DomainQueryFiltersShouldBeSealed()
+    internal void DomainQueryFiltersShouldBeSealed()
     {
         // Arrange
         var rule = domainQueryFilters.Should().BeSealed();

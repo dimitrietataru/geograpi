@@ -6,7 +6,7 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Infrastructure.Mappers;
 public sealed class InfrastructureMapperNetArchTestTests : NetArchTestBase
 {
     [Fact]
-    internal static void InfrastructureMappersShouldMatchNamespace()
+    internal void InfrastructureMappersShouldMatchNamespace()
     {
         // Arrange
         var rule = infrastructureMappers.Should().ResideInNamespaceMatching(NamespacePatterns.InfrastructureMappers);
@@ -19,7 +19,7 @@ public sealed class InfrastructureMapperNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void InfrastructureMappersShouldHaveMappingProfilePostfix()
+    internal void InfrastructureMappersShouldHaveMappingProfilePostfix()
     {
         // Arrange
         var rule = infrastructureMappers.Should().HaveNameEndingWith("MappingProfile", StringComparison.Ordinal);
@@ -32,7 +32,7 @@ public sealed class InfrastructureMapperNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void InfrastructureMappersShouldBePublic()
+    internal void InfrastructureMappersShouldBePublic()
     {
         // Arrange
         var rule = infrastructureMappers.Should().BePublic();
@@ -45,7 +45,7 @@ public sealed class InfrastructureMapperNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void InfrastructureMappersShouldBeSealed()
+    internal void InfrastructureMappersShouldBeSealed()
     {
         // Arrange
         var rule = infrastructureMappers.Should().BeSealed();

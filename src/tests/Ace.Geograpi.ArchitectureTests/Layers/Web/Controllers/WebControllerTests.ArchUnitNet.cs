@@ -7,7 +7,7 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Web.Controllers;
 public sealed class WebControllerArchUnitNetTests : ArchUnitNetBase
 {
     [Fact]
-    internal static void WebControllersShouldMatchNamespace()
+    internal void WebControllersShouldMatchNamespace()
     {
         // Arrange
         var rule = webControllers.Should().ResideInNamespaceMatching(NamespacePatterns.WebControllers);
@@ -17,7 +17,7 @@ public sealed class WebControllerArchUnitNetTests : ArchUnitNetBase
     }
 
     [Fact]
-    internal static void WebControllersShouldHaveControllerPostfix()
+    internal void WebControllersShouldHaveControllerPostfix()
     {
         // Arrange
         var rule = webControllers.Should().HaveNameEndingWith("Controller");
@@ -27,7 +27,7 @@ public sealed class WebControllerArchUnitNetTests : ArchUnitNetBase
     }
 
     [Fact]
-    internal static void WebControllersShouldBePublic()
+    internal void WebControllersShouldBePublic()
     {
         // Arrange
         var rule = webControllers.Should().BePublic();
@@ -37,7 +37,7 @@ public sealed class WebControllerArchUnitNetTests : ArchUnitNetBase
     }
 
     [Fact]
-    internal static void WebControllersShouldBeSealed()
+    internal void WebControllersShouldBeSealed()
     {
         // Arrange
         var rule = webControllers.Should().BeSealed();

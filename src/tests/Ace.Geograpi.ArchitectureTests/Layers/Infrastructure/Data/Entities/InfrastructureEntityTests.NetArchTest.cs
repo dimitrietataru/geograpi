@@ -6,7 +6,7 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Infrastructure.Data.Entities;
 public sealed class InfrastructureEntityNetArchTestTests : NetArchTestBase
 {
     [Fact]
-    internal static void InfrastructureEntitiesShouldMatchNamespace()
+    internal void InfrastructureEntitiesShouldMatchNamespace()
     {
         // Arrange
         var rule = infrastructureDataEntities.Should().ResideInNamespaceMatching(NamespacePatterns.InfrastructureDataEntities);
@@ -19,7 +19,7 @@ public sealed class InfrastructureEntityNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void InfrastructureEntitiesShouldHaveEntityPostfix()
+    internal void InfrastructureEntitiesShouldHaveEntityPostfix()
     {
         // Arrange
         var rule = infrastructureDataEntities.Should().HaveNameEndingWith("Entity", StringComparison.Ordinal);
@@ -32,7 +32,7 @@ public sealed class InfrastructureEntityNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void InfrastructureEntitiesShouldBePublic()
+    internal void InfrastructureEntitiesShouldBePublic()
     {
         // Arrange
         var rule = infrastructureDataEntities.Should().BePublic();
@@ -45,7 +45,7 @@ public sealed class InfrastructureEntityNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void InfrastructureEntitiesShouldBeSealed()
+    internal void InfrastructureEntitiesShouldBeSealed()
     {
         // Arrange
         var rule = infrastructureDataEntities.Should().BeSealed();

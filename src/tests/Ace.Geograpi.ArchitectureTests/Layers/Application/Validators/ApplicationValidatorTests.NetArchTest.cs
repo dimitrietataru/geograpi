@@ -6,7 +6,7 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Application.Validators;
 public sealed class ApplicationValidatorNetArchTestTests : NetArchTestBase
 {
     [Fact]
-    internal static void ApplicationValidatorsShouldMatchNamespace()
+    internal void ApplicationValidatorsShouldMatchNamespace()
     {
         // Arrange
         var rule = applicationValidators.Should().ResideInNamespaceMatching(NamespacePatterns.ApplicationValidators);
@@ -19,7 +19,7 @@ public sealed class ApplicationValidatorNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void ApplicationValidatorsShouldHaveValidatorPostfix()
+    internal void ApplicationValidatorsShouldHaveValidatorPostfix()
     {
         // Arrange
         var rule = applicationValidators.Should().HaveNameEndingWith("Validator", StringComparison.Ordinal);
@@ -32,7 +32,7 @@ public sealed class ApplicationValidatorNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void ApplicationValidatorsShouldBeInternal()
+    internal void ApplicationValidatorsShouldBeInternal()
     {
         // Arrange
         var rule = applicationValidators.Should().NotBePublic();
@@ -45,7 +45,7 @@ public sealed class ApplicationValidatorNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void ApplicationValidatorsShouldBeSealed()
+    internal void ApplicationValidatorsShouldBeSealed()
     {
         // Arrange
         var rule = applicationValidators.Should().BeSealed();

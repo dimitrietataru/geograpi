@@ -6,7 +6,7 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Infrastructure.Repositories;
 public sealed class InfrastructureRepositoryNetArchTestTests : NetArchTestBase
 {
     [Fact]
-    internal static void InfrastructureRepositoriesShouldMatchNamespace()
+    internal void InfrastructureRepositoriesShouldMatchNamespace()
     {
         // Arrange
         var rule = infrastructureRepositories.Should().ResideInNamespaceMatching(NamespacePatterns.InfrastructureRepositories);
@@ -19,7 +19,7 @@ public sealed class InfrastructureRepositoryNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void InfrastructureRepositoriesShouldHaveRepositoryPostfix()
+    internal void InfrastructureRepositoriesShouldHaveRepositoryPostfix()
     {
         // Arrange
         var rule = infrastructureRepositories.Should().HaveNameEndingWith("Repository", StringComparison.Ordinal);
@@ -32,7 +32,7 @@ public sealed class InfrastructureRepositoryNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void InfrastructureRepositoriesShouldBeInternal()
+    internal void InfrastructureRepositoriesShouldBeInternal()
     {
         // Arrange
         var rule = infrastructureRepositories.Should().NotBePublic();
@@ -45,7 +45,7 @@ public sealed class InfrastructureRepositoryNetArchTestTests : NetArchTestBase
     }
 
     [Fact]
-    internal static void InfrastructureRepositoriesShouldBeSealed()
+    internal void InfrastructureRepositoriesShouldBeSealed()
     {
         // Arrange
         var rule = infrastructureRepositories.Should().BeSealed();
