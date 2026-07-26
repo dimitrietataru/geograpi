@@ -9,12 +9,18 @@ public sealed class FakeExchange : AbstractDataFaker<FakeExchange>
     private Faker<ContinentExchangeDto> FakeContinentExchangeDto =>
         new Faker<ContinentExchangeDto>(locale: LocaleCode)
             .RuleFor(
+                dto => dto.RowNumber,
+                f => f.Random.Int(min: 1, max: 100))
+            .RuleFor(
                 dto => dto.Name,
                 f => f.Random.String2(length: 10))
             .StrictMode(ensureRulesForAllProperties: true);
 
     private Faker<CountryExchangeDto> FakeCountryExchangeDto =>
         new Faker<CountryExchangeDto>(locale: LocaleCode)
+            .RuleFor(
+                dto => dto.RowNumber,
+                f => f.Random.Int(min: 1, max: 100))
             .RuleFor(
                 dto => dto.ContinentName,
                 f => f.Random.String2(length: 10))
