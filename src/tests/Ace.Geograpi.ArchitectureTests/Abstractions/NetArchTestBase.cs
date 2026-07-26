@@ -1,5 +1,6 @@
 using CatNip.Application.Services;
 using CatNip.Domain.Events;
+using CatNip.Domain.ImportExport.Csv;
 using CatNip.Domain.Models;
 using CatNip.Domain.Models.Interfaces;
 using CatNip.Domain.Query;
@@ -24,6 +25,9 @@ public abstract class NetArchTestBase : AbstractArchitectureTest
 
     protected static readonly PredicateList domainEvents = domainTypes
         .That().ImplementInterface(typeof(IEvent));
+
+    protected static readonly PredicateList domainExchangeDtos = domainTypes
+        .That().ImplementInterface(typeof(ICsvMappable));
 
     protected static readonly PredicateList domainModels = domainTypes
         .That().ImplementInterface(typeof(IModel))

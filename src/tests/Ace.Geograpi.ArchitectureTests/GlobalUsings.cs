@@ -4,5 +4,7 @@ global using FluentAssertions;
 global using FluentValidation;
 global using Microsoft.EntityFrameworkCore;
 global using System;
+global using System.Linq;
 global using System.Reflection;
+global using System.Runtime.CompilerServices;
 global using Xunit;

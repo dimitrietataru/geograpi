@@ -9,6 +9,7 @@ internal static class NamespacePatterns
     public const string CatNipInfrastructure = @"^CatNip\.Infrastructure(\..+)?$";
 
     public const string DomainEvents = @"^.*\.Domain\.Events(\..+)?$";
+    public const string DomainExchangeDtos = @"^.*\.Domain\.ImportExport\.Dtos(\..+)?$";
     public const string DomainModels = @"^.*\.Domain\.Models(\..+)?$";
     public const string DomainQueryFilters = @"^.*\.Domain\.QueryFilters(\..+)?$";
     public const string DomainRepositories = @"^.*\.Domain\.Repositories(\..+)?$";
