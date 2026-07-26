@@ -11,6 +11,7 @@ using CatNip.Domain.Query.Filtering;
 using CatNip.Domain.Repositories;
 using CatNip.Domain.Services;
 using CatNip.Infrastructure.Data.Entities.Interfaces;
+using CatNip.Infrastructure.ImportExport.Mappings;
 using CatNip.Presentation.Controllers;
 
 namespace Ace.Geograpi.ArchitectureTests.Abstractions;
@@ -140,6 +141,14 @@ public abstract class ArchUnitNetBase : AbstractArchitectureTest
             ////.Or().AreAssignableTo(typeof(TraceableEntity<>))
             ////.Or().AreAssignableTo(typeof(TraceableEntity<,>))
             .As("Infrastructure data entities");
+
+    protected static readonly GivenClassesConjunctionWithDescription infrastructureCsvMaps =
+        ArchRuleDefinition
+            .Classes()
+            .That().ResideInAssembly(infrastructureAssembly)
+            .And().AreAssignableTo(typeof(ClassMap<>))
+            .Or().AreAssignableTo(typeof(AceCsvMap<>))
+            .As("Infrastructure CSV mappings");
 
     protected static readonly GivenClassesConjunctionWithDescription infrastructureMappers =
         ArchRuleDefinition

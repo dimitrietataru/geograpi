@@ -10,6 +10,7 @@ using CatNip.Domain.Services;
 using CatNip.Infrastructure.Data.Configurations;
 using CatNip.Infrastructure.Data.Entities;
 using CatNip.Infrastructure.Data.Entities.Interfaces;
+using CatNip.Infrastructure.ImportExport.Mappings;
 using CatNip.Infrastructure.Repositories;
 using CatNip.Presentation.Controllers;
 using NetArchTest.Rules;
@@ -78,6 +79,10 @@ public abstract class NetArchTestBase : AbstractArchitectureTest
         .Or().Inherit(typeof(Entity<>))
         .Or().Inherit(typeof(TraceableEntity<>))
         .Or().Inherit(typeof(TraceableEntity<,>));
+
+    protected static readonly PredicateList infrastructureCsvMaps = infrastructureTypes
+        .That().Inherit(typeof(ClassMap<>))
+        .Or().Inherit(typeof(AceCsvMap<>));
 
     protected static readonly PredicateList infrastructureMappers = infrastructureTypes
         .That().ImplementInterface(typeof(IOneWayProfile<,>))

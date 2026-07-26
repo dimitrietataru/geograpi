@@ -1,5 +1,6 @@
 global using Ace.CSharp.StructuredAutoMapper.Abstractions;
 global using AutoMapper;
+global using CsvHelper.Configuration;
 global using FluentAssertions;
 global using FluentValidation;
 global using Microsoft.EntityFrameworkCore;
