@@ -4,6 +4,7 @@ using Ace.Geograpi.Domain.Repositories;
 using Ace.Geograpi.Infrastructure.Data;
 using Ace.Geograpi.Infrastructure.Data.Migrations;
 using Ace.Geograpi.Infrastructure.Data.Migrations.Interfaces;
+using Ace.Geograpi.Infrastructure.ImportExport;
 using Ace.Geograpi.Infrastructure.Mappers;
 using Ace.Geograpi.Infrastructure.Mappers.Root;
 using Ace.Geograpi.Infrastructure.Mappers.Traceable;
@@ -12,6 +13,7 @@ using Ace.Geograpi.Infrastructure.MessageBus.Consumers.Continents;
 using Ace.Geograpi.Infrastructure.MessageBus.Consumers.Countries;
 using Ace.Geograpi.Infrastructure.Repositories;
 using CatNip.Domain.Events;
+using CatNip.Domain.ImportExport.Csv;
 using CatNip.Infrastructure.MessageBus;
 
 namespace Ace.Geograpi.Infrastructure;
@@ -22,6 +24,7 @@ public static class DependencyInjection
     {
         builder.Services.AddDatabase(builder.Configuration, builder.Environment);
         builder.Services.AddMessageBus(builder.Configuration);
+        builder.Services.AddImportExport();
         builder.Services.AddMappers();
         builder.Services.AddRepositories();
     }
@@ -78,6 +81,11 @@ public static class DependencyInjection
         });
 
         services.AddScoped<IEventPublisher, EventPublisher>();
+    }
+
+    internal static void AddImportExport(this IServiceCollection services)
+    {
+        services.AddSingleton<ICsvConverter, CsvConverter>();
     }
 
     internal static void AddMappers(this IServiceCollection services)

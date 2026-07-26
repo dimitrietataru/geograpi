@@ -1,17 +1,20 @@
+using Ace.Geograpi.Domain.ImportExport.Dtos;
 using Ace.Geograpi.Domain.Models;
 using Ace.Geograpi.Domain.QueryFilters;
 using Ace.Geograpi.Domain.Repositories;
 using Ace.Geograpi.Domain.Services;
 using CatNip.Application.Services;
+using CatNip.Domain.ImportExport;
+using CatNip.Domain.ImportExport.Csv;
 using CatNip.Domain.Query;
 
 namespace Ace.Geograpi.Application.Services;
 
 public sealed class ContinentService
-    : AceService<IContinentRepository, ContinentModel, int, ContinentQueryFilter>, IContinentService
+    : AceService<IContinentRepository, ContinentModel, int, ContinentQueryFilter, ContinentExchangeDto>, IContinentService
 {
-    public ContinentService(IContinentRepository repository)
-        : base(repository)
+    public ContinentService(IContinentRepository repository, ICsvConverter csvConverter)
+        : base(repository, csvConverter)
     {
     }
 
@@ -97,5 +100,11 @@ public sealed class ContinentService
         int id, CancellationToken cancellation = default)
     {
         await base.DeleteAsync(id, cancellation);
+    }
+
+    public sealed override async Task<ImportResponse> ImportAsync(
+        ImportRequest request, CancellationToken cancellation = default)
+    {
+        return await base.ImportAsync(request, cancellation);
     }
 }

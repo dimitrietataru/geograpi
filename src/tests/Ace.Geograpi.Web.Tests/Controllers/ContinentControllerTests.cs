@@ -1,3 +1,4 @@
+using Ace.Geograpi.Domain.ImportExport.Dtos;
 using Ace.Geograpi.Domain.Models;
 using Ace.Geograpi.Domain.Models.Root;
 using Ace.Geograpi.Domain.QueryFilters;
@@ -14,7 +15,8 @@ public sealed class ContinentControllerTests
         ContinentModel,
         ContinentRootModel,
         int,
-        ContinentQueryFilter>
+        ContinentQueryFilter,
+        ContinentExchangeDto>
 {
     private readonly ContinentController continentController;
     private readonly Mock<IContinentService> continentServiceMock;

@@ -1,3 +1,4 @@
+using Ace.Geograpi.Domain.ImportExport.Dtos;
 using Ace.Geograpi.Domain.Models;
 using Ace.Geograpi.Domain.Models.Root;
 using Ace.Geograpi.Domain.QueryFilters;
@@ -13,7 +14,7 @@ namespace Ace.Geograpi.Web.Controllers;
 [ApiVersion("1.0")]
 [Route("api/v{version:apiVersion}/continents")]
 [Produces("application/json")]
-public sealed class ContinentController : AceController<IContinentService, ContinentModel, ContinentRootModel, int, ContinentQueryFilter>
+public sealed class ContinentController : AceController<IContinentService, ContinentModel, ContinentRootModel, int, ContinentQueryFilter, ContinentExchangeDto>
 {
     public ContinentController(IContinentService service)
         : base(service)
@@ -78,5 +79,15 @@ public sealed class ContinentController : AceController<IContinentService, Conti
         [FromRoute] int id, CancellationToken cancellation)
     {
         return await base.Delete(id, cancellation);
+    }
+
+    [HttpPost]
+    [Route(DefaultRoutes.Import)]
+    [ProducesResponseType((int)HttpStatusCode.OK)]
+    [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+    public sealed override async Task<IActionResult> Import(
+        [FromForm] IFormFile file, CancellationToken cancellation)
+    {
+        return await base.Import(file, cancellation);
     }
 }

@@ -39,20 +39,20 @@ public abstract class NetArchTestBase : AbstractArchitectureTest
     protected static readonly PredicateList domainRepositories = domainTypes
         .That().ImplementInterface(typeof(ICrudRepository<>))
         .Or().ImplementInterface(typeof(ICrudRepository<,>))
-        .Or().ImplementInterface(typeof(IAceRepository<,,>));
+        .Or().ImplementInterface(typeof(IAceRepository<,,,>));
 
     protected static readonly PredicateList domainServices = domainTypes
         .That().ImplementInterface(typeof(ICrudService<>))
         .Or().ImplementInterface(typeof(ICrudService<,>))
-        .Or().ImplementInterface(typeof(IAceService<,,>));
+        .Or().ImplementInterface(typeof(IAceService<,,,>));
 
     protected static readonly PredicateList applicationServices = applicationTypes
         .That().ImplementInterface(typeof(ICrudService<>))
         .Or().ImplementInterface(typeof(ICrudService<,>))
-        .Or().ImplementInterface(typeof(IAceService<,,>))
+        .Or().ImplementInterface(typeof(IAceService<,,,>))
         .Or().Inherit(typeof(CrudService<,>))
         .Or().Inherit(typeof(CrudService<,,>))
-        .Or().Inherit(typeof(AceService<,,,>));
+        .Or().Inherit(typeof(AceService<,,,,>));
 
     protected static readonly PredicateList applicationValidators = applicationTypes
         .That().ImplementInterface(typeof(IValidator<>))
@@ -85,15 +85,15 @@ public abstract class NetArchTestBase : AbstractArchitectureTest
     protected static readonly PredicateList infrastructureRepositories = infrastructureTypes
         .That().ImplementInterface(typeof(ICrudRepository<>))
         .Or().ImplementInterface(typeof(ICrudRepository<,>))
-        .Or().ImplementInterface(typeof(IAceRepository<,,>))
+        .Or().ImplementInterface(typeof(IAceRepository<,,,>))
         .Or().Inherit(typeof(CrudRepository<,,>))
         .Or().Inherit(typeof(CrudRepository<,,,>))
-        .Or().Inherit(typeof(AceRepository<,,,,>));
+        .Or().Inherit(typeof(AceRepository<,,,,,>));
 
     protected static readonly PredicateList webControllers = webTypes
         .That().Inherit(typeof(CrudController<,>))
         .Or().Inherit(typeof(CrudController<,,>))
         .Or().Inherit(typeof(CrudController<,,,>))
-        .Or().Inherit(typeof(AceController<,,,>))
-        .Or().Inherit(typeof(AceController<,,,,>));
+        .Or().Inherit(typeof(AceController<,,,,>))
+        .Or().Inherit(typeof(AceController<,,,,,>));
 }

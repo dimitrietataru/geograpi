@@ -1,3 +1,4 @@
+using Ace.Geograpi.Domain.ImportExport.Dtos;
 using Ace.Geograpi.Domain.Models;
 using Ace.Geograpi.Domain.Models.Root;
 using Ace.Geograpi.Domain.QueryFilters;
@@ -14,7 +15,8 @@ public sealed class CountryControllerTests
         CountryModel,
         CountryRootModel,
         int,
-        CountryQueryFilter>
+        CountryQueryFilter,
+        CountryExchangeDto>
 {
     private readonly CountryController countryController;
     private readonly Mock<ICountryService> countryServiceMock;

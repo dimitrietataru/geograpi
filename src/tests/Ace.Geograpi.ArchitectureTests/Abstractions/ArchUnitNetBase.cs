@@ -94,10 +94,10 @@ public abstract class ArchUnitNetBase : AbstractArchitectureTest
             .That().ResideInAssembly(applicationAssembly)
             .And().ImplementInterface(typeof(ICrudService<>))
             ////.Or().ImplementInterface(typeof(ICrudService<,>))
-            .Or().ImplementInterface(typeof(IAceService<,,>))
+            .Or().ImplementInterface(typeof(IAceService<,,,>))
             ////.Or().AreAssignableTo(typeof(CrudService<,>))
             ////.Or().AreAssignableTo(typeof(CrudService<,,>))
-            ////.Or().AreAssignableTo(typeof(AceService<,,,>))
+            ////.Or().AreAssignableTo(typeof(AceService<,,,,>))
             .As("Application services");
 
     protected static readonly GivenClassesConjunctionWithDescription applicationValidators =
@@ -150,10 +150,10 @@ public abstract class ArchUnitNetBase : AbstractArchitectureTest
             .That().ResideInAssembly(infrastructureAssembly)
             .And().ImplementInterface(typeof(ICrudRepository<>))
             ////.Or().ImplementInterface(typeof(ICrudRepository<,>))
-            .Or().ImplementInterface(typeof(IAceRepository<,,>))
+            .Or().ImplementInterface(typeof(IAceRepository<,,,>))
             ////.Or().AreAssignableTo(typeof(CrudRepository<,,>))
             ////.Or().AreAssignableTo(typeof(CrudRepository<,,,>))
-            ////.Or().AreAssignableTo(typeof(AceRepository<,,,,>))
+            ////.Or().AreAssignableTo(typeof(AceRepository<,,,,,>))
             .As("Infrastructure repositories");
 
     protected static readonly GivenClassesConjunctionWithDescription webControllers =
@@ -163,7 +163,7 @@ public abstract class ArchUnitNetBase : AbstractArchitectureTest
             ////.And().AreAssignableTo(typeof(CrudController<,>))
             ////.And().AreAssignableTo(typeof(CrudController<,,>))
             ////.And().AreAssignableTo(typeof(CrudController<,,,>))
-            ////.And().AreAssignableTo(typeof(AceController<,,,>))
-            .And().AreAssignableTo(typeof(AceController<,,,,>))
+            ////.And().AreAssignableTo(typeof(AceController<,,,,>))
+            .And().AreAssignableTo(typeof(AceController<,,,,,>))
             .As("Web controllers");
 }

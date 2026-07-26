@@ -1,9 +1,10 @@
+using Ace.Geograpi.Domain.ImportExport.Dtos;
 using Ace.Geograpi.Domain.Models;
 using Ace.Geograpi.Domain.QueryFilters;
 using CatNip.Domain.Repositories;
 
 namespace Ace.Geograpi.Domain.Repositories;
 
-public interface IContinentRepository : IAceRepository<ContinentModel, int, ContinentQueryFilter>
+public interface IContinentRepository : IAceRepository<ContinentModel, int, ContinentQueryFilter, ContinentExchangeDto>
 {
 }

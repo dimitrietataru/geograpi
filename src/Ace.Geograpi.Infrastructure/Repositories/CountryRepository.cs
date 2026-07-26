@@ -1,8 +1,10 @@
+using Ace.Geograpi.Domain.ImportExport.Dtos;
 using Ace.Geograpi.Domain.Models;
 using Ace.Geograpi.Domain.QueryFilters;
 using Ace.Geograpi.Domain.Repositories;
 using Ace.Geograpi.Infrastructure.Data;
 using Ace.Geograpi.Infrastructure.Data.Entities;
+using CatNip.Domain.ImportExport;
 using CatNip.Domain.Query;
 using CatNip.Domain.Query.Sorting;
 using CatNip.Domain.Query.Sorting.Symbols;
@@ -11,7 +13,7 @@ using CatNip.Infrastructure.Repositories;
 namespace Ace.Geograpi.Infrastructure.Repositories;
 
 internal sealed class CountryRepository
-    : AceRepository<GeograpiDbContext, CountryEntity, CountryModel, int, CountryQueryFilter>, ICountryRepository
+    : AceRepository<GeograpiDbContext, CountryEntity, CountryModel, int, CountryQueryFilter, CountryExchangeDto>, ICountryRepository
 {
     public CountryRepository(GeograpiDbContext dbContext, IMapper mapper)
         : base(dbContext, mapper)
@@ -108,6 +110,12 @@ internal sealed class CountryRepository
         int id, CancellationToken cancellation = default)
     {
         await base.DeleteAsync(id, cancellation);
+    }
+
+    public sealed override async Task<ImportResponse> ImportAsync(
+        ICollection<CountryExchangeDto> records, CancellationToken cancellation)
+    {
+        throw new NotImplementedException();
     }
 
     protected sealed override IQueryable<CountryEntity> BuildIncludeQuery(

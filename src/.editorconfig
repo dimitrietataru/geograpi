@@ -890,6 +890,10 @@ dotnet_code_quality.CA1812.ignore_internalsvisibleto = true
 dotnet_diagnostic.CA1812.severity = none
 [**[Cc]onsumer[Dd]efinition{s,}**.cs]
 dotnet_diagnostic.CA1812.severity = none
+[**[Cc]sv[Mm]ap{s,}**.cs]
+dotnet_diagnostic.CA1812.severity = none
+[**[Cc]sv[Cc]onverter{s,}**.cs]
+dotnet_diagnostic.CA1812.severity = none
 [**[Dd]b[Cc]ontext{s,}**.cs]
 dotnet_diagnostic.CA1812.severity = none
 [**[Ee]ntit{y,i}{e,}{s,}**.cs]

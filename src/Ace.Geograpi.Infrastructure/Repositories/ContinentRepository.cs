@@ -1,8 +1,10 @@
+using Ace.Geograpi.Domain.ImportExport.Dtos;
 using Ace.Geograpi.Domain.Models;
 using Ace.Geograpi.Domain.QueryFilters;
 using Ace.Geograpi.Domain.Repositories;
 using Ace.Geograpi.Infrastructure.Data;
 using Ace.Geograpi.Infrastructure.Data.Entities;
+using CatNip.Domain.ImportExport;
 using CatNip.Domain.Query;
 using CatNip.Domain.Query.Sorting;
 using CatNip.Domain.Query.Sorting.Symbols;
@@ -11,7 +13,7 @@ using CatNip.Infrastructure.Repositories;
 namespace Ace.Geograpi.Infrastructure.Repositories;
 
 internal sealed class ContinentRepository
-    : AceRepository<GeograpiDbContext, ContinentEntity, ContinentModel, int, ContinentQueryFilter>, IContinentRepository
+    : AceRepository<GeograpiDbContext, ContinentEntity, ContinentModel, int, ContinentQueryFilter, ContinentExchangeDto>, IContinentRepository
 {
     public ContinentRepository(GeograpiDbContext dbContext, IMapper mapper)
         : base(dbContext, mapper)
@@ -108,6 +110,38 @@ internal sealed class ContinentRepository
         int id, CancellationToken cancellation = default)
     {
         await base.DeleteAsync(id, cancellation);
+    }
+
+    public sealed override async Task<ImportResponse> ImportAsync(
+        ICollection<ContinentExchangeDto> records, CancellationToken cancellation)
+    {
+        var continentNames = records.OrderBy(c => c.Name).Select(c => c.Name).ToHashSet(StringComparer.Ordinal);
+        var dbContinents = await DbContext
+            .Continents
+            .AsTracking()
+            .Where(c => continentNames.Contains(c.Name))
+            .OrderBy(c => c.Name)
+            .ToListAsync(cancellation);
+
+        var dbContinentNames = dbContinents.Select(c => c.Name).ToHashSet(StringComparer.Ordinal);
+        var continentsToAdd = records.Where(c => !dbContinentNames.Contains(c.Name)).ToList();
+        var continentsToUpdate = records.Where(c => dbContinentNames.Contains(c.Name)).ToList();
+
+        foreach (var entryToAdd in continentsToAdd)
+        {
+            var continent = Mapper.Map<ContinentEntity>(entryToAdd);
+            DbContext.Continents.Add(continent);
+        }
+
+        foreach (var entryToUpdate in continentsToUpdate)
+        {
+            var dbEntry = dbContinents.Single(c => string.Equals(entryToUpdate.Name, c.Name, StringComparison.Ordinal));
+            Mapper.Map(entryToUpdate, dbEntry);
+        }
+
+        await CommitAsync(cancellation);
+
+        return ImportResponse.Success(records.Count, continentsToAdd.Count, continentsToUpdate.Count);
     }
 
     protected sealed override IQueryable<ContinentEntity> BuildIncludeQuery(
