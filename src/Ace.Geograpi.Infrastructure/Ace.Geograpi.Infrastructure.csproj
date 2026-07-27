@@ -35,6 +35,7 @@
 
   <ItemGroup>
     <InternalsVisibleTo Include="$(AssemblyName).IntegrationTests" />
+    <InternalsVisibleTo Include="Ace.Geograpi.ArchitectureTests" />
     <InternalsVisibleTo Include="Ace.Geograpi.Web.IntegrationTests" />
   </ItemGroup>
 

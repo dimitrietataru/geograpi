@@ -8,9 +8,18 @@ public sealed class InfrastructureLayerTests : ArchUnitNetBase
     private readonly IReadOnlyCollection<string?> allowedExceptions = [
         typeof(Geograpi.Infrastructure.IInfrastructureMarker).FullName,
         typeof(Geograpi.Infrastructure.DependencyInjection).FullName,
+        typeof(Geograpi.Infrastructure.Data.GeograpiDbContext).FullName,
+        typeof(Geograpi.Infrastructure.Data.Configurations.Seed.ContinentData).FullName,
+        typeof(Geograpi.Infrastructure.Data.Configurations.Seed.CountryData).FullName,
+        typeof(Geograpi.Infrastructure.Data.Configurations.Symbols.TableNames).FullName,
+        typeof(Geograpi.Infrastructure.Data.Configurations.Symbols.TableSchemas).FullName,
+        typeof(Geograpi.Infrastructure.Data.Migrations.Interfaces.IGeograpiMigrationProvider).FullName,
+        typeof(Geograpi.Infrastructure.Data.Migrations.GeograpiMigrationProvider).FullName,
+        typeof(Geograpi.Infrastructure.ImportExport.CsvConverter).FullName,
+        typeof(Geograpi.Infrastructure.MessageBus.EventDefinitions).FullName
     ];
 
-    ////[Fact] // TODO: Complete architecture tests for Infrastructure layer
+    [Fact]
     internal void InfrastructureTypesShouldBeCoveredByArchitectureRules()
     {
         // Arrange
@@ -19,6 +28,9 @@ public sealed class InfrastructureLayerTests : ArchUnitNetBase
             .Except(infrastructureDataEntities.GetObjects(architecture))
             .Except(infrastructureCsvMaps.GetObjects(architecture))
             .Except(infrastructureMappers.GetObjects(architecture))
+            .Except(infrastructureConsumers.GetObjects(architecture))
+            .Except(infrastructureConsumerDefinitions.GetObjects(architecture))
+            .Except(infrastructureMigrations.GetObjects(architecture))
             .Except(infrastructureRepositories.GetObjects(architecture))
             .Where(type => !allowedExceptions.Contains(type.FullName))
             .OfType<IType>()

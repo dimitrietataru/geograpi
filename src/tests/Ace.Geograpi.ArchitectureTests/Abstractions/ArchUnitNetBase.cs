@@ -178,6 +178,14 @@ public abstract class ArchUnitNetBase : AbstractArchitectureTest
             .Or().AreAssignableTo(typeof(ConsumerDefinition<>))
             .As("Infrastructure consumer definitions");
 
+    protected static readonly GivenClassesConjunctionWithDescription infrastructureMigrations =
+        ArchRuleDefinition
+            .Classes()
+            .That().ResideInAssembly(infrastructureAssembly)
+            .And().AreAssignableTo(typeof(ModelSnapshot))
+            .Or().AreAssignableTo(typeof(Migration))
+            .As("Infrastructure migrations");
+
     protected static readonly GivenClassesConjunctionWithDescription infrastructureRepositories =
         ArchRuleDefinition
             .Classes()

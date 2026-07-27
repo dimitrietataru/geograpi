@@ -84,6 +84,13 @@ public abstract class NetArchTestBase : AbstractArchitectureTest
         .That().Inherit(typeof(ClassMap<>))
         .Or().Inherit(typeof(AceCsvMap<>));
 
+    protected static readonly PredicateList infrastructureMappers = InfrastructureTypes
+        .That().ImplementInterface(typeof(IOneWayProfile<,>))
+        .Or().ImplementInterface(typeof(ITwoWayProfile<,>))
+        .Or().Inherit(typeof(AbstractOneWayProfile<,>))
+        .Or().Inherit(typeof(AbstractTwoWayProfile<,>))
+        .Or().Inherit(typeof(Profile));
+
     protected static readonly PredicateList infrastructureConsumers = InfrastructureTypes
         .That().ImplementInterface(typeof(IConsumer))
         .Or().ImplementInterface(typeof(IConsumer<>));
@@ -92,13 +99,6 @@ public abstract class NetArchTestBase : AbstractArchitectureTest
         .That().ImplementInterface(typeof(IConsumerDefinition))
         .Or().ImplementInterface(typeof(IConsumerDefinition<>))
         .Or().Inherit(typeof(ConsumerDefinition<>));
-
-    protected static readonly PredicateList infrastructureMappers = InfrastructureTypes
-        .That().ImplementInterface(typeof(IOneWayProfile<,>))
-        .Or().ImplementInterface(typeof(ITwoWayProfile<,>))
-        .Or().Inherit(typeof(AbstractOneWayProfile<,>))
-        .Or().Inherit(typeof(AbstractTwoWayProfile<,>))
-        .Or().Inherit(typeof(Profile));
 
     protected static readonly PredicateList infrastructureRepositories = InfrastructureTypes
         .That().ImplementInterface(typeof(ICrudRepository<>))
