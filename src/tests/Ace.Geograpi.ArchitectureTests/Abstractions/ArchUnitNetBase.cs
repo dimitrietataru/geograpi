@@ -161,6 +161,23 @@ public abstract class ArchUnitNetBase : AbstractArchitectureTest
             .Or().AreAssignableTo(typeof(Profile))
             .As("Infrastructure mappers");
 
+    protected static readonly GivenClassesConjunctionWithDescription infrastructureConsumers =
+        ArchRuleDefinition
+            .Classes()
+            .That().ResideInAssembly(infrastructureAssembly)
+            .And().ImplementInterface(typeof(IConsumer))
+            .Or().ImplementInterface(typeof(IConsumer<>))
+            .As("Infrastructure consumers");
+
+    protected static readonly GivenClassesConjunctionWithDescription infrastructureConsumerDefinitions =
+        ArchRuleDefinition
+            .Classes()
+            .That().ResideInAssembly(infrastructureAssembly)
+            .And().ImplementInterface(typeof(IConsumerDefinition))
+            .Or().ImplementInterface(typeof(IConsumerDefinition<>))
+            .Or().AreAssignableTo(typeof(ConsumerDefinition<>))
+            .As("Infrastructure consumer definitions");
+
     protected static readonly GivenClassesConjunctionWithDescription infrastructureRepositories =
         ArchRuleDefinition
             .Classes()

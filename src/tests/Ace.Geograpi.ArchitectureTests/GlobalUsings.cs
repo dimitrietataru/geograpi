@@ -3,6 +3,7 @@ global using AutoMapper;
 global using CsvHelper.Configuration;
 global using FluentAssertions;
 global using FluentValidation;
+global using MassTransit;
 global using Microsoft.EntityFrameworkCore;
 global using System;
 global using System.Collections.Generic;

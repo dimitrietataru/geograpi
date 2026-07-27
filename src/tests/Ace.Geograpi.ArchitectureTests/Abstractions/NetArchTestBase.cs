@@ -84,6 +84,15 @@ public abstract class NetArchTestBase : AbstractArchitectureTest
         .That().Inherit(typeof(ClassMap<>))
         .Or().Inherit(typeof(AceCsvMap<>));
 
+    protected static readonly PredicateList infrastructureConsumers = InfrastructureTypes
+        .That().ImplementInterface(typeof(IConsumer))
+        .Or().ImplementInterface(typeof(IConsumer<>));
+
+    protected static readonly PredicateList infrastructureConsumerDefinitions = InfrastructureTypes
+        .That().ImplementInterface(typeof(IConsumerDefinition))
+        .Or().ImplementInterface(typeof(IConsumerDefinition<>))
+        .Or().Inherit(typeof(ConsumerDefinition<>));
+
     protected static readonly PredicateList infrastructureMappers = InfrastructureTypes
         .That().ImplementInterface(typeof(IOneWayProfile<,>))
         .Or().ImplementInterface(typeof(ITwoWayProfile<,>))
