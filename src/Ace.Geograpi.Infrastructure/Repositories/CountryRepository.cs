@@ -115,7 +115,58 @@ internal sealed class CountryRepository
     public sealed override async Task<ImportResponse> ImportAsync(
         ICollection<CountryExchangeDto> records, CancellationToken cancellation)
     {
-        throw new NotImplementedException();
+        var continentNames = records.OrderBy(c => c.ContinentName).Select(c => c.ContinentName).ToHashSet(StringComparer.Ordinal);
+        var dbContinentsByName = await DbContext
+            .Continents
+            .AsNoTracking()
+            .Where(c => continentNames.Contains(c.Name))
+            .OrderBy(c => c.Name)
+            .ToDictionaryAsync(k => k.Name, v => v.Id, cancellation);
+
+        var unknownContinentErrors = records
+            .Where(c => !dbContinentsByName.ContainsKey(c.ContinentName))
+            .Select(c =>
+                new ImportDataIntegrityError
+                {
+                    RowNumber = c.RowNumber,
+                    ErrorMessage = $"Unknown continent '{c.ContinentName}'"
+                })
+            .ToList();
+        if (unknownContinentErrors.Count > 0)
+        {
+            return ImportResponse.Failure(unknownContinentErrors);
+        }
+
+        var countryNames = records.Select(c => c.Name).ToHashSet(StringComparer.Ordinal);
+        var dbCountries = await DbContext
+            .Counties
+            .AsTracking()
+            .Where(c => countryNames.Contains(c.Name))
+            .OrderBy(c => c.Name)
+            .ToListAsync(cancellation);
+
+        var dbCountryNames = dbCountries.Select(c => c.Name).ToHashSet(StringComparer.Ordinal);
+        var countriesToAdd = records.Where(c => !dbCountryNames.Contains(c.Name, StringComparer.Ordinal)).ToList();
+        var countriestoUpdate = records.Where(c => dbCountryNames.Contains(c.Name, StringComparer.Ordinal)).ToList();
+
+        foreach (var entryToAdd in countriesToAdd)
+        {
+            var country = Mapper.Map<CountryEntity>(entryToAdd);
+            country.ContinentId = dbContinentsByName[entryToAdd.ContinentName];
+            DbContext.Counties.Add(country);
+        }
+
+        foreach (var entryToUpdate in countriestoUpdate)
+        {
+            var dbEntry = dbCountries.Single(c => string.Equals(entryToUpdate.Name, c.Name, StringComparison.Ordinal));
+
+            Mapper.Map(entryToUpdate, dbEntry);
+            dbEntry.ContinentId = dbContinentsByName[entryToUpdate.ContinentName];
+        }
+
+        await CommitAsync(cancellation);
+
+        return ImportResponse.Success(records.Count, countriesToAdd.Count, countriestoUpdate.Count);
     }
 
     protected sealed override IQueryable<CountryEntity> BuildIncludeQuery(

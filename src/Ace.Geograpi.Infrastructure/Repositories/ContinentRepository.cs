@@ -124,8 +124,8 @@ internal sealed class ContinentRepository
             .ToListAsync(cancellation);
 
         var dbContinentNames = dbContinents.Select(c => c.Name).ToHashSet(StringComparer.Ordinal);
-        var continentsToAdd = records.Where(c => !dbContinentNames.Contains(c.Name)).ToList();
-        var continentsToUpdate = records.Where(c => dbContinentNames.Contains(c.Name)).ToList();
+        var continentsToAdd = records.Where(c => !dbContinentNames.Contains(c.Name, StringComparer.Ordinal)).ToList();
+        var continentsToUpdate = records.Where(c => dbContinentNames.Contains(c.Name, StringComparer.Ordinal)).ToList();
 
         foreach (var entryToAdd in continentsToAdd)
         {
