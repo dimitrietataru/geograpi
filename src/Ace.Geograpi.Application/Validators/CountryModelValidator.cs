@@ -1,4 +1,5 @@
 using Ace.Geograpi.Domain.Models;
+using Ace.Geograpi.Domain.Symbols;
 
 namespace Ace.Geograpi.Application.Validators;
 
@@ -23,6 +24,6 @@ internal sealed class CountryModelValidator : AbstractValidator<CountryModel>
             .Cascade(CascadeMode.Stop)
             .NotNull()
             .NotEmpty()
-            .MaximumLength(100);
+            .MaximumLength(Constraints.CountryNameMaxLength);
     }
 }

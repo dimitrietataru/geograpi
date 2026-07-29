@@ -1,3 +1,4 @@
+using Ace.Geograpi.Domain.Symbols;
 using Ace.Geograpi.Infrastructure.Data.Configurations.Seed;
 using Ace.Geograpi.Infrastructure.Data.Configurations.Symbols;
 using Ace.Geograpi.Infrastructure.Data.Entities;
@@ -39,6 +40,6 @@ internal sealed class CountryConfiguration : TraceableEntityConfiguration<Countr
         builder
             .Property(e => e.Name)
             .IsRequired()
-            .HasMaxLength(100);
+            .HasMaxLength(Constraints.CountryNameMaxLength);
     }
 }

@@ -1,4 +1,5 @@
 using Ace.Geograpi.Domain.Models;
+using Ace.Geograpi.Domain.Symbols;
 
 namespace Ace.Geograpi.Application.Validators;
 
@@ -15,6 +16,6 @@ internal sealed class ContinentModelValidator : AbstractValidator<ContinentModel
             .Cascade(CascadeMode.Stop)
             .NotNull()
             .NotEmpty()
-            .MaximumLength(100);
+            .MaximumLength(Constraints.ContinentNameMaxLength);
     }
 }
