@@ -892,6 +892,8 @@ dotnet_diagnostic.CA1812.severity = none
 dotnet_diagnostic.CA1812.severity = none
 [**[Cc]sv[Mm]ap{s,}**.cs]
 dotnet_diagnostic.CA1812.severity = none
+[**[Ee]xcel[Mm]ap{s,}**.cs]
+dotnet_diagnostic.CA1812.severity = none
 [**[Cc]sv[Cc]onverter{s,}**.cs]
 dotnet_diagnostic.CA1812.severity = none
 [**[Dd]b[Cc]ontext{s,}**.cs]
