@@ -6,6 +6,7 @@ using Ace.Geograpi.Domain.QueryFilters;
 using Ace.Geograpi.Domain.Repositories;
 using CatNip.Application.Test.XUnit.Services;
 using CatNip.Domain.ImportExport.Csv;
+using CatNip.Domain.ImportExport.Excel;
 
 namespace Ace.Geograpi.Application.Tests.Services;
 
@@ -22,16 +23,22 @@ public sealed class CountryServiceTests
     private readonly CountryService countryService;
     private readonly Mock<ICountryRepository> countryRepositoryMock;
     private readonly Mock<ICsvConverter> csvConverter;
+    private readonly Mock<IExcelConverter> excelConverter;
 
     public CountryServiceTests()
     {
         countryRepositoryMock = new Mock<ICountryRepository>();
         csvConverter = new Mock<ICsvConverter>();
+        excelConverter = new Mock<IExcelConverter>();
 
-        countryService = new CountryService(countryRepositoryMock.Object, csvConverter.Object);
+        countryService = new CountryService(
+            countryRepositoryMock.Object,
+            csvConverter.Object,
+            excelConverter.Object);
     }
 
     protected sealed override CountryService Service => countryService;
     protected sealed override Mock<ICountryRepository> RepositoryMock => countryRepositoryMock;
     protected sealed override Mock<ICsvConverter> CsvConverterMock => csvConverter;
+    protected sealed override Mock<IExcelConverter> ExcelConverterMock => excelConverter;
 }

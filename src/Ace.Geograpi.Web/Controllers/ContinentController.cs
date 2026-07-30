@@ -82,12 +82,22 @@ public sealed class ContinentController : AceController<IContinentService, Conti
     }
 
     [HttpPost]
-    [Route(DefaultRoutes.Import)]
+    [Route(DefaultRoutes.ImportCsv)]
     [ProducesResponseType((int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-    public sealed override async Task<IActionResult> Import(
+    public sealed override async Task<IActionResult> ImportCsv(
         [FromForm] IFormFile file, CancellationToken cancellation)
     {
-        return await base.Import(file, cancellation);
+        return await base.ImportCsv(file, cancellation);
+    }
+
+    [HttpPost]
+    [Route(DefaultRoutes.ImportExcel)]
+    [ProducesResponseType((int)HttpStatusCode.OK)]
+    [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+    public sealed override async Task<IActionResult> ImportExcel(
+        [FromForm] IFormFile file, CancellationToken cancellation)
+    {
+        return await base.ImportExcel(file, cancellation);
     }
 }

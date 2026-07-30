@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CatNip.Application.Test.XUnit" Version="4.2.6" />
+    <PackageReference Include="CatNip.Application.Test.XUnit" Version="4.3.0" />
     <PackageReference Include="coverlet.collector" Version="10.0.1">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>

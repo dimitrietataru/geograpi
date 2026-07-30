@@ -6,6 +6,7 @@ using Ace.Geograpi.Domain.Services;
 using CatNip.Application.Services;
 using CatNip.Domain.ImportExport;
 using CatNip.Domain.ImportExport.Csv;
+using CatNip.Domain.ImportExport.Excel;
 using CatNip.Domain.Query;
 
 namespace Ace.Geograpi.Application.Services;
@@ -13,8 +14,8 @@ namespace Ace.Geograpi.Application.Services;
 public sealed class CountryService
     : AceService<ICountryRepository, CountryModel, int, CountryQueryFilter, CountryExchangeDto>, ICountryService
 {
-    public CountryService(ICountryRepository repository, ICsvConverter csvConverter)
-        : base(repository, csvConverter)
+    public CountryService(ICountryRepository repository, ICsvConverter csvConverter, IExcelConverter excelConverter)
+        : base(repository, csvConverter, excelConverter)
     {
     }
 
@@ -102,9 +103,15 @@ public sealed class CountryService
         await base.DeleteAsync(id, cancellation);
     }
 
-    public sealed override async Task<ImportResponse> ImportAsync(
+    public sealed override async Task<ImportResponse> ImportCsvAsync(
         ImportRequest request, CancellationToken cancellation = default)
     {
-        return await base.ImportAsync(request, cancellation);
+        return await base.ImportCsvAsync(request, cancellation);
+    }
+
+    public sealed override async Task<ImportResponse> ImportExcelAsync(
+        ImportRequest request, CancellationToken cancellation = default)
+    {
+        return await base.ImportExcelAsync(request, cancellation);
     }
 }

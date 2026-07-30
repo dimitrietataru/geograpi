@@ -30,5 +30,5 @@ internal sealed class CsvConverter : AceCsvConverter
 
     protected sealed override IReadOnlyDictionary<Type, Type> Mappings => mappings;
 
-    protected override CsvConfiguration Configuration => configuration;
+    protected sealed override CsvConfiguration Configuration => configuration;
 }

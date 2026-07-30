@@ -15,6 +15,7 @@ using Ace.Geograpi.Infrastructure.MessageBus.Consumers.Countries;
 using Ace.Geograpi.Infrastructure.Repositories;
 using CatNip.Domain.Events;
 using CatNip.Domain.ImportExport.Csv;
+using CatNip.Domain.ImportExport.Excel;
 using CatNip.Infrastructure.MessageBus;
 
 namespace Ace.Geograpi.Infrastructure;
@@ -87,6 +88,7 @@ public static class DependencyInjection
     internal static void AddImportExport(this IServiceCollection services)
     {
         services.AddSingleton<ICsvConverter, CsvConverter>();
+        services.AddSingleton<IExcelConverter, ExcelConverter>();
     }
 
     internal static void AddMappers(this IServiceCollection services)
