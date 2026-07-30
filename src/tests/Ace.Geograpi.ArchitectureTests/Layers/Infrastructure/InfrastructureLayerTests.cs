@@ -16,6 +16,7 @@ public sealed class InfrastructureLayerTests : ArchUnitNetBase
         typeof(Geograpi.Infrastructure.Data.Migrations.Interfaces.IGeograpiMigrationProvider).FullName,
         typeof(Geograpi.Infrastructure.Data.Migrations.GeograpiMigrationProvider).FullName,
         typeof(Geograpi.Infrastructure.ImportExport.CsvConverter).FullName,
+        typeof(Geograpi.Infrastructure.ImportExport.ExcelConverter).FullName,
         typeof(Geograpi.Infrastructure.MessageBus.EventDefinitions).FullName
     ];
 
@@ -27,6 +28,7 @@ public sealed class InfrastructureLayerTests : ArchUnitNetBase
             .Except(infrastructureDataConfigurations.GetObjects(architecture))
             .Except(infrastructureDataEntities.GetObjects(architecture))
             .Except(infrastructureCsvMaps.GetObjects(architecture))
+            .Except(infrastructureExcelMaps.GetObjects(architecture))
             .Except(infrastructureMappers.GetObjects(architecture))
             .Except(infrastructureConsumers.GetObjects(architecture))
             .Except(infrastructureConsumerDefinitions.GetObjects(architecture))

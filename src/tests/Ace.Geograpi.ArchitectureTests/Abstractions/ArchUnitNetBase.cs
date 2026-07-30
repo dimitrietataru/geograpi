@@ -150,6 +150,15 @@ public abstract class ArchUnitNetBase : AbstractArchitectureTest
             .Or().AreAssignableTo(typeof(AceCsvMap<>))
             .As("Infrastructure CSV mappings");
 
+    protected static readonly GivenClassesConjunctionWithDescription infrastructureExcelMaps =
+        ArchRuleDefinition
+            .Classes()
+            .That().ResideInAssembly(infrastructureAssembly)
+            .And().ImplementInterface(typeof(IExcelMap))
+            .Or().ImplementInterface(typeof(IExcelMap<>))
+            .Or().AreAssignableTo(typeof(AceExcelMap<>))
+            .As("Infrastructure Excel mappings");
+
     protected static readonly GivenClassesConjunctionWithDescription infrastructureMappers =
         ArchRuleDefinition
             .Classes()

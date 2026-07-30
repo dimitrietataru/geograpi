@@ -84,6 +84,11 @@ public abstract class NetArchTestBase : AbstractArchitectureTest
         .That().Inherit(typeof(ClassMap<>))
         .Or().Inherit(typeof(AceCsvMap<>));
 
+    protected static readonly PredicateList infrastructureExcelMaps = InfrastructureTypes
+        .That().ImplementInterface(typeof(IExcelMap))
+        .Or().ImplementInterface(typeof(IExcelMap<>))
+        .Or().Inherit(typeof(AceExcelMap<>));
+
     protected static readonly PredicateList infrastructureMappers = InfrastructureTypes
         .That().ImplementInterface(typeof(IOneWayProfile<,>))
         .Or().ImplementInterface(typeof(ITwoWayProfile<,>))
