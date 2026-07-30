@@ -5,7 +5,7 @@ namespace Ace.Geograpi.Infrastructure.ImportExport.Mappings;
 
 internal sealed class CountryExchangeExcelMap : AceExcelMap<CountryExchangeDto>
 {
-    internal static ContinentExchangeExcelMap Instance => new();
+    internal static CountryExchangeExcelMap Instance => new();
 
     public sealed override CountryExchangeDto Map(IXLRow row, IReadOnlyDictionary<string, int> headers)
     {
