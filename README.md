@@ -40,6 +40,11 @@ docker compose up
 * Validation
   * [FluentValidation](https://github.com/FluentValidation/FluentValidation)
   * [FluentValidation.AspNetCore](https://github.com/FluentValidation/FluentValidation.AspNetCore)
+* Import / Export
+  * [ClosedXML](https://github.com/closedxml/closedxml)
+  * [CsvHelper](https://github.com/joshclose/csvhelper)
+* Resilience
+  * [Polly](https://github.com/App-vNext/Polly)
 * Testing
   * Framework
     * [xunit](https://github.com/xunit/xunit)
