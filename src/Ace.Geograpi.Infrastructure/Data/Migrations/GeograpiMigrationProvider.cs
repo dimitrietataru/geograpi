@@ -10,4 +10,13 @@ internal sealed class GeograpiMigrationProvider
         : base(dbContext)
     {
     }
+
+    public sealed override async Task MigrateAsync(CancellationToken cancellation = default)
+    {
+        var retryPolicy = Policy
+            .Handle<NpgsqlException>()
+            .WaitAndRetryAsync(3, retry => TimeSpan.FromSeconds(retry * 2));
+
+        await retryPolicy.ExecuteAsync(() => base.MigrateAsync(cancellation));
+    }
 }
