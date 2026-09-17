@@ -1,7 +1,7 @@
 using Ace.Geograpi.ArchitectureTests.Abstractions;
 using Ace.Geograpi.ArchitectureTests.Symbols;
 using ArchUnitNET.Fluent;
-using ArchUnitNET.xUnit;
+using ArchUnitNET.xUnitV3;
 
 namespace Ace.Geograpi.ArchitectureTests.Layers;
 
