@@ -11,24 +11,19 @@ public sealed class WebIntegrationTestFactory : WebApplicationFactory<Program>, 
         .WithPassword("postgres")
         .Build();
 
-    public async Task InitializeAsync()
+    public async ValueTask InitializeAsync()
     {
         await dbContainer.StartAsync();
     }
 
-    async Task IAsyncLifetime.DisposeAsync()
-    {
-        await DisposeAsync();
-    }
-
-    public override async ValueTask DisposeAsync()
+    public sealed override async ValueTask DisposeAsync()
     {
         await dbContainer.StopAsync();
 
         await base.DisposeAsync();
     }
 
-    protected override void ConfigureWebHost(IWebHostBuilder builder)
+    protected sealed override void ConfigureWebHost(IWebHostBuilder builder)
     {
         builder.ConfigureTestServices(
             services =>
