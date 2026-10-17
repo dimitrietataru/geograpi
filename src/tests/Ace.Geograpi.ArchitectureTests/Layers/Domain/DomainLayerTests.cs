@@ -9,6 +9,7 @@ public sealed class DomainLayerTests : ArchUnitNetBase
         typeof(Geograpi.Domain.IDomainMarker).FullName,
         typeof(Geograpi.Domain.Symbols.Constraints).FullName,
         typeof(Geograpi.Domain.Symbols.Data.ContinentId).FullName,
+        typeof(Geograpi.Domain.Symbols.Data.ContinentCode).FullName,
         typeof(Geograpi.Domain.Symbols.Data.ContinentName).FullName,
         typeof(Geograpi.Domain.Symbols.Data.CountryId).FullName,
         typeof(Geograpi.Domain.Symbols.Data.CountryName).FullName

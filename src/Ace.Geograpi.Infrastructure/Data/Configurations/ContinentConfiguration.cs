@@ -19,6 +19,11 @@ internal sealed class ContinentConfiguration : TraceableEntityConfiguration<Cont
         base.ConfigureColumns(builder);
 
         builder
+            .Property(e => e.Code)
+            .IsRequired()
+            .HasMaxLength(Constraints.ContinentCodeMaxLength);
+
+        builder
             .Property(e => e.Name)
             .IsRequired()
             .HasMaxLength(Constraints.ContinentNameMaxLength);

@@ -10,6 +10,9 @@ public sealed class ContinentMappingProfile : TwoWayProfile<ContinentEntity, Con
         CreateMap<ContinentEntity, ContinentModel>()
             .IgnoreAllPropertiesWithAnInaccessibleSetter()
             .ForMember(
+                model => model.Code,
+                options => options.MapFrom(entity => entity.Code))
+            .ForMember(
                 model => model.Name,
                 options => options.MapFrom(entity => entity.Name))
             .ForMember(
@@ -21,6 +24,9 @@ public sealed class ContinentMappingProfile : TwoWayProfile<ContinentEntity, Con
     {
         CreateMap<ContinentModel, ContinentEntity>()
             .IgnoreAllPropertiesWithAnInaccessibleSetter()
+            .ForMember(
+                entity => entity.Code,
+                options => options.MapFrom(model => model.Code))
             .ForMember(
                 entity => entity.Name,
                 options => options.MapFrom(model => model.Name))

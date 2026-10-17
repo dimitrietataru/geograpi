@@ -115,17 +115,17 @@ internal sealed class ContinentRepository
     public sealed override async Task<ImportResponse> ImportAsync(
         ICollection<ContinentExchangeDto> records, CancellationToken cancellation)
     {
-        var continentNames = records.OrderBy(c => c.Name).Select(c => c.Name).ToHashSet(StringComparer.Ordinal);
+        var continentCodes = records.OrderBy(c => c.Code).Select(c => c.Code).ToHashSet(StringComparer.Ordinal);
         var dbContinents = await DbContext
             .Continents
             .AsTracking()
-            .Where(c => continentNames.Contains(c.Name))
-            .OrderBy(c => c.Name)
+            .Where(c => continentCodes.Contains(c.Code))
+            .OrderBy(c => c.Code)
             .ToListAsync(cancellation);
 
-        var dbContinentNames = dbContinents.Select(c => c.Name).ToHashSet(StringComparer.Ordinal);
-        var continentsToAdd = records.Where(c => !dbContinentNames.Contains(c.Name, StringComparer.Ordinal)).ToList();
-        var continentsToUpdate = records.Where(c => dbContinentNames.Contains(c.Name, StringComparer.Ordinal)).ToList();
+        var dbContinentCodes = dbContinents.Select(c => c.Code).ToHashSet(StringComparer.Ordinal);
+        var continentsToAdd = records.Where(c => !dbContinentCodes.Contains(c.Code, StringComparer.Ordinal)).ToList();
+        var continentsToUpdate = records.Where(c => dbContinentCodes.Contains(c.Code, StringComparer.Ordinal)).ToList();
 
         foreach (var entryToAdd in continentsToAdd)
         {
@@ -163,6 +163,11 @@ internal sealed class ContinentRepository
             query = query.Where(c => request.Ids.Contains(c.Id));
         }
 
+        if (!string.IsNullOrWhiteSpace(request.Code))
+        {
+            query = query.Where(c => c.Code == request.Code);
+        }
+
         if (!string.IsNullOrWhiteSpace(request.Name))
         {
             query = query.Where(c => c.Name == request.Name);
@@ -174,7 +179,7 @@ internal sealed class ContinentRepository
     protected sealed override IQueryable<ContinentEntity> BuildDefaultSortingQuery(
         IQueryable<ContinentEntity> query)
     {
-        return query.OrderBy(e => e.Name);
+        return query.OrderBy(c => c.Id);
     }
 
     protected sealed override IQueryable<ContinentEntity> BuildSortingQuery(
@@ -184,8 +189,10 @@ internal sealed class ContinentRepository
 
         return (sortingRequest.SortBy, sortingRequest.SortDirection) switch
         {
-            (nameof(ContinentEntity.Name), SortDirection.Ascending) => query.OrderBy(c => c.Name),
-            (nameof(ContinentEntity.Name), SortDirection.Descending) => query.OrderByDescending(c => c.Name),
+            ("code", SortDirection.Ascending) => query.OrderBy(c => c.Code),
+            ("code", SortDirection.Descending) => query.OrderByDescending(c => c.Code),
+            ("name", SortDirection.Ascending) => query.OrderBy(c => c.Name),
+            ("name", SortDirection.Descending) => query.OrderByDescending(c => c.Name),
             _ => query
         };
     }

@@ -10,6 +10,9 @@ public sealed class ContinentRootMappingProfile : OneWayProfile<ContinentEntity,
         CreateMap<ContinentEntity, ContinentRootModel>()
             .IgnoreAllPropertiesWithAnInaccessibleSetter()
             .ForMember(
+                model => model.Code,
+                options => options.MapFrom(entity => entity.Code))
+            .ForMember(
                 model => model.Name,
                 options => options.MapFrom(entity => entity.Name));
     }

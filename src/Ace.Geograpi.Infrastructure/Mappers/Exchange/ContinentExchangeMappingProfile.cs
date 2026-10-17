@@ -13,6 +13,9 @@ public sealed class ContinentExchangeMappingProfile : OneWayProfile<ContinentExc
                 entity => entity.Id,
                 options => options.Ignore())
             .ForMember(
+                entity => entity.Code,
+                options => options.MapFrom(dto => dto.Code))
+            .ForMember(
                 entity => entity.Name,
                 options => options.MapFrom(dto => dto.Name));
     }

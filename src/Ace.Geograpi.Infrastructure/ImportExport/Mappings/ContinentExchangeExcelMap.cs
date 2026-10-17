@@ -12,6 +12,7 @@ internal sealed class ContinentExchangeExcelMap : AceExcelMap<ContinentExchangeD
         return new()
         {
             RowNumber = row.RowNumber(),
+            Code = row.Cell(headers["Code"]).GetString().Trim(),
             Name = row.Cell(headers["Name"]).GetString().Trim()
         };
     }

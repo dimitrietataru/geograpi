@@ -8,6 +8,7 @@ internal sealed class ContinentExchangeCsvMap : AceCsvMap<ContinentExchangeDto>
     public ContinentExchangeCsvMap()
         : base()
     {
+        Map(dto => dto.Code).Name("Code");
         Map(dto => dto.Name).Name("Name");
     }
 }

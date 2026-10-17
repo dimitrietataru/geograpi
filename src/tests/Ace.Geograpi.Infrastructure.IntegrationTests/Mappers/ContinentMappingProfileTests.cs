@@ -19,6 +19,7 @@ public sealed class ContinentMappingProfileTests
         (entity, model) =>
         {
             model.Id.Should().Be(entity.Id);
+            model.Code.Should().Be(entity.Code);
             model.Name.Should().Be(entity.Name);
             model.Countries.Should().NotBeNull().And.HaveSameCount(entity.Countries);
 
@@ -35,6 +36,7 @@ public sealed class ContinentMappingProfileTests
         (model, entity) =>
         {
             entity.Id.Should().Be(default, because: "Id is ignored");
+            entity.Code.Should().Be(model.Code);
             entity.Name.Should().Be(model.Name);
             entity.Countries.Should().NotBeNull().And.HaveSameCount(model.Countries);
 

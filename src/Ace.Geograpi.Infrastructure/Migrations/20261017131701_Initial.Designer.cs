@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Ace.Geograpi.Infrastructure.Migrations
 {
     [DbContext(typeof(GeograpiDbContext))]
-    [Migration("20240504220958_Initial")]
+    [Migration("20261017131701_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -20,7 +20,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.4")
+                .HasAnnotation("ProductVersion", "10.0.12")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -32,6 +32,11 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasMaxLength(2)
+                        .HasColumnType("character varying(2)");
 
                     b.Property<DateTimeOffset?>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
@@ -69,6 +74,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
+                            Code = "AF",
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -78,6 +84,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 2,
+                            Code = "AN",
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -87,6 +94,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 3,
+                            Code = "AS",
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -96,15 +104,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 4,
-                            CreatedBy = 0,
-                            DeletedBy = 0,
-                            IsDeleted = false,
-                            Name = "Australia (Oceania)",
-                            UpdatedBy = 0
-                        },
-                        new
-                        {
-                            Id = 5,
+                            Code = "EU",
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -113,7 +113,18 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         },
                         new
                         {
+                            Id = 5,
+                            Code = "OC",
+                            CreatedBy = 0,
+                            DeletedBy = 0,
+                            IsDeleted = false,
+                            Name = "Oceania",
+                            UpdatedBy = 0
+                        },
+                        new
+                        {
                             Id = 6,
+                            Code = "NA",
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -123,6 +134,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 7,
+                            Code = "SA",
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -190,7 +202,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 2,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -210,7 +222,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 4,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -260,7 +272,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 9,
-                            ContinentId = 4,
+                            ContinentId = 5,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -270,7 +282,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 10,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -330,7 +342,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 16,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -340,7 +352,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 17,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -390,7 +402,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 22,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -430,7 +442,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 26,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -600,7 +612,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 43,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -630,7 +642,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 46,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -640,7 +652,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 47,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -740,7 +752,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 57,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -770,7 +782,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 60,
-                            ContinentId = 4,
+                            ContinentId = 5,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -780,7 +792,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 61,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -790,7 +802,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 62,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -830,7 +842,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 66,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -850,7 +862,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 68,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -930,7 +942,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 76,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -940,7 +952,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 77,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -990,7 +1002,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 82,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -1010,7 +1022,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 84,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -1070,7 +1082,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 90,
-                            ContinentId = 4,
+                            ContinentId = 5,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -1100,7 +1112,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 93,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -1140,7 +1152,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 97,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -1190,7 +1202,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 102,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -1200,7 +1212,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 103,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -1210,7 +1222,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 104,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -1270,7 +1282,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 110,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -1280,7 +1292,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 111,
-                            ContinentId = 4,
+                            ContinentId = 5,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -1320,7 +1332,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 115,
-                            ContinentId = 4,
+                            ContinentId = 5,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -1330,7 +1342,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 116,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -1340,7 +1352,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 117,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -1360,7 +1372,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 119,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -1410,7 +1422,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 124,
-                            ContinentId = 4,
+                            ContinentId = 5,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -1430,7 +1442,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 126,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -1440,7 +1452,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 127,
-                            ContinentId = 4,
+                            ContinentId = 5,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -1480,7 +1492,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 131,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -1490,7 +1502,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 132,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -1520,7 +1532,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 135,
-                            ContinentId = 4,
+                            ContinentId = 5,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -1540,7 +1552,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 137,
-                            ContinentId = 4,
+                            ContinentId = 5,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -1580,7 +1592,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 141,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -1590,7 +1602,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 142,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -1610,7 +1622,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 144,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -1620,7 +1632,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 145,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -1670,7 +1682,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 150,
-                            ContinentId = 4,
+                            ContinentId = 5,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -1680,7 +1692,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 151,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -1720,7 +1732,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 155,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -1760,7 +1772,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 159,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -1770,7 +1782,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 160,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -1780,7 +1792,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 161,
-                            ContinentId = 4,
+                            ContinentId = 5,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -1810,7 +1822,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 164,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -1860,7 +1872,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 169,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -1870,7 +1882,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 170,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -1940,7 +1952,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 177,
-                            ContinentId = 4,
+                            ContinentId = 5,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -1990,7 +2002,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 182,
-                            ContinentId = 4,
+                            ContinentId = 5,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -2010,7 +2022,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 184,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -2030,7 +2042,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 186,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -2070,7 +2082,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 190,
-                            ContinentId = 4,
+                            ContinentId = 5,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,
@@ -2080,7 +2092,7 @@ namespace Ace.Geograpi.Infrastructure.Migrations
                         new
                         {
                             Id = 191,
-                            ContinentId = 5,
+                            ContinentId = 4,
                             CreatedBy = 0,
                             DeletedBy = 0,
                             IsDeleted = false,

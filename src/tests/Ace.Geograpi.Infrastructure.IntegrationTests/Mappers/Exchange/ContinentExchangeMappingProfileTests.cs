@@ -16,6 +16,7 @@ public sealed class ContinentExchangeMappingProfileTests
         (dto, entity) =>
         {
             entity.Id.Should().Be(default);
+            entity.Code.Should().Be(dto.Code);
             entity.Name.Should().Be(dto.Name);
         };
 

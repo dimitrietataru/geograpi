@@ -17,6 +17,7 @@ public sealed class ContinentRootMappingProfileTests
         (entity, model) =>
         {
             model.Id.Should().Be(entity.Id);
+            model.Code.Should().Be(entity.Code);
             model.Name.Should().Be(entity.Name);
         };
 

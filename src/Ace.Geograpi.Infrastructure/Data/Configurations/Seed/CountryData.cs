@@ -58,7 +58,7 @@ public static class CountryData
         new()
         {
             Id = CountryId.Australia,
-            ContinentId = ContinentId.Australia,
+            ContinentId = ContinentId.Oceania,
             Name = CountryName.Australia
         },
         new()
@@ -364,7 +364,7 @@ public static class CountryData
         new()
         {
             Id = CountryId.Fiji,
-            ContinentId = ContinentId.Australia,
+            ContinentId = ContinentId.Oceania,
             Name = CountryName.Fiji
         },
         new()
@@ -544,7 +544,7 @@ public static class CountryData
         new()
         {
             Id = CountryId.Kiribati,
-            ContinentId = ContinentId.Australia,
+            ContinentId = ContinentId.Oceania,
             Name = CountryName.Kiribati
         },
         new()
@@ -670,7 +670,7 @@ public static class CountryData
         new()
         {
             Id = CountryId.MarshallIslands,
-            ContinentId = ContinentId.Australia,
+            ContinentId = ContinentId.Oceania,
             Name = CountryName.MarshallIslands
         },
         new()
@@ -694,7 +694,7 @@ public static class CountryData
         new()
         {
             Id = CountryId.Micronesia,
-            ContinentId = ContinentId.Australia,
+            ContinentId = ContinentId.Oceania,
             Name = CountryName.Micronesia
         },
         new()
@@ -748,7 +748,7 @@ public static class CountryData
         new()
         {
             Id = CountryId.Nauru,
-            ContinentId = ContinentId.Australia,
+            ContinentId = ContinentId.Oceania,
             Name = CountryName.Nauru
         },
         new()
@@ -766,7 +766,7 @@ public static class CountryData
         new()
         {
             Id = CountryId.NewZealand,
-            ContinentId = ContinentId.Australia,
+            ContinentId = ContinentId.Oceania,
             Name = CountryName.NewZealand
         },
         new()
@@ -814,7 +814,7 @@ public static class CountryData
         new()
         {
             Id = CountryId.Palau,
-            ContinentId = ContinentId.Australia,
+            ContinentId = ContinentId.Oceania,
             Name = CountryName.Palau
         },
         new()
@@ -826,7 +826,7 @@ public static class CountryData
         new()
         {
             Id = CountryId.PapuaNewGuinea,
-            ContinentId = ContinentId.Australia,
+            ContinentId = ContinentId.Oceania,
             Name = CountryName.PapuaNewGuinea
         },
         new()
@@ -904,7 +904,7 @@ public static class CountryData
         new()
         {
             Id = CountryId.Samoa,
-            ContinentId = ContinentId.Australia,
+            ContinentId = ContinentId.Oceania,
             Name = CountryName.Samoa
         },
         new()
@@ -970,7 +970,7 @@ public static class CountryData
         new()
         {
             Id = CountryId.SolomonIslands,
-            ContinentId = ContinentId.Australia,
+            ContinentId = ContinentId.Oceania,
             Name = CountryName.SolomonIslands
         },
         new()
@@ -1066,7 +1066,7 @@ public static class CountryData
         new()
         {
             Id = CountryId.Tonga,
-            ContinentId = ContinentId.Australia,
+            ContinentId = ContinentId.Oceania,
             Name = CountryName.Tonga
         },
         new()
@@ -1096,7 +1096,7 @@ public static class CountryData
         new()
         {
             Id = CountryId.Tuvalu,
-            ContinentId = ContinentId.Australia,
+            ContinentId = ContinentId.Oceania,
             Name = CountryName.Tuvalu
         },
         new()
@@ -1144,7 +1144,7 @@ public static class CountryData
         new()
         {
             Id = CountryId.Vanuatu,
-            ContinentId = ContinentId.Australia,
+            ContinentId = ContinentId.Oceania,
             Name = CountryName.Vanuatu
         },
         new()
