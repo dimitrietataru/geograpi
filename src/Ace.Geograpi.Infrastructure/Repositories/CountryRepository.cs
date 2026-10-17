@@ -193,13 +193,18 @@ internal sealed class CountryRepository
             query = query.Where(c => c.Name == request.Name);
         }
 
+        if (request.ContinentIds.Count > 0)
+        {
+            query = query.Where(c => request.ContinentIds.Contains(c.ContinentId));
+        }
+
         return query;
     }
 
     protected sealed override IQueryable<CountryEntity> BuildDefaultSortingQuery(
         IQueryable<CountryEntity> query)
     {
-        return query.OrderBy(e => e.Name);
+        return query.OrderBy(c => c.Name);
     }
 
     protected sealed override IQueryable<CountryEntity> BuildSortingQuery(
@@ -209,8 +214,10 @@ internal sealed class CountryRepository
 
         return (sortingRequest.SortBy, sortingRequest.SortDirection) switch
         {
-            (nameof(CountryEntity.Name), SortDirection.Ascending) => query.OrderBy(c => c.Name),
-            (nameof(CountryEntity.Name), SortDirection.Descending) => query.OrderByDescending(c => c.Name),
+            ("name", SortDirection.Ascending) => query.OrderBy(c => c.Name),
+            ("name", SortDirection.Descending) => query.OrderByDescending(c => c.Name),
+            ("continentId", SortDirection.Ascending) => query.OrderBy(c => c.ContinentId).ThenBy(c => c.Name),
+            ("continentId", SortDirection.Descending) => query.OrderByDescending(c => c.ContinentId).ThenByDescending(c => c.Name),
             _ => query
         };
     }
