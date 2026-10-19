@@ -3,6 +3,7 @@ using CatNip.Domain.ImportExport.Excel;
 
 namespace Ace.Geograpi.Domain.ImportExport.Dtos;
 
+[DebuggerDisplay("({RowNumber}. {Code}) {Name}")]
 public sealed class ContinentExchangeDto : ICsvMappable, IExcelMappable
 {
     public int RowNumber { get; set; }

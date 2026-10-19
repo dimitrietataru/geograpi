@@ -13,7 +13,22 @@ public sealed class CountryRootMappingProfile : OneWayProfile<CountryEntity, Cou
                 model => model.ContinentId,
                 options => options.MapFrom(entity => entity.ContinentId))
             .ForMember(
+                model => model.Code,
+                options => options.MapFrom(entity => entity.Code))
+            .ForMember(
+                model => model.CodeA3,
+                options => options.MapFrom(entity => entity.CodeA3))
+            .ForMember(
                 model => model.Name,
-                options => options.MapFrom(entity => entity.Name));
+                options => options.MapFrom(entity => entity.Name))
+            .ForMember(
+                model => model.NameOfficial,
+                options => options.MapFrom(entity => entity.NameOfficial))
+            .ForMember(
+                model => model.Area,
+                options => options.MapFrom(entity => entity.Area))
+            .ForMember(
+                model => model.Population,
+                options => options.MapFrom(entity => entity.Population));
     }
 }

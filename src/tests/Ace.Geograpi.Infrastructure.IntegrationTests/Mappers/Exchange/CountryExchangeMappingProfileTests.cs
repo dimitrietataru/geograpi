@@ -16,7 +16,12 @@ public sealed class CountryExchangeMappingProfileTests
         (dto, entity) =>
         {
             entity.Id.Should().Be(default);
+            entity.Code.Should().Be(dto.Code);
+            entity.CodeA3.Should().Be(dto.CodeA3);
             entity.Name.Should().Be(dto.Name);
+            entity.NameOfficial.Should().Be(dto.NameOfficial);
+            entity.Area.Should().Be(dto.Area);
+            entity.Population.Should().Be(dto.Population);
         };
 
     protected sealed override IEnumerable<Type> RelatedMappingProfiles => [];

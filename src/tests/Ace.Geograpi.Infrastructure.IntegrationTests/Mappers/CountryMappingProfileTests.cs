@@ -20,7 +20,12 @@ public sealed class CountryMappingProfileTests
         {
             model.Id.Should().Be(entity.Id);
             model.ContinentId.Should().Be(entity.ContinentId);
+            model.Code.Should().Be(entity.Code);
+            model.CodeA3.Should().Be(entity.CodeA3);
             model.Name.Should().Be(entity.Name);
+            model.NameOfficial.Should().Be(entity.NameOfficial);
+            model.Area.Should().Be(entity.Area);
+            model.Population.Should().Be(entity.Population);
 
             model.CreatedAt.Should().Be(entity.CreatedAt);
             model.CreatedBy.Should().Be(entity.CreatedBy);
@@ -34,10 +39,15 @@ public sealed class CountryMappingProfileTests
     protected sealed override Action<CountryModel, CountryEntity>? RightToLeftAssertions =>
         (model, entity) =>
         {
-            entity.Id.Should().Be(default, because: "Id is ignored");
+            entity.Id.Should().Be(default, because: "Id is ignored.");
             entity.ContinentId.Should().Be(model.ContinentId);
+            entity.Code.Should().Be(model.Code);
+            entity.CodeA3.Should().Be(model.CodeA3);
             entity.Name.Should().Be(model.Name);
-            entity.Continent.Should().BeNull();
+            entity.NameOfficial.Should().Be(model.NameOfficial);
+            entity.Area.Should().Be(model.Area);
+            entity.Population.Should().Be(model.Population);
+            entity.Continent.Should().BeNull(because: "Continent is not mapped.");
 
             entity.CreatedAt.Should().BeNull();
             entity.CreatedBy.Should().Be(default);

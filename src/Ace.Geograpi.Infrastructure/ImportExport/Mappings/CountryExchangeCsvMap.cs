@@ -8,7 +8,15 @@ internal sealed class CountryExchangeCsvMap : AceCsvMap<CountryExchangeDto>
     public CountryExchangeCsvMap()
         : base()
     {
-        Map(c => c.ContinentName).Name("Continent");
+        Map(c => c.ContinentCode).Name("Continent");
+
+        Map(c => c.Code).Name("CodeA2");
+        Map(c => c.CodeA3).Name("CodeA3");
+
         Map(c => c.Name).Name("Name");
+        Map(c => c.NameOfficial).Name("Official Name");
+
+        Map(c => c.Area).Name("Area");
+        Map(c => c.Population).Name("Population");
     }
 }

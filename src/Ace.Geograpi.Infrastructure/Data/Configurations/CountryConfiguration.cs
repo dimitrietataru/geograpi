@@ -19,7 +19,7 @@ internal sealed class CountryConfiguration : TraceableEntityConfiguration<Countr
         base.ConfigureKeys(builder);
 
         builder
-            .Property(e => e.ContinentId)
+            .Property(c => c.ContinentId)
             .IsRequired();
     }
 
@@ -38,8 +38,37 @@ internal sealed class CountryConfiguration : TraceableEntityConfiguration<Countr
         base.ConfigureColumns(builder);
 
         builder
-            .Property(e => e.Name)
+            .Property(c => c.Code)
+            .IsRequired()
+            .HasMaxLength(Constraints.CountryCodeMaxLength)
+            .HasDefaultValue(string.Empty);
+
+        builder
+            .Property(c => c.CodeA3)
+            .IsRequired()
+            .HasMaxLength(Constraints.CountryCodeA3MaxLength)
+            .HasDefaultValue(string.Empty);
+
+        builder
+            .Property(c => c.Name)
             .IsRequired()
             .HasMaxLength(Constraints.CountryNameMaxLength);
+
+        builder
+            .Property(c => c.NameOfficial)
+            .IsRequired()
+            .HasMaxLength(Constraints.CountryNameOfficialMaxLength)
+            .HasDefaultValue(string.Empty);
+
+        builder
+            .Property(c => c.Area)
+            .IsRequired()
+            .HasPrecision(10, 2)
+            .HasDefaultValue(0);
+
+        builder
+            .Property(c => c.Population)
+            .IsRequired()
+            .HasDefaultValue(0);
     }
 }

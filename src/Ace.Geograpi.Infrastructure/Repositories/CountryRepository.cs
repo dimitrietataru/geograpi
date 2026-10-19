@@ -115,21 +115,21 @@ internal sealed class CountryRepository
     public sealed override async Task<ImportResponse> ImportAsync(
         ICollection<CountryExchangeDto> records, CancellationToken cancellation)
     {
-        var continentNames = records.OrderBy(c => c.ContinentName).Select(c => c.ContinentName).ToHashSet(StringComparer.Ordinal);
-        var dbContinentsByName = await DbContext
+        var continentCodes = records.OrderBy(c => c.ContinentCode).Select(c => c.ContinentCode).ToHashSet(StringComparer.Ordinal);
+        var dbContinentsByCode = await DbContext
             .Continents
             .AsNoTracking()
-            .Where(c => continentNames.Contains(c.Name))
-            .OrderBy(c => c.Name)
-            .ToDictionaryAsync(k => k.Name, v => v.Id, cancellation);
+            .Where(c => continentCodes.Contains(c.Code))
+            .OrderBy(c => c.Code)
+            .ToDictionaryAsync(k => k.Code, v => v.Id, cancellation);
 
         var unknownContinentErrors = records
-            .Where(c => !dbContinentsByName.ContainsKey(c.ContinentName))
+            .Where(c => !dbContinentsByCode.ContainsKey(c.ContinentCode))
             .Select(c =>
                 new ImportDataIntegrityError
                 {
                     RowNumber = c.RowNumber,
-                    ErrorMessage = $"Unknown continent '{c.ContinentName}'"
+                    ErrorMessage = $"Unknown continent '{c.ContinentCode}'"
                 })
             .ToList();
         if (unknownContinentErrors.Count > 0)
@@ -152,7 +152,7 @@ internal sealed class CountryRepository
         foreach (var entryToAdd in countriesToAdd)
         {
             var country = Mapper.Map<CountryEntity>(entryToAdd);
-            country.ContinentId = dbContinentsByName[entryToAdd.ContinentName];
+            country.ContinentId = dbContinentsByCode[entryToAdd.ContinentCode];
             DbContext.Counties.Add(country);
         }
 
@@ -161,7 +161,7 @@ internal sealed class CountryRepository
             var dbEntry = dbCountries.Single(c => string.Equals(entryToUpdate.Name, c.Name, StringComparison.Ordinal));
 
             Mapper.Map(entryToUpdate, dbEntry);
-            dbEntry.ContinentId = dbContinentsByName[entryToUpdate.ContinentName];
+            dbEntry.ContinentId = dbContinentsByCode[entryToUpdate.ContinentCode];
         }
 
         await CommitAsync(cancellation);
@@ -186,6 +186,11 @@ internal sealed class CountryRepository
         if (request.Ids.Any())
         {
             query = query.Where(c => request.Ids.Contains(c.Id));
+        }
+
+        if (!string.IsNullOrWhiteSpace(request.Code))
+        {
+            query = query.Where(c => c.Code == request.Code);
         }
 
         if (!string.IsNullOrWhiteSpace(request.Name))
@@ -214,10 +219,16 @@ internal sealed class CountryRepository
 
         return (sortingRequest.SortBy, sortingRequest.SortDirection) switch
         {
-            ("name", SortDirection.Ascending) => query.OrderBy(c => c.Name),
-            ("name", SortDirection.Descending) => query.OrderByDescending(c => c.Name),
             ("continentId", SortDirection.Ascending) => query.OrderBy(c => c.ContinentId).ThenBy(c => c.Name),
             ("continentId", SortDirection.Descending) => query.OrderByDescending(c => c.ContinentId).ThenByDescending(c => c.Name),
+            ("code", SortDirection.Ascending) => query.OrderBy(c => c.Code),
+            ("code", SortDirection.Descending) => query.OrderByDescending(c => c.Code),
+            ("name", SortDirection.Ascending) => query.OrderBy(c => c.Name),
+            ("name", SortDirection.Descending) => query.OrderByDescending(c => c.Name),
+            ("area", SortDirection.Ascending) => query.OrderBy(c => c.Area).ThenBy(c => c.Name),
+            ("area", SortDirection.Descending) => query.OrderByDescending(c => c.Area).ThenByDescending(c => c.Name),
+            ("population", SortDirection.Ascending) => query.OrderBy(c => c.Population).ThenBy(c => c.Name),
+            ("population", SortDirection.Descending) => query.OrderByDescending(c => c.Population).ThenByDescending(c => c.Name),
             _ => query
         };
     }

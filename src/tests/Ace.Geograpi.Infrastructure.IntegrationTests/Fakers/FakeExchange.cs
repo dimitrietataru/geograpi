@@ -40,10 +40,32 @@ public sealed class FakeExchange : AbstractDataFaker<FakeExchange>
                 dto => dto.RowNumber,
                 f => f.Random.Int(min: 1, max: 100))
             .RuleFor(
-                dto => dto.ContinentName,
+                dto => dto.ContinentCode,
+                f => f.PickRandom(
+                    ContinentCode.Africa,
+                    ContinentCode.Antarctica,
+                    ContinentCode.Asia,
+                    ContinentCode.Europe,
+                    ContinentCode.Oceania,
+                    ContinentCode.NorthAmerica,
+                    ContinentCode.SouthAmerica))
+            .RuleFor(
+                country => country.Code,
+                f => f.Random.String2(length: 2))
+            .RuleFor(
+                country => country.CodeA3,
+                f => f.Random.String2(length: 3))
+            .RuleFor(
+                country => country.Name,
                 f => f.Random.String2(length: 10))
             .RuleFor(
-                dto => dto.Name,
-                f => f.Random.String2(length: 10))
+                country => country.NameOfficial,
+                f => f.Random.String2(length: 20))
+            .RuleFor(
+                country => country.Area,
+                f => Math.Round(f.Random.Double(min: 1, max: 1_000_000), 2))
+            .RuleFor(
+                country => country.Population,
+                f => f.Random.Int(min: 10_000, max: 1_000_000_000))
             .StrictMode(ensureRulesForAllProperties: true);
 }

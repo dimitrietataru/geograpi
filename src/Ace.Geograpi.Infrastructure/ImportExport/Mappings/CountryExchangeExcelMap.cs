@@ -12,8 +12,13 @@ internal sealed class CountryExchangeExcelMap : AceExcelMap<CountryExchangeDto>
         return new()
         {
             RowNumber = row.RowNumber(),
-            ContinentName = row.Cell(headers["Continent"]).GetString().Trim(),
-            Name = row.Cell(headers["Name"]).GetString().Trim()
+            ContinentCode = row.Cell(headers["Continent"]).GetString().Trim(),
+            Code = row.Cell(headers["CodeA2"]).GetString().Trim(),
+            CodeA3 = row.Cell(headers["CodeA3"]).GetString().Trim(),
+            Name = row.Cell(headers["Name"]).GetString().Trim(),
+            NameOfficial = row.Cell(headers["Official Name"]).GetString().Trim(),
+            Area = row.Cell(headers["Area"]).GetValue<double>(),
+            Population = row.Cell(headers["Population"]).GetValue<int>(),
         };
     }
 }

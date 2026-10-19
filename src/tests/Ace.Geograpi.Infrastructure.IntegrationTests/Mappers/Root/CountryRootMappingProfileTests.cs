@@ -18,7 +18,12 @@ public sealed class CountryRootMappingProfileTests
         {
             model.Id.Should().Be(entity.Id);
             model.ContinentId.Should().Be(entity.ContinentId);
+            model.Code.Should().Be(entity.Code);
+            model.CodeA3.Should().Be(entity.CodeA3);
             model.Name.Should().Be(entity.Name);
+            model.NameOfficial.Should().Be(entity.NameOfficial);
+            model.Area.Should().Be(entity.Area);
+            model.Population.Should().Be(entity.Population);
         };
 
     protected sealed override IEnumerable<Type> RelatedMappingProfiles =>
