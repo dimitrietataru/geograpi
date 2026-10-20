@@ -19,6 +19,7 @@ public sealed class ContinentRootMappingProfileTests
             model.Id.Should().Be(entity.Id);
             model.Code.Should().Be(entity.Code);
             model.Name.Should().Be(entity.Name);
+            model.CountryCount.Should().Be(entity.Countries.Count());
         };
 
     protected sealed override IEnumerable<Type> RelatedMappingProfiles =>

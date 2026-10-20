@@ -14,6 +14,9 @@ public sealed class ContinentRootMappingProfile : OneWayProfile<ContinentEntity,
                 options => options.MapFrom(entity => entity.Code))
             .ForMember(
                 model => model.Name,
-                options => options.MapFrom(entity => entity.Name));
+                options => options.MapFrom(entity => entity.Name))
+            .ForMember(
+                model => model.CountryCount,
+                options => options.MapFrom(entity => entity.Countries.Count()));
     }
 }

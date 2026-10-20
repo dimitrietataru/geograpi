@@ -6,4 +6,6 @@ public sealed class ContinentRootModel : Model<int>
 {
     public string Code { get; set; } = default!;
     public string Name { get; set; } = default!;
+
+    public int CountryCount { get; set; }
 }
