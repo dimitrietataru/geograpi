@@ -19,13 +19,13 @@ public sealed class CountryModel : TraceableModel<int>
     public string CodeA3 { get; set; } = default!;
 
     /// <summary>
-    /// Country name.
+    /// Country name (EN).
     /// </summary>
     /// <remarks>Example: <i>Norway</i></remarks>
     public string Name { get; set; } = default!;
 
     /// <summary>
-    /// Country official name.
+    /// Country official name (EN).
     /// </summary>
     /// <remarks>Example: <i>Kingdom of Norway</i></remarks>
     public string NameOfficial { get; set; } = default!;
@@ -40,4 +40,39 @@ public sealed class CountryModel : TraceableModel<int>
     /// Country population.
     /// </summary>
     public int Population { get; set; }
+
+    /// <summary>
+    /// Google Place Id.
+    /// </summary>
+    public string GoogleId { get; set; } = default!;
+
+    /// <summary>
+    /// Northern Boundary (Latitude)
+    /// </summary>
+    public decimal BoundaryN { get; set; }
+
+    /// <summary>
+    /// Southern Boundary (Latitude)
+    /// </summary>
+    public decimal BoundaryS { get; set; }
+
+    /// <summary>
+    /// Eastern Boundary (Longitude)
+    /// </summary>
+    public decimal BoundaryE { get; set; }
+
+    /// <summary>
+    /// Western Boundary (Longitude)
+    /// </summary>
+    public decimal BoundaryW { get; set; }
+
+    /// <summary>
+    /// Center Point Latitude
+    /// </summary>
+    public decimal CenterLat { get; set; }
+
+    /// <summary>
+    /// Center Point Longitude
+    /// </summary>
+    public decimal CenterLng { get; set; }
 }

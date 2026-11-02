@@ -33,6 +33,27 @@ internal sealed class FakeModel : AbstractDataFaker<FakeModel>
                     ContinentName.NorthAmerica,
                     ContinentName.SouthAmerica))
             .RuleFor(
+                continent => continent.GoogleId,
+                f => f.Random.String2(length: 32))
+            .RuleFor(
+                continent => continent.BoundaryN,
+                f => f.Random.Decimal(min: -90, max: 90))
+            .RuleFor(
+                continent => continent.BoundaryS,
+                f => f.Random.Decimal(min: -90, max: 90))
+            .RuleFor(
+                continent => continent.BoundaryE,
+                f => f.Random.Decimal(min: -180, max: 180))
+            .RuleFor(
+                continent => continent.BoundaryW,
+                f => f.Random.Decimal(min: -180, max: 180))
+            .RuleFor(
+                continent => continent.CenterLat,
+                f => f.Random.Decimal(min: -90, max: 90))
+            .RuleFor(
+                continent => continent.CenterLng,
+                f => f.Random.Decimal(min: -180, max: 180))
+            .RuleFor(
                 continent => continent.Countries,
                 _ => FakeCountryModel.GenerateBetween(1, 3))
             .StrictMode(ensureRulesForAllProperties: false);
@@ -62,5 +83,26 @@ internal sealed class FakeModel : AbstractDataFaker<FakeModel>
             .RuleFor(
                 country => country.Population,
                 f => f.Random.Int(min: 10_000, max: 1_000_000_000))
+            .RuleFor(
+                country => country.GoogleId,
+                f => f.Random.String2(length: 32))
+            .RuleFor(
+                country => country.BoundaryN,
+                f => f.Random.Decimal(min: -90, max: 90))
+            .RuleFor(
+                country => country.BoundaryS,
+                f => f.Random.Decimal(min: -90, max: 90))
+            .RuleFor(
+                country => country.BoundaryE,
+                f => f.Random.Decimal(min: -180, max: 180))
+            .RuleFor(
+                country => country.BoundaryW,
+                f => f.Random.Decimal(min: -180, max: 180))
+            .RuleFor(
+                country => country.CenterLat,
+                f => f.Random.Decimal(min: -90, max: 90))
+            .RuleFor(
+                country => country.CenterLng,
+                f => f.Random.Decimal(min: -180, max: 180))
             .StrictMode(ensureRulesForAllProperties: false);
 }

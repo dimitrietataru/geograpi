@@ -19,13 +19,55 @@ internal sealed class ContinentConfiguration : TraceableEntityConfiguration<Cont
         base.ConfigureColumns(builder);
 
         builder
-            .Property(e => e.Code)
+            .Property(c => c.Code)
             .IsRequired()
             .HasMaxLength(Constraints.ContinentCodeMaxLength);
 
         builder
-            .Property(e => e.Name)
+            .Property(c => c.Name)
             .IsRequired()
             .HasMaxLength(Constraints.ContinentNameMaxLength);
+
+        builder
+            .Property(c => c.GoogleId)
+            .IsRequired()
+            .HasMaxLength(Constraints.ContinentGoogleIdMaxLength)
+            .HasDefaultValue(string.Empty);
+
+        builder
+            .Property(c => c.BoundaryN)
+            .IsRequired()
+            .HasPrecision(11, 8)
+            .HasDefaultValue(0);
+
+        builder
+            .Property(c => c.BoundaryS)
+            .IsRequired()
+            .HasPrecision(11, 8)
+            .HasDefaultValue(0);
+
+        builder
+            .Property(c => c.BoundaryE)
+            .IsRequired()
+            .HasPrecision(11, 8)
+            .HasDefaultValue(0);
+
+        builder
+            .Property(c => c.BoundaryW)
+            .IsRequired()
+            .HasPrecision(11, 8)
+            .HasDefaultValue(0);
+
+        builder
+            .Property(c => c.CenterLat)
+            .IsRequired()
+            .HasPrecision(11, 8)
+            .HasDefaultValue(0);
+
+        builder
+            .Property(c => c.CenterLng)
+            .IsRequired()
+            .HasPrecision(11, 8)
+            .HasDefaultValue(0);
     }
 }

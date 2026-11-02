@@ -21,6 +21,13 @@ public sealed class ContinentMappingProfileTests
             model.Id.Should().Be(entity.Id);
             model.Code.Should().Be(entity.Code);
             model.Name.Should().Be(entity.Name);
+            model.GoogleId.Should().Be(entity.GoogleId);
+            model.BoundaryN.Should().Be(entity.BoundaryN);
+            model.BoundaryS.Should().Be(entity.BoundaryS);
+            model.BoundaryE.Should().Be(entity.BoundaryE);
+            model.BoundaryW.Should().Be(entity.BoundaryW);
+            model.CenterLat.Should().Be(entity.CenterLat);
+            model.CenterLng.Should().Be(entity.CenterLng);
             model.Countries.Should().NotBeNull().And.HaveSameCount(entity.Countries);
 
             model.CreatedAt.Should().Be(entity.CreatedAt);
@@ -38,6 +45,13 @@ public sealed class ContinentMappingProfileTests
             entity.Id.Should().Be(default, because: "Id is ignored");
             entity.Code.Should().Be(model.Code);
             entity.Name.Should().Be(model.Name);
+            entity.GoogleId.Should().Be(model.GoogleId);
+            entity.BoundaryN.Should().Be(model.BoundaryN);
+            entity.BoundaryS.Should().Be(model.BoundaryS);
+            entity.BoundaryE.Should().Be(model.BoundaryE);
+            entity.BoundaryW.Should().Be(model.BoundaryW);
+            entity.CenterLat.Should().Be(model.CenterLat);
+            entity.CenterLng.Should().Be(model.CenterLng);
             entity.Countries.Should().NotBeNull().And.HaveSameCount(model.Countries);
 
             entity.CreatedAt.Should().BeNull();

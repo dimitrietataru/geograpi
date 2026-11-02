@@ -19,6 +19,13 @@ public sealed class ContinentRootMappingProfileTests
             model.Id.Should().Be(entity.Id);
             model.Code.Should().Be(entity.Code);
             model.Name.Should().Be(entity.Name);
+            model.GoogleId.Should().Be(entity.GoogleId);
+            model.BoundaryN.Should().Be(entity.BoundaryN);
+            model.BoundaryS.Should().Be(entity.BoundaryS);
+            model.BoundaryE.Should().Be(entity.BoundaryE);
+            model.BoundaryW.Should().Be(entity.BoundaryW);
+            model.CenterLat.Should().Be(entity.CenterLat);
+            model.CenterLng.Should().Be(entity.CenterLng);
             model.CountryCount.Should().Be(entity.Countries.Count());
         };
 

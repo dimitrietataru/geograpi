@@ -29,6 +29,27 @@ public sealed class CountryRootMappingProfile : OneWayProfile<CountryEntity, Cou
                 options => options.MapFrom(entity => entity.Area))
             .ForMember(
                 model => model.Population,
-                options => options.MapFrom(entity => entity.Population));
+                options => options.MapFrom(entity => entity.Population))
+            .ForMember(
+                model => model.GoogleId,
+                options => options.MapFrom(entity => entity.GoogleId))
+            .ForMember(
+                model => model.BoundaryN,
+                options => options.MapFrom(entity => entity.BoundaryN))
+            .ForMember(
+                model => model.BoundaryS,
+                options => options.MapFrom(entity => entity.BoundaryS))
+            .ForMember(
+                model => model.BoundaryE,
+                options => options.MapFrom(entity => entity.BoundaryE))
+            .ForMember(
+                model => model.BoundaryW,
+                options => options.MapFrom(entity => entity.BoundaryW))
+            .ForMember(
+                model => model.CenterLat,
+                options => options.MapFrom(entity => entity.CenterLat))
+            .ForMember(
+                model => model.CenterLng,
+                options => options.MapFrom(entity => entity.CenterLng));
     }
 }

@@ -29,7 +29,28 @@ public sealed class CountryMappingProfile : TwoWayProfile<CountryEntity, Country
                 options => options.MapFrom(entity => entity.Area))
             .ForMember(
                 model => model.Population,
-                options => options.MapFrom(entity => entity.Population));
+                options => options.MapFrom(entity => entity.Population))
+            .ForMember(
+                model => model.GoogleId,
+                options => options.MapFrom(entity => entity.GoogleId))
+            .ForMember(
+                model => model.BoundaryN,
+                options => options.MapFrom(entity => entity.BoundaryN))
+            .ForMember(
+                model => model.BoundaryS,
+                options => options.MapFrom(entity => entity.BoundaryS))
+            .ForMember(
+                model => model.BoundaryE,
+                options => options.MapFrom(entity => entity.BoundaryE))
+            .ForMember(
+                model => model.BoundaryW,
+                options => options.MapFrom(entity => entity.BoundaryW))
+            .ForMember(
+                model => model.CenterLat,
+                options => options.MapFrom(entity => entity.CenterLat))
+            .ForMember(
+                model => model.CenterLng,
+                options => options.MapFrom(entity => entity.CenterLng));
     }
 
     public sealed override void ConfigureRightToLeftMapping()
@@ -57,6 +78,27 @@ public sealed class CountryMappingProfile : TwoWayProfile<CountryEntity, Country
             .ForMember(
                 entity => entity.Population,
                 options => options.MapFrom(model => model.Population))
+            .ForMember(
+                entity => entity.GoogleId,
+                options => options.MapFrom(model => model.GoogleId))
+            .ForMember(
+                entity => entity.BoundaryN,
+                options => options.MapFrom(model => model.BoundaryN))
+            .ForMember(
+                entity => entity.BoundaryS,
+                options => options.MapFrom(model => model.BoundaryS))
+            .ForMember(
+                entity => entity.BoundaryE,
+                options => options.MapFrom(model => model.BoundaryE))
+            .ForMember(
+                entity => entity.BoundaryW,
+                options => options.MapFrom(model => model.BoundaryW))
+            .ForMember(
+                entity => entity.CenterLat,
+                options => options.MapFrom(model => model.CenterLat))
+            .ForMember(
+                entity => entity.CenterLng,
+                options => options.MapFrom(model => model.CenterLng))
             .ForMember(
                 entity => entity.Continent,
                 options => options.Ignore());

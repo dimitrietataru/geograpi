@@ -26,6 +26,13 @@ public sealed class CountryMappingProfileTests
             model.NameOfficial.Should().Be(entity.NameOfficial);
             model.Area.Should().Be(entity.Area);
             model.Population.Should().Be(entity.Population);
+            model.GoogleId.Should().Be(entity.GoogleId);
+            model.BoundaryN.Should().Be(entity.BoundaryN);
+            model.BoundaryS.Should().Be(entity.BoundaryS);
+            model.BoundaryE.Should().Be(entity.BoundaryE);
+            model.BoundaryW.Should().Be(entity.BoundaryW);
+            model.CenterLat.Should().Be(entity.CenterLat);
+            model.CenterLng.Should().Be(entity.CenterLng);
 
             model.CreatedAt.Should().Be(entity.CreatedAt);
             model.CreatedBy.Should().Be(entity.CreatedBy);
@@ -47,6 +54,13 @@ public sealed class CountryMappingProfileTests
             entity.NameOfficial.Should().Be(model.NameOfficial);
             entity.Area.Should().Be(model.Area);
             entity.Population.Should().Be(model.Population);
+            entity.GoogleId.Should().Be(model.GoogleId);
+            entity.BoundaryN.Should().Be(model.BoundaryN);
+            entity.BoundaryS.Should().Be(model.BoundaryS);
+            entity.BoundaryE.Should().Be(model.BoundaryE);
+            entity.BoundaryW.Should().Be(model.BoundaryW);
+            entity.CenterLat.Should().Be(model.CenterLat);
+            entity.CenterLng.Should().Be(model.CenterLng);
             entity.Continent.Should().BeNull(because: "Continent is not mapped.");
 
             entity.CreatedAt.Should().BeNull();
