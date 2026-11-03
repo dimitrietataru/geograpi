@@ -32,6 +32,27 @@ public sealed class FakeExchange : AbstractDataFaker<FakeExchange>
                     ContinentName.Oceania,
                     ContinentName.NorthAmerica,
                     ContinentName.SouthAmerica))
+            .RuleFor(
+                dto => dto.GoogleId,
+                f => f.Random.String2(length: 32))
+            .RuleFor(
+                dto => dto.BoundaryN,
+                f => f.Random.Decimal(min: -90, max: 90))
+            .RuleFor(
+                dto => dto.BoundaryS,
+                f => f.Random.Decimal(min: -90, max: 90))
+            .RuleFor(
+                dto => dto.BoundaryE,
+                f => f.Random.Decimal(min: -180, max: 180))
+            .RuleFor(
+                dto => dto.BoundaryW,
+                f => f.Random.Decimal(min: -180, max: 180))
+            .RuleFor(
+                dto => dto.CenterLat,
+                f => f.Random.Decimal(min: -90, max: 90))
+            .RuleFor(
+                dto => dto.CenterLng,
+                f => f.Random.Decimal(min: -180, max: 180))
             .StrictMode(ensureRulesForAllProperties: true);
 
     private Faker<CountryExchangeDto> FakeCountryExchangeDto =>
@@ -50,22 +71,43 @@ public sealed class FakeExchange : AbstractDataFaker<FakeExchange>
                     ContinentCode.NorthAmerica,
                     ContinentCode.SouthAmerica))
             .RuleFor(
-                country => country.Code,
+                dto => dto.Code,
                 f => f.Random.String2(length: 2))
             .RuleFor(
-                country => country.CodeA3,
+                dto => dto.CodeA3,
                 f => f.Random.String2(length: 3))
             .RuleFor(
-                country => country.Name,
+                dto => dto.Name,
                 f => f.Random.String2(length: 10))
             .RuleFor(
-                country => country.NameOfficial,
+                dto => dto.NameOfficial,
                 f => f.Random.String2(length: 20))
             .RuleFor(
-                country => country.Area,
+                dto => dto.Area,
                 f => Math.Round(f.Random.Double(min: 1, max: 1_000_000), 2))
             .RuleFor(
-                country => country.Population,
+                dto => dto.Population,
                 f => f.Random.Int(min: 10_000, max: 1_000_000_000))
+            .RuleFor(
+                dto => dto.GoogleId,
+                f => f.Random.String2(length: 32))
+            .RuleFor(
+                dto => dto.BoundaryN,
+                f => f.Random.Decimal(min: -90, max: 90))
+            .RuleFor(
+                dto => dto.BoundaryS,
+                f => f.Random.Decimal(min: -90, max: 90))
+            .RuleFor(
+                dto => dto.BoundaryE,
+                f => f.Random.Decimal(min: -180, max: 180))
+            .RuleFor(
+                dto => dto.BoundaryW,
+                f => f.Random.Decimal(min: -180, max: 180))
+            .RuleFor(
+                dto => dto.CenterLat,
+                f => f.Random.Decimal(min: -90, max: 90))
+            .RuleFor(
+                dto => dto.CenterLng,
+                f => f.Random.Decimal(min: -180, max: 180))
             .StrictMode(ensureRulesForAllProperties: true);
 }

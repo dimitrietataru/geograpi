@@ -19,6 +19,13 @@ internal sealed class CountryExchangeExcelMap : AceExcelMap<CountryExchangeDto>
             NameOfficial = row.Cell(headers["Official Name"]).GetString().Trim(),
             Area = row.Cell(headers["Area"]).GetValue<double>(),
             Population = row.Cell(headers["Population"]).GetValue<int>(),
+            GoogleId = row.Cell(headers["Google Id"]).GetString().Trim(),
+            BoundaryN = row.Cell(headers["BoundaryN"]).GetValue<decimal>(),
+            BoundaryS = row.Cell(headers["BoundaryS"]).GetValue<decimal>(),
+            BoundaryE = row.Cell(headers["BoundaryE"]).GetValue<decimal>(),
+            BoundaryW = row.Cell(headers["BoundaryW"]).GetValue<decimal>(),
+            CenterLat = row.Cell(headers["CenterLat"]).GetValue<decimal>(),
+            CenterLng = row.Cell(headers["CenterLng"]).GetValue<decimal>()
         };
     }
 }

@@ -13,7 +13,14 @@ internal sealed class ContinentExchangeExcelMap : AceExcelMap<ContinentExchangeD
         {
             RowNumber = row.RowNumber(),
             Code = row.Cell(headers["Code"]).GetString().Trim(),
-            Name = row.Cell(headers["Name"]).GetString().Trim()
+            Name = row.Cell(headers["Name"]).GetString().Trim(),
+            GoogleId = row.Cell(headers["Google Id"]).GetString().Trim(),
+            BoundaryN = row.Cell(headers["BoundaryN"]).GetValue<decimal>(),
+            BoundaryS = row.Cell(headers["BoundaryS"]).GetValue<decimal>(),
+            BoundaryE = row.Cell(headers["BoundaryE"]).GetValue<decimal>(),
+            BoundaryW = row.Cell(headers["BoundaryW"]).GetValue<decimal>(),
+            CenterLat = row.Cell(headers["CenterLat"]).GetValue<decimal>(),
+            CenterLng = row.Cell(headers["CenterLng"]).GetValue<decimal>()
         };
     }
 }

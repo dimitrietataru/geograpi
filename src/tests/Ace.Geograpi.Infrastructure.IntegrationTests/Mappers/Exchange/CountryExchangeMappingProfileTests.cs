@@ -22,6 +22,13 @@ public sealed class CountryExchangeMappingProfileTests
             entity.NameOfficial.Should().Be(dto.NameOfficial);
             entity.Area.Should().Be(dto.Area);
             entity.Population.Should().Be(dto.Population);
+            entity.GoogleId.Should().Be(dto.GoogleId);
+            entity.BoundaryN.Should().Be(dto.BoundaryN);
+            entity.BoundaryS.Should().Be(dto.BoundaryS);
+            entity.BoundaryE.Should().Be(dto.BoundaryE);
+            entity.BoundaryW.Should().Be(dto.BoundaryW);
+            entity.CenterLat.Should().Be(dto.CenterLat);
+            entity.CenterLng.Should().Be(dto.CenterLng);
         };
 
     protected sealed override IEnumerable<Type> RelatedMappingProfiles => [];

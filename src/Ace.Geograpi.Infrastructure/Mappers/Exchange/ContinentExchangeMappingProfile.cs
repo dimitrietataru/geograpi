@@ -17,6 +17,27 @@ public sealed class ContinentExchangeMappingProfile : OneWayProfile<ContinentExc
                 options => options.MapFrom(dto => dto.Code))
             .ForMember(
                 entity => entity.Name,
-                options => options.MapFrom(dto => dto.Name));
+                options => options.MapFrom(dto => dto.Name))
+            .ForMember(
+                entity => entity.GoogleId,
+                options => options.MapFrom(model => model.GoogleId))
+            .ForMember(
+                entity => entity.BoundaryN,
+                options => options.MapFrom(model => model.BoundaryN))
+            .ForMember(
+                entity => entity.BoundaryS,
+                options => options.MapFrom(model => model.BoundaryS))
+            .ForMember(
+                entity => entity.BoundaryE,
+                options => options.MapFrom(model => model.BoundaryE))
+            .ForMember(
+                entity => entity.BoundaryW,
+                options => options.MapFrom(model => model.BoundaryW))
+            .ForMember(
+                entity => entity.CenterLat,
+                options => options.MapFrom(model => model.CenterLat))
+            .ForMember(
+                entity => entity.CenterLng,
+                options => options.MapFrom(model => model.CenterLng));
     }
 }

@@ -18,4 +18,12 @@ public sealed class CountryExchangeDto : ICsvMappable, IExcelMappable
 
     public double Area { get; set; }
     public int Population { get; set; }
+
+    public string GoogleId { get; set; } = default!;
+    public decimal BoundaryN { get; set; }
+    public decimal BoundaryS { get; set; }
+    public decimal BoundaryE { get; set; }
+    public decimal BoundaryW { get; set; }
+    public decimal CenterLat { get; set; }
+    public decimal CenterLng { get; set; }
 }
