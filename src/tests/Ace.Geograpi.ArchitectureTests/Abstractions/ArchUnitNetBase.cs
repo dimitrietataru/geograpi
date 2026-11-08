@@ -79,7 +79,7 @@ public abstract class ArchUnitNetBase : AbstractArchitectureTest
             ////.Or().AreAssignableTo(typeof(QueryFilter<,>))
             .As("Domain query filters");
 
-    protected static readonly GivenInterfacesConjunction domainRepositories =
+    protected static readonly GivenInterfacesConjunctionWithDescription domainRepositories =
         ArchRuleDefinition
             .Interfaces()
             .That().ResideInAssembly(domainAssembly)
@@ -88,7 +88,7 @@ public abstract class ArchUnitNetBase : AbstractArchitectureTest
             ////.And().ImplementInterface(typeof(IAceRepository<,,>))
             .As("Domain repositories");
 
-    protected static readonly GivenInterfacesConjunction domainServices =
+    protected static readonly GivenInterfacesConjunctionWithDescription domainServices =
         ArchRuleDefinition
             .Interfaces()
             .That().ResideInAssembly(domainAssembly)
