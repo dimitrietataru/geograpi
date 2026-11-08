@@ -3,10 +3,6 @@
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
 
-    <Nullable>enable</Nullable>
-    <WarningsAsErrors>nullable</WarningsAsErrors>
-    <ImplicitUsings>disable</ImplicitUsings>
-
     <EnableApiVersioningAnalyzers>true</EnableApiVersioningAnalyzers>
 
     <UserSecretsId>030e3591-da93-4a01-8882-706b83209b84</UserSecretsId>
@@ -24,13 +20,6 @@
     <PackageReference Include="Serilog" Version="4.4.0" />
     <PackageReference Include="Serilog.AspNetCore" Version="10.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="10.3.1" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(Configuration)' == 'Debug'">
-    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.403">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>

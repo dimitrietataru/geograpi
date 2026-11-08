@@ -3,6 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{6F1C3B92-8D4E-4A07-B5E9-3C72A1D8F046}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+	EndProjectSection
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1816803D-EF38-4CC6-B700-C29AB682BE9D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ace.Geograpi.Domain", "Ace.Geograpi.Domain\Ace.Geograpi.Domain.csproj", "{90549718-F5E0-4E70-AEA0-DB98E099C6C8}"
