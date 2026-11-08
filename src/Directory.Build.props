@@ -11,6 +11,12 @@
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <Version>1.0.0</Version>
+    <Authors>Dimitrie Tataru</Authors>
+    <Company>A C E</Company>
+  </PropertyGroup>
+  
   <ItemGroup Condition="'$(Configuration)' == 'Debug' And '$(MSBuildProjectExtension)' == '.csproj'">
     <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.403">
       <PrivateAssets>all</PrivateAssets>
