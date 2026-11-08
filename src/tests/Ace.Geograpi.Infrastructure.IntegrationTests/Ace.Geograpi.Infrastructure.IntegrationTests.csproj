@@ -24,7 +24,7 @@
   <ItemGroup>
     <None Remove="run-test-coverage.ps1" />
     <None Update="xunit.runner.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
