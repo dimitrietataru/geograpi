@@ -8,11 +8,8 @@
 
   <ItemGroup>
     <PackageReference Include="CatNip.Presentation.Test.XUnit" Version="4.5.0" />
-    <PackageReference Include="coverlet.collector" Version="10.1.0">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="ReportGenerator" Version="5.5.12" />
+    <PackageReference Include="coverlet.MTP" Version="10.1.0" />
+    <PackageReference Include="ReportGenerator" Version="5.5.12" GeneratePathProperty="true" />
     <PackageReference Include="xunit.v3" Version="4.0.2" />
   </ItemGroup>
 
@@ -21,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="run-test-coverage.ps1" />
+    <None Remove="run-test-coverage-mtp.ps1" />
     <None Update="xunit.runner.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -56,13 +56,75 @@ jobs:
       run: dotnet test $TEST_PROJECT_ARCHITECTURE --configuration $CONFIG --no-restore --no-build --verbosity normal
 
     - name: dotnet test > application unit tests
-      run: dotnet test $TEST_PROJECT_APPLICATION --configuration $CONFIG --no-restore --no-build --verbosity normal
+      run: |
+        dotnet test $TEST_PROJECT_APPLICATION --configuration $CONFIG --no-restore --no-build --verbosity normal \
+          --results-directory cov/raw/application \
+          --coverlet \
+          --coverlet-output-format cobertura \
+          --coverlet-include "[Ace.Geograpi.Application]*" \
+          --coverlet-exclude-by-file "**/*.g.cs" \
+          --coverlet-exclude-by-file "**/GlobalUsings.cs" \
+          --coverlet-exclude-by-file "**/DependencyInjection.cs"
 
     - name: dotnet test > infrastructure integration tests
-      run: dotnet test $TEST_PROJECT_INFRASTRUCTURE --configuration $CONFIG --no-restore --no-build --verbosity normal
+      run: |
+        dotnet test $TEST_PROJECT_INFRASTRUCTURE --configuration $CONFIG --no-restore --no-build --verbosity normal \
+          --results-directory cov/raw/infrastructure \
+          --coverlet \
+          --coverlet-output-format cobertura \
+          --coverlet-include "[Ace.Geograpi.Infrastructure]*" \
+          --coverlet-exclude-by-file "**/*.g.cs" \
+          --coverlet-exclude-by-file "**/GlobalUsings.cs" \
+          --coverlet-exclude-by-file "**/DependencyInjection.cs" \
+          --coverlet-exclude-by-file "**/Migrations/*.cs"
 
     - name: dotnet test > web integration tests
       run: dotnet test $TEST_PROJECT_WEB_INTEGRATION --configuration $CONFIG --no-restore --no-build --verbosity normal
 
     - name: dotnet test > web unit tests
-      run: dotnet test $TEST_PROJECT_WEB --configuration $CONFIG --no-restore --no-build --verbosity normal
+      run: |
+        dotnet test $TEST_PROJECT_WEB --configuration $CONFIG --no-restore --no-build --verbosity normal \
+          --results-directory cov/raw/web \
+          --coverlet \
+          --coverlet-output-format cobertura \
+          --coverlet-include "[Ace.Geograpi.Web]*" \
+          --coverlet-exclude-by-file "**/*.g.cs" \
+          --coverlet-exclude-by-file "**/GlobalUsings.cs" \
+          --coverlet-exclude-by-file "**/AppConfiguration*.cs" \
+          --coverlet-exclude-by-file "**/Program.cs"
+
+    - name: test coverage > application unit tests
+      run: |
+        REPORT_GENERATOR=$(dotnet msbuild $TEST_PROJECT_APPLICATION -getProperty:PkgReportGenerator)
+        TARGET_FRAMEWORK=$(dotnet msbuild $TEST_PROJECT_APPLICATION -getProperty:TargetFramework)
+        dotnet "$REPORT_GENERATOR/tools/$TARGET_FRAMEWORK/ReportGenerator.dll" \
+          "-reports:cov/raw/application/*.cobertura.*xml" \
+          "-targetdir:cov/report/application" \
+          "-reporttypes:MarkdownSummaryGithub" \
+          "-title:Ace.Geograpi.Application" \
+          "settings:applyMaximumGroupingLevel=true"
+        cat cov/report/application/SummaryGithub.md >> $GITHUB_STEP_SUMMARY
+
+    - name: test coverage > infrastructure integration tests
+      run: |
+        REPORT_GENERATOR=$(dotnet msbuild $TEST_PROJECT_INFRASTRUCTURE -getProperty:PkgReportGenerator)
+        TARGET_FRAMEWORK=$(dotnet msbuild $TEST_PROJECT_INFRASTRUCTURE -getProperty:TargetFramework)
+        dotnet "$REPORT_GENERATOR/tools/$TARGET_FRAMEWORK/ReportGenerator.dll" \
+          "-reports:cov/raw/infrastructure/*.cobertura.*xml" \
+          "-targetdir:cov/report/infrastructure" \
+          "-reporttypes:MarkdownSummaryGithub" \
+          "-title:Ace.Geograpi.Infrastructure" \
+          "settings:applyMaximumGroupingLevel=true"
+        cat cov/report/infrastructure/SummaryGithub.md >> $GITHUB_STEP_SUMMARY
+
+    - name: test coverage > web unit tests
+      run: |
+        REPORT_GENERATOR=$(dotnet msbuild $TEST_PROJECT_WEB -getProperty:PkgReportGenerator)
+        TARGET_FRAMEWORK=$(dotnet msbuild $TEST_PROJECT_WEB -getProperty:TargetFramework)
+        dotnet "$REPORT_GENERATOR/tools/$TARGET_FRAMEWORK/ReportGenerator.dll" \
+          "-reports:cov/raw/web/*.cobertura.*xml" \
+          "-targetdir:cov/report/web" \
+          "-reporttypes:MarkdownSummaryGithub" \
+          "-title:Ace.Geograpi.Web" \
+          "settings:applyMaximumGroupingLevel=true"
+        cat cov/report/web/SummaryGithub.md >> $GITHUB_STEP_SUMMARY

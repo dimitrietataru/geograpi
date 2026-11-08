@@ -6,6 +6,7 @@
 
 # Test
 [Tt]est[Rr]esults/
+.cov/
 
 # Visual Studio cache
 .vs/
