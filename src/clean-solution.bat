@@ -25,4 +25,7 @@ rmdir /s /q .\tests\Ace.Geograpi.Web.IntegrationTests\obj
 rmdir /s /q .\tests\Ace.Geograpi.ArchitectureTests\bin
 rmdir /s /q .\tests\Ace.Geograpi.ArchitectureTests\obj
 
+rmdir /s /q .\bin
+rmdir /s /q .\obj
+
 pause
