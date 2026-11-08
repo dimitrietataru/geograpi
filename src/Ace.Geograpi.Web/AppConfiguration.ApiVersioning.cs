@@ -19,6 +19,6 @@ internal static partial class AppConfiguration
                 })
             .AddMvc();
 
-        services.AddEndpointsApiExplorer();
+        ////services.AddEndpointsApiExplorer();
     }
 }
