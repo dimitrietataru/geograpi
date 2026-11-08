@@ -39,7 +39,9 @@ jobs:
       with:
         dotnet-version: 10.0.x
         cache: true
-        cache-dependency-path: '**/*.csproj'
+        cache-dependency-path: |
+          **/*.csproj
+          **/Directory.Build.props
 
     - name: dotnet restore
       run: dotnet restore $SOLUTION
@@ -48,7 +50,7 @@ jobs:
       run: dotnet format $SOLUTION --verify-no-changes --severity info --no-restore
 
     - name: dotnet build
-      run: dotnet build $SOLUTION --configuration $CONFIG --no-restore
+      run: dotnet build $SOLUTION --configuration $CONFIG --no-restore -warnaserror
 
     - name: dotnet test > architecture tests
       run: dotnet test $TEST_PROJECT_ARCHITECTURE --configuration $CONFIG --no-restore --no-build --verbosity normal
