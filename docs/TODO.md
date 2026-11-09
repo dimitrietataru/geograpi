@@ -1,9 +1,10 @@
+- [x] Import/Export CSV
+- [x] Import/Export Excel
+- [x] Events (MassTransit and RabbitMQ)
 - [ ] Authentication and Authorization (Microsoft.Identity + JWT)
 - [ ] Logging decorators (Service/Repository)
 - [ ] Repository caching (Memory and Redis)
-- [ ] Events (MassTransit and RabbitMQ)
 - [ ] Complete integration tests on all Controllers
 - [ ] Add integration tests on Repositories
 - [ ] Configure OTLP (ELK or Seq or Prometheus+Graphana)
 - [ ] Reports (Quest PDF)
-- [ ] Import/Export CSV
