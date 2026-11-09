@@ -7,6 +7,16 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Infrastructure.ImportExport.Mapp
 public sealed class InfrastructureExcelMapArchUnitNetTests : ArchUnitNetBase
 {
     [Fact]
+    internal void InfrastructureExcelMapsShouldBeDefined()
+    {
+        // Arrange / Act
+        var types = infrastructureExcelMaps.GetObjects(architecture);
+
+        // Assert
+        types.Should().NotBeEmpty();
+    }
+
+    [Fact]
     internal void InfrastructureExcelMapsShouldMatchNamespace()
     {
         // Arrange
@@ -17,7 +27,7 @@ public sealed class InfrastructureExcelMapArchUnitNetTests : ArchUnitNetBase
     }
 
     [Fact]
-    internal void InfrastructureExcelMapsShouldHaveMappingProfilePostfix()
+    internal void InfrastructureExcelMapsShouldHaveExcelMapSuffix()
     {
         // Arrange
         var rule = infrastructureExcelMaps.Should().HaveNameEndingWith("ExcelMap");

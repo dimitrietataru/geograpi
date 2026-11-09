@@ -5,7 +5,7 @@ using CatNip.Infrastructure.ImportExport.Mappings;
 
 namespace Ace.Geograpi.Infrastructure.ImportExport;
 
-public sealed class ExcelConverter : AceExcelConverter
+internal sealed class ExcelConverter : AceExcelConverter
 {
     private readonly IReadOnlyDictionary<Type, IExcelMap> mappings;
 

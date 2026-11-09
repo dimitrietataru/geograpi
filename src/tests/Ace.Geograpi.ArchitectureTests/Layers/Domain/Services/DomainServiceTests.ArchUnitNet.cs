@@ -7,6 +7,16 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Domain.Services;
 public sealed class DomainServiceArchUnitNetTests : ArchUnitNetBase
 {
     [Fact]
+    internal void DomainServicesShouldBeDefined()
+    {
+        // Arrange / Act
+        var types = domainServices.GetObjects(architecture);
+
+        // Assert
+        types.Should().NotBeEmpty();
+    }
+
+    [Fact]
     internal void DomainServicesShouldMatchNamespace()
     {
         // Arrange
@@ -17,7 +27,7 @@ public sealed class DomainServiceArchUnitNetTests : ArchUnitNetBase
     }
 
     [Fact]
-    internal void DomainServicesShouldHaveISuffix()
+    internal void DomainServicesShouldHaveIPrefix()
     {
         // Arrange
         var rule = domainServices.Should().HaveNameStartingWith("I");
@@ -27,7 +37,7 @@ public sealed class DomainServiceArchUnitNetTests : ArchUnitNetBase
     }
 
     [Fact]
-    internal void DomainServicesShouldHaveServicePostfix()
+    internal void DomainServicesShouldHaveServiceSuffix()
     {
         // Arrange
         var rule = domainServices.Should().HaveNameEndingWith("Service");

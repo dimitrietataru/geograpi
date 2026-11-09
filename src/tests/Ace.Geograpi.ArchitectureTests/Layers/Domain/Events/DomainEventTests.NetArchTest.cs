@@ -6,6 +6,16 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Domain.Events;
 public sealed class DomainEventNetArchTestTests : NetArchTestBase
 {
     [Fact]
+    internal void DomainEventsShouldBeDefined()
+    {
+        // Arrange / Act
+        var types = domainEvents.GetTypes();
+
+        // Assert
+        types.Should().NotBeEmpty();
+    }
+
+    [Fact]
     internal void DomainEventsShouldMatchNamespace()
     {
         // Arrange
@@ -15,11 +25,11 @@ public sealed class DomainEventNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 
     [Fact]
-    internal void DomainEventsShouldHaveEventPostfix()
+    internal void DomainEventsShouldHaveEventSuffix()
     {
         // Arrange
         var rule = domainEvents.Should().HaveNameEndingWith("Event", StringComparison.Ordinal);
@@ -28,7 +38,7 @@ public sealed class DomainEventNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 
     [Fact]
@@ -41,7 +51,7 @@ public sealed class DomainEventNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 
     [Fact]
@@ -54,6 +64,6 @@ public sealed class DomainEventNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 }

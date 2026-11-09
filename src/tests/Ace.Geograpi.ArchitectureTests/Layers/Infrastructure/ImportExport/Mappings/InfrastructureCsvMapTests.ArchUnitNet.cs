@@ -7,6 +7,16 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Infrastructure.ImportExport.Mapp
 public sealed class InfrastructureCsvMapArchUnitNetTests : ArchUnitNetBase
 {
     [Fact]
+    internal void InfrastructureCsvMapsShouldBeDefined()
+    {
+        // Arrange / Act
+        var types = infrastructureCsvMaps.GetObjects(architecture);
+
+        // Assert
+        types.Should().NotBeEmpty();
+    }
+
+    [Fact]
     internal void InfrastructureCsvMapsShouldMatchNamespace()
     {
         // Arrange
@@ -17,7 +27,7 @@ public sealed class InfrastructureCsvMapArchUnitNetTests : ArchUnitNetBase
     }
 
     [Fact]
-    internal void InfrastructureCsvMapsShouldHaveMappingProfilePostfix()
+    internal void InfrastructureCsvMapsShouldHaveCsvMapSuffix()
     {
         // Arrange
         var rule = infrastructureCsvMaps.Should().HaveNameEndingWith("CsvMap");

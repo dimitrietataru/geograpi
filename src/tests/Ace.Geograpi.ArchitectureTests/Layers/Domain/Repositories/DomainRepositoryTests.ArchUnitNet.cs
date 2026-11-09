@@ -7,6 +7,16 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Domain.Repositories;
 public sealed class DomainRepositoryArchUnitNetTests : ArchUnitNetBase
 {
     [Fact]
+    internal void DomainRepositoriesShouldBeDefined()
+    {
+        // Arrange / Act
+        var types = domainRepositories.GetObjects(architecture);
+
+        // Assert
+        types.Should().NotBeEmpty();
+    }
+
+    [Fact]
     internal void DomainRepositoriesShouldMatchNamespace()
     {
         // Arrange
@@ -17,7 +27,7 @@ public sealed class DomainRepositoryArchUnitNetTests : ArchUnitNetBase
     }
 
     [Fact]
-    internal void DomainRepositoriesShouldHaveISuffix()
+    internal void DomainRepositoriesShouldHaveIPrefix()
     {
         // Arrange
         var rule = domainRepositories.Should().HaveNameStartingWith("I");
@@ -27,7 +37,7 @@ public sealed class DomainRepositoryArchUnitNetTests : ArchUnitNetBase
     }
 
     [Fact]
-    internal void DomainRepositoriesShouldHaveRepositoryPostfix()
+    internal void DomainRepositoriesShouldHaveRepositorySuffix()
     {
         // Arrange
         var rule = domainRepositories.Should().HaveNameEndingWith("Repository");

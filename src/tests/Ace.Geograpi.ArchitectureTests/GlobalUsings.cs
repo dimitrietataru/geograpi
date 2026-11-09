@@ -1,9 +1,11 @@
 global using Ace.CSharp.StructuredAutoMapper.Abstractions;
+global using Asp.Versioning;
 global using AutoMapper;
 global using CsvHelper.Configuration;
 global using FluentAssertions;
 global using FluentValidation;
 global using MassTransit;
+global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.EntityFrameworkCore.Infrastructure;
 global using Microsoft.EntityFrameworkCore.Migrations;

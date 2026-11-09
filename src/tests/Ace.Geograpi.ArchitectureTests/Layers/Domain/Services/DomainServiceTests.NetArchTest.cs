@@ -6,6 +6,16 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Domain.Services;
 public sealed class DomainServiceNetArchTestTests : NetArchTestBase
 {
     [Fact]
+    internal void DomainServicesShouldBeDefined()
+    {
+        // Arrange / Act
+        var types = domainServices.GetTypes();
+
+        // Assert
+        types.Should().NotBeEmpty();
+    }
+
+    [Fact]
     internal void DomainServicesShouldMatchNamespace()
     {
         // Arrange
@@ -15,11 +25,11 @@ public sealed class DomainServiceNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 
     [Fact]
-    internal void DomainServicesShouldHaveISuffix()
+    internal void DomainServicesShouldHaveIPrefix()
     {
         // Arrange
         var rule = domainServices.Should().HaveNameStartingWith("I", StringComparison.Ordinal);
@@ -28,11 +38,11 @@ public sealed class DomainServiceNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 
     [Fact]
-    internal void DomainServicesShouldHaveServicePostfix()
+    internal void DomainServicesShouldHaveServiceSuffix()
     {
         // Arrange
         var rule = domainServices.Should().HaveNameEndingWith("Service", StringComparison.Ordinal);
@@ -41,7 +51,7 @@ public sealed class DomainServiceNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 
     [Fact]
@@ -54,6 +64,6 @@ public sealed class DomainServiceNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 }

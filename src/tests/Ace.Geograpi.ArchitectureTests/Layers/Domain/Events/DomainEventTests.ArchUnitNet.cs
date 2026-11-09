@@ -7,6 +7,16 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Domain.Events;
 public sealed class DomainEventArchUnitNetTests : ArchUnitNetBase
 {
     [Fact]
+    internal void DomainEventsShouldBeDefined()
+    {
+        // Arrange / Act
+        var types = domainEvents.GetObjects(architecture);
+
+        // Assert
+        types.Should().NotBeEmpty();
+    }
+
+    [Fact]
     internal void DomainEventsShouldMatchNamespace()
     {
         // Arrange
@@ -17,7 +27,7 @@ public sealed class DomainEventArchUnitNetTests : ArchUnitNetBase
     }
 
     [Fact]
-    internal void DomainEventsShouldHaveEventPostfix()
+    internal void DomainEventsShouldHaveEventSuffix()
     {
         // Arrange
         var rule = domainEvents.Should().HaveNameEndingWith("Event");

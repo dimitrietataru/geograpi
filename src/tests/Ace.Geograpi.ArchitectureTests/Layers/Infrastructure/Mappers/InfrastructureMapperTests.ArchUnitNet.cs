@@ -7,6 +7,16 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Infrastructure.Mappers;
 public sealed class InfrastructureMapperArchUnitNetTests : ArchUnitNetBase
 {
     [Fact]
+    internal void InfrastructureMappersShouldBeDefined()
+    {
+        // Arrange / Act
+        var types = infrastructureMappers.GetObjects(architecture);
+
+        // Assert
+        types.Should().NotBeEmpty();
+    }
+
+    [Fact]
     internal void InfrastructureMappersShouldMatchNamespace()
     {
         // Arrange
@@ -17,7 +27,7 @@ public sealed class InfrastructureMapperArchUnitNetTests : ArchUnitNetBase
     }
 
     [Fact]
-    internal void InfrastructureMappersShouldHaveMappingProfilePostfix()
+    internal void InfrastructureMappersShouldHaveMappingProfileSuffix()
     {
         // Arrange
         var rule = infrastructureMappers.Should().HaveNameEndingWith("MappingProfile");

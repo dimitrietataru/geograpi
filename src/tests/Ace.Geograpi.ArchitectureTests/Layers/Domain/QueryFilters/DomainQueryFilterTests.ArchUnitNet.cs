@@ -7,6 +7,16 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Domain.QueryFilters;
 public sealed class DomainQueryFilterArchUnitNetTests : ArchUnitNetBase
 {
     [Fact]
+    internal void DomainQueryFiltersShouldBeDefined()
+    {
+        // Arrange / Act
+        var types = domainQueryFilters.GetObjects(architecture);
+
+        // Assert
+        types.Should().NotBeEmpty();
+    }
+
+    [Fact]
     internal void DomainQueryFiltersShouldMatchNamespace()
     {
         // Arrange
@@ -17,7 +27,7 @@ public sealed class DomainQueryFilterArchUnitNetTests : ArchUnitNetBase
     }
 
     [Fact]
-    internal void DomainQueryFiltersShouldHaveQueryFilterPostfix()
+    internal void DomainQueryFiltersShouldHaveQueryFilterSuffix()
     {
         // Arrange
         var rule = domainQueryFilters.Should().HaveNameEndingWith("QueryFilter");

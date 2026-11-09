@@ -7,6 +7,16 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Infrastructure.Repositories;
 public sealed class InfrastructureRepositoryArchUnitNetTests : ArchUnitNetBase
 {
     [Fact]
+    internal void InfrastructureRepositoriesShouldBeDefined()
+    {
+        // Arrange / Act
+        var types = infrastructureRepositories.GetObjects(architecture);
+
+        // Assert
+        types.Should().NotBeEmpty();
+    }
+
+    [Fact]
     internal void InfrastructureRepositoriesShouldMatchNamespace()
     {
         // Arrange
@@ -17,7 +27,7 @@ public sealed class InfrastructureRepositoryArchUnitNetTests : ArchUnitNetBase
     }
 
     [Fact]
-    internal void InfrastructureRepositoriesShouldHaveRepositoryPostfix()
+    internal void InfrastructureRepositoriesShouldHaveRepositorySuffix()
     {
         // Arrange
         var rule = infrastructureRepositories.Should().HaveNameEndingWith("Repository");

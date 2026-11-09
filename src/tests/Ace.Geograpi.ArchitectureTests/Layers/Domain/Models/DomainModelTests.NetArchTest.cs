@@ -6,6 +6,16 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Domain.Models;
 public sealed class DomainModelNetArchTestTests : NetArchTestBase
 {
     [Fact]
+    internal void DomainModelsShouldBeDefined()
+    {
+        // Arrange / Act
+        var types = domainModels.GetTypes();
+
+        // Assert
+        types.Should().NotBeEmpty();
+    }
+
+    [Fact]
     internal void DomainModelsShouldMatchNamespace()
     {
         // Arrange
@@ -15,11 +25,11 @@ public sealed class DomainModelNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 
     [Fact]
-    internal void DomainModelsShouldHaveModelPostfix()
+    internal void DomainModelsShouldHaveModelSuffix()
     {
         // Arrange
         var rule = domainModels.Should().HaveNameEndingWith("Model", StringComparison.Ordinal);
@@ -28,7 +38,7 @@ public sealed class DomainModelNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 
     [Fact]
@@ -41,7 +51,7 @@ public sealed class DomainModelNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 
     [Fact]
@@ -54,6 +64,6 @@ public sealed class DomainModelNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 }

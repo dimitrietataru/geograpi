@@ -16,6 +16,12 @@ using CatNip.Presentation.Controllers;
 
 namespace Ace.Geograpi.ArchitectureTests.Abstractions;
 
+/// <summary>
+/// ArchUnitNET resolves the complete inheritance chain.
+/// </summary>
+/// <remarks>
+/// <see cref="IModel" /> automatically resolves types that derives from it (e.g.: <see cref="IModel{TId}" />).
+/// </remarks>
 public abstract class ArchUnitNetBase : AbstractArchitectureTest
 {
     protected static readonly Architecture architecture = new ArchLoader()

@@ -7,6 +7,16 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Domain.ImportExport.Dtos;
 public sealed class DomainExchangeDtoArchUnitNetTests : ArchUnitNetBase
 {
     [Fact]
+    internal void DomainExchangeDtosShouldBeDefined()
+    {
+        // Arrange / Act
+        var types = domainExchangeDtos.GetObjects(architecture);
+
+        // Assert
+        types.Should().NotBeEmpty();
+    }
+
+    [Fact]
     internal void DomainExchangeDtosShouldMatchNamespace()
     {
         // Arrange
@@ -17,7 +27,7 @@ public sealed class DomainExchangeDtoArchUnitNetTests : ArchUnitNetBase
     }
 
     [Fact]
-    internal void DomainExchangeDtosShouldHaveModelPostfix()
+    internal void DomainExchangeDtosShouldHaveExchangeDtoSuffix()
     {
         // Arrange
         var rule = domainExchangeDtos.Should().HaveNameEndingWith("ExchangeDto");

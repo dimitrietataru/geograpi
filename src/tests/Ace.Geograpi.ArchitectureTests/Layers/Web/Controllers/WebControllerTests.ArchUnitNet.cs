@@ -7,6 +7,16 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Web.Controllers;
 public sealed class WebControllerArchUnitNetTests : ArchUnitNetBase
 {
     [Fact]
+    internal void WebControllersShouldBeDefined()
+    {
+        // Arrange / Act
+        var types = webControllers.GetObjects(architecture);
+
+        // Assert
+        types.Should().NotBeEmpty();
+    }
+
+    [Fact]
     internal void WebControllersShouldMatchNamespace()
     {
         // Arrange
@@ -17,7 +27,7 @@ public sealed class WebControllerArchUnitNetTests : ArchUnitNetBase
     }
 
     [Fact]
-    internal void WebControllersShouldHaveControllerPostfix()
+    internal void WebControllersShouldHaveControllerSuffix()
     {
         // Arrange
         var rule = webControllers.Should().HaveNameEndingWith("Controller");
@@ -41,6 +51,46 @@ public sealed class WebControllerArchUnitNetTests : ArchUnitNetBase
     {
         // Arrange
         var rule = webControllers.Should().BeSealed();
+
+        // Act / Assert
+        rule.Check(architecture);
+    }
+
+    [Fact]
+    internal void WebControllersShouldHaveAttributeApiController()
+    {
+        // Arrange
+        var rule = webControllers.Should().HaveAnyAttributes(typeof(ApiControllerAttribute));
+
+        // Act / Assert
+        rule.Check(architecture);
+    }
+
+    [Fact]
+    internal void WebControllersShouldHaveAttributeApiVersion()
+    {
+        // Arrange
+        var rule = webControllers.Should().HaveAnyAttributes(typeof(ApiVersionAttribute));
+
+        // Act / Assert
+        rule.Check(architecture);
+    }
+
+    [Fact]
+    internal void WebControllersShouldHaveAttributeRoute()
+    {
+        // Arrange
+        var rule = webControllers.Should().HaveAnyAttributes(typeof(RouteAttribute));
+
+        // Act / Assert
+        rule.Check(architecture);
+    }
+
+    [Fact]
+    internal void WebControllersShouldHaveAttributeProduces()
+    {
+        // Arrange
+        var rule = webControllers.Should().HaveAnyAttributes(typeof(ProducesAttribute));
 
         // Act / Assert
         rule.Check(architecture);

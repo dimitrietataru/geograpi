@@ -6,6 +6,16 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Infrastructure.ImportExport.Mapp
 public sealed class InfrastructureExcelMapNetArchTestTests : NetArchTestBase
 {
     [Fact]
+    internal void InfrastructureExcelMapsShouldBeDefined()
+    {
+        // Arrange / Act
+        var types = infrastructureExcelMaps.GetTypes();
+
+        // Assert
+        types.Should().NotBeEmpty();
+    }
+
+    [Fact]
     internal void InfrastructureExcelMapsShouldMatchNamespace()
     {
         // Arrange
@@ -15,11 +25,11 @@ public sealed class InfrastructureExcelMapNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 
     [Fact]
-    internal void InfrastructureExcelMapsShouldHaveMappingProfilePostfix()
+    internal void InfrastructureExcelMapsShouldHaveExcelMapSuffix()
     {
         // Arrange
         var rule = infrastructureExcelMaps.Should().HaveNameEndingWith("ExcelMap", StringComparison.Ordinal);
@@ -28,7 +38,7 @@ public sealed class InfrastructureExcelMapNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 
     [Fact]
@@ -41,7 +51,7 @@ public sealed class InfrastructureExcelMapNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 
     [Fact]
@@ -54,6 +64,6 @@ public sealed class InfrastructureExcelMapNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 }

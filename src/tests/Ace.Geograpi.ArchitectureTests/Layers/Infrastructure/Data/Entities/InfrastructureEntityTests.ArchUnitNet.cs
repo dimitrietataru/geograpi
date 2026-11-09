@@ -7,6 +7,16 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Infrastructure.Data.Entities;
 public sealed class InfrastructureEntityArchUnitNetTests : ArchUnitNetBase
 {
     [Fact]
+    internal void InfrastructureEntitiesShouldBeDefined()
+    {
+        // Arrange / Act
+        var types = infrastructureDataEntities.GetObjects(architecture);
+
+        // Assert
+        types.Should().NotBeEmpty();
+    }
+
+    [Fact]
     internal void InfrastructureEntitiesShouldMatchNamespace()
     {
         // Arrange
@@ -17,7 +27,7 @@ public sealed class InfrastructureEntityArchUnitNetTests : ArchUnitNetBase
     }
 
     [Fact]
-    internal void InfrastructureEntitiesShouldHaveEntityPostfix()
+    internal void InfrastructureEntitiesShouldHaveEntitySuffix()
     {
         // Arrange
         var rule = infrastructureDataEntities.Should().HaveNameEndingWith("Entity");

@@ -7,6 +7,16 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Domain.Models;
 public sealed class DomainModelArchUnitNetTests : ArchUnitNetBase
 {
     [Fact]
+    internal void DomainModelsShouldBeDefined()
+    {
+        // Arrange / Act
+        var types = domainModels.GetObjects(architecture);
+
+        // Assert
+        types.Should().NotBeEmpty();
+    }
+
+    [Fact]
     internal void DomainModelsShouldMatchNamespace()
     {
         // Arrange
@@ -17,7 +27,7 @@ public sealed class DomainModelArchUnitNetTests : ArchUnitNetBase
     }
 
     [Fact]
-    internal void DomainModelsShouldHaveModelPostfix()
+    internal void DomainModelsShouldHaveModelSuffix()
     {
         // Arrange
         var rule = domainModels.Should().HaveNameEndingWith("Model");

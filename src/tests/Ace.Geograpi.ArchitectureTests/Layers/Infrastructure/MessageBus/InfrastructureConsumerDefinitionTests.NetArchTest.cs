@@ -6,6 +6,16 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Infrastructure.MessageBus;
 public sealed class InfrastructureConsumerDefinitionNetArchTestTests : NetArchTestBase
 {
     [Fact]
+    internal void InfrastructureConsumerDefinitionsShouldBeDefined()
+    {
+        // Arrange / Act
+        var types = infrastructureConsumerDefinitions.GetTypes();
+
+        // Assert
+        types.Should().NotBeEmpty();
+    }
+
+    [Fact]
     internal void InfrastructureConsumerDefinitionsShouldMatchNamespace()
     {
         // Arrange
@@ -15,11 +25,11 @@ public sealed class InfrastructureConsumerDefinitionNetArchTestTests : NetArchTe
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 
     [Fact]
-    internal void InfrastructureConsumerDefinitionsShouldHaveMappingProfilePostfix()
+    internal void InfrastructureConsumerDefinitionsShouldHaveConsumerDefinitionSuffix()
     {
         // Arrange
         var rule = infrastructureConsumerDefinitions.Should().HaveNameEndingWith("ConsumerDefinition", StringComparison.Ordinal);
@@ -28,7 +38,7 @@ public sealed class InfrastructureConsumerDefinitionNetArchTestTests : NetArchTe
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 
     [Fact]
@@ -41,7 +51,7 @@ public sealed class InfrastructureConsumerDefinitionNetArchTestTests : NetArchTe
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 
     [Fact]
@@ -54,6 +64,6 @@ public sealed class InfrastructureConsumerDefinitionNetArchTestTests : NetArchTe
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 }

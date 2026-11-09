@@ -92,4 +92,29 @@ public sealed class LayerArchUnitNetTests : ArchUnitNetBase
         // Act / Assert
         rule.Check(architecture);
     }
+
+    [Fact]
+    internal void WebShouldOnlyHaveDependencyOnApplicationForDI()
+    {
+        // Arrange
+        var rule = webTypes
+            .And().DoNotHaveName("Program")
+            .Should().NotDependOnAny(applicationLayer);
+
+        // Act / Assert
+        rule.Check(architecture);
+    }
+
+    [Fact]
+    internal void WebShouldOnlyHaveDependencyOnInfrastructureForDI()
+    {
+        // Arrange
+        var rule = webTypes
+            .And().DoNotHaveName("Program")
+            .And().DoNotHaveName("AppConfiguration")
+            .Should().NotDependOnAny(infrastructureLayer);
+
+        // Act / Assert
+        rule.Check(architecture);
+    }
 }

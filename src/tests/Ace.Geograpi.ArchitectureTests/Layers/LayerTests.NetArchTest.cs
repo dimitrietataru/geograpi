@@ -5,6 +5,22 @@ namespace Ace.Geograpi.ArchitectureTests.Layers;
 public sealed class LayerNetArchTestTests : NetArchTestBase
 {
     [Fact]
+    internal void DomainShouldOnlyDependOnAllowedTypes()
+    {
+        // Arrange
+        var rule = DomainTypes.Should().OnlyHaveDependenciesOn(
+            domainAssembly.GetName().Name,
+            "CatNip.Domain",
+            "System");
+
+        // Act
+        var result = rule.GetResult();
+
+        // Assert
+        result.ShouldBeSuccessful();
+    }
+
+    [Fact]
     internal void DomainShouldNotHaveDependencyOnApplication()
     {
         // Arrange
@@ -14,7 +30,7 @@ public sealed class LayerNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 
     [Fact]
@@ -27,7 +43,7 @@ public sealed class LayerNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 
     [Fact]
@@ -40,7 +56,7 @@ public sealed class LayerNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 
     [Fact]
@@ -53,20 +69,20 @@ public sealed class LayerNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 
     [Fact]
     internal void ApplicationShouldNotHaveDependencyOnWeb()
     {
         // Arrange
-        var rule = DomainTypes.Should().NotHaveDependencyOn(webAssembly.GetName().Name);
+        var rule = ApplicationTypes.Should().NotHaveDependencyOn(webAssembly.GetName().Name);
 
         // Act
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 
     [Fact]
@@ -79,7 +95,7 @@ public sealed class LayerNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 
     [Fact]
@@ -92,6 +108,37 @@ public sealed class LayerNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
+    }
+
+    [Fact]
+    internal void WebShouldOnlyHaveDependencyOnApplicationForDI()
+    {
+        // Arrange
+        var rule = WebTypes
+            .That().DoNotHaveName("Program")
+            .Should().NotHaveDependencyOn(applicationAssembly.GetName().Name);
+
+        // Act
+        var result = rule.GetResult();
+
+        // Assert
+        result.ShouldBeSuccessful();
+    }
+
+    [Fact]
+    internal void WebShouldOnlyHaveDependencyOnInfrastructureForDI()
+    {
+        // Arrange
+        var rule = WebTypes
+            .That().DoNotHaveName("Program")
+            .And().DoNotHaveName("AppConfiguration")
+            .Should().NotHaveDependencyOn(infrastructureAssembly.GetName().Name);
+
+        // Act
+        var result = rule.GetResult();
+
+        // Assert
+        result.ShouldBeSuccessful();
     }
 }

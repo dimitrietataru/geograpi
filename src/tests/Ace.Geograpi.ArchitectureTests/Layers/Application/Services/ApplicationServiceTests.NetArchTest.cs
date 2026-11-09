@@ -6,6 +6,16 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Application.Services;
 public sealed class ApplicationServiceNetArchTestTests : NetArchTestBase
 {
     [Fact]
+    internal void ApplicationServicesShouldBeDefined()
+    {
+        // Arrange / Act
+        var types = applicationServices.GetTypes();
+
+        // Assert
+        types.Should().NotBeEmpty();
+    }
+
+    [Fact]
     internal void ApplicationServicesShouldMatchNamespace()
     {
         // Arrange
@@ -15,11 +25,11 @@ public sealed class ApplicationServiceNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 
     [Fact]
-    internal void ApplicationServicesShouldHaveServicePostfix()
+    internal void ApplicationServicesShouldHaveServiceSuffix()
     {
         // Arrange
         var rule = applicationServices.Should().HaveNameEndingWith("Service", StringComparison.Ordinal);
@@ -28,7 +38,7 @@ public sealed class ApplicationServiceNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 
     [Fact]
@@ -41,7 +51,7 @@ public sealed class ApplicationServiceNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 
     [Fact]
@@ -54,6 +64,6 @@ public sealed class ApplicationServiceNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 }

@@ -3,7 +3,7 @@ using Ace.Geograpi.Infrastructure.Data.Entities;
 
 namespace Ace.Geograpi.Infrastructure.Data.Configurations.Seed;
 
-public static class ContinentData
+internal static class ContinentData
 {
     public static IEnumerable<ContinentEntity> Seed => new List<ContinentEntity>
     {

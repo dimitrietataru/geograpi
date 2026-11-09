@@ -17,6 +17,12 @@ using NetArchTest.Rules;
 
 namespace Ace.Geograpi.ArchitectureTests.Abstractions;
 
+/// <summary>
+/// NetArchTest does not resolve the complete inheritance chain.
+/// </summary>
+/// <remarks>
+/// <see cref="IModel" /> and <see cref="IModel{TId}" /> must be individually configured.
+/// </remarks>
 public abstract class NetArchTestBase : AbstractArchitectureTest
 {
     protected static Types DomainTypes => Types.InAssembly(domainAssembly);

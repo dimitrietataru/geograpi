@@ -6,6 +6,16 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Domain.ImportExport.Dtos;
 public sealed class DomainExchangeDtoNetArchTestTests : NetArchTestBase
 {
     [Fact]
+    internal void DomainExchangeDtosShouldBeDefined()
+    {
+        // Arrange / Act
+        var types = domainExchangeDtos.GetTypes();
+
+        // Assert
+        types.Should().NotBeEmpty();
+    }
+
+    [Fact]
     internal void DomainExchangeDtosShouldMatchNamespace()
     {
         // Arrange
@@ -15,11 +25,11 @@ public sealed class DomainExchangeDtoNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 
     [Fact]
-    internal void DomainExchangeDtosShouldHaveModelPostfix()
+    internal void DomainExchangeDtosShouldHaveExchangeDtoSuffix()
     {
         // Arrange
         var rule = domainExchangeDtos.Should().HaveNameEndingWith("ExchangeDto", StringComparison.Ordinal);
@@ -28,7 +38,7 @@ public sealed class DomainExchangeDtoNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 
     [Fact]
@@ -41,7 +51,7 @@ public sealed class DomainExchangeDtoNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 
     [Fact]
@@ -54,7 +64,7 @@ public sealed class DomainExchangeDtoNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 
     [Fact]

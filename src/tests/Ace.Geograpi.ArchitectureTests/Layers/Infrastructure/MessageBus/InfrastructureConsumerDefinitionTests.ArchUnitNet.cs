@@ -7,6 +7,16 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Infrastructure.MessageBus;
 public sealed class InfrastructureConsumerDefinitionArchUnitNetTests : ArchUnitNetBase
 {
     [Fact]
+    internal void InfrastructureConsumerDefinitionsShouldBeDefined()
+    {
+        // Arrange / Act
+        var types = infrastructureConsumerDefinitions.GetObjects(architecture);
+
+        // Assert
+        types.Should().NotBeEmpty();
+    }
+
+    [Fact]
     internal void InfrastructureConsumerDefinitionsShouldMatchNamespace()
     {
         // Arrange
@@ -17,7 +27,7 @@ public sealed class InfrastructureConsumerDefinitionArchUnitNetTests : ArchUnitN
     }
 
     [Fact]
-    internal void InfrastructureConsumerDefinitionsShouldHaveMappingProfilePostfix()
+    internal void InfrastructureConsumerDefinitionsShouldHaveConsumerDefinitionSuffix()
     {
         // Arrange
         var rule = infrastructureConsumerDefinitions.Should().HaveNameEndingWith("ConsumerDefinition");

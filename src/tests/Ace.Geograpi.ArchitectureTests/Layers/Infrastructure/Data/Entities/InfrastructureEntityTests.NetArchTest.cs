@@ -6,6 +6,16 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Infrastructure.Data.Entities;
 public sealed class InfrastructureEntityNetArchTestTests : NetArchTestBase
 {
     [Fact]
+    internal void InfrastructureEntitiesShouldBeDefined()
+    {
+        // Arrange / Act
+        var types = infrastructureDataEntities.GetTypes();
+
+        // Assert
+        types.Should().NotBeEmpty();
+    }
+
+    [Fact]
     internal void InfrastructureEntitiesShouldMatchNamespace()
     {
         // Arrange
@@ -15,11 +25,11 @@ public sealed class InfrastructureEntityNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 
     [Fact]
-    internal void InfrastructureEntitiesShouldHaveEntityPostfix()
+    internal void InfrastructureEntitiesShouldHaveEntitySuffix()
     {
         // Arrange
         var rule = infrastructureDataEntities.Should().HaveNameEndingWith("Entity", StringComparison.Ordinal);
@@ -28,7 +38,7 @@ public sealed class InfrastructureEntityNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 
     [Fact]
@@ -41,7 +51,7 @@ public sealed class InfrastructureEntityNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 
     [Fact]
@@ -54,6 +64,6 @@ public sealed class InfrastructureEntityNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 }

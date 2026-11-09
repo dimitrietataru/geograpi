@@ -1,6 +1,6 @@
 namespace Ace.Geograpi.Infrastructure.MessageBus;
 
-public static class EventDefinitions
+internal static class EventDefinitions
 {
     public const string ContinentCreated = "continent-created";
     public const string ContinentUpdated = "continent-updated";

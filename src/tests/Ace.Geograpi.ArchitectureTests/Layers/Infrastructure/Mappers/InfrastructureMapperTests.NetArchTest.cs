@@ -6,6 +6,16 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Infrastructure.Mappers;
 public sealed class InfrastructureMapperNetArchTestTests : NetArchTestBase
 {
     [Fact]
+    internal void InfrastructureMappersShouldBeDefined()
+    {
+        // Arrange / Act
+        var types = infrastructureMappers.GetTypes();
+
+        // Assert
+        types.Should().NotBeEmpty();
+    }
+
+    [Fact]
     internal void InfrastructureMappersShouldMatchNamespace()
     {
         // Arrange
@@ -15,11 +25,11 @@ public sealed class InfrastructureMapperNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 
     [Fact]
-    internal void InfrastructureMappersShouldHaveMappingProfilePostfix()
+    internal void InfrastructureMappersShouldHaveMappingProfileSuffix()
     {
         // Arrange
         var rule = infrastructureMappers.Should().HaveNameEndingWith("MappingProfile", StringComparison.Ordinal);
@@ -28,7 +38,7 @@ public sealed class InfrastructureMapperNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 
     [Fact]
@@ -41,7 +51,7 @@ public sealed class InfrastructureMapperNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 
     [Fact]
@@ -54,6 +64,6 @@ public sealed class InfrastructureMapperNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 }

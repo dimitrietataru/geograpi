@@ -7,6 +7,16 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Infrastructure.Data.Configuratio
 public sealed class InfrastructureConfigurationArchUnitNetTests : ArchUnitNetBase
 {
     [Fact]
+    internal void InfrastructureConfigurationsShouldBeDefined()
+    {
+        // Arrange / Act
+        var types = infrastructureDataConfigurations.GetObjects(architecture);
+
+        // Assert
+        types.Should().NotBeEmpty();
+    }
+
+    [Fact]
     internal void InfrastructureConfigurationsShouldMatchNamespace()
     {
         // Arrange
@@ -17,7 +27,7 @@ public sealed class InfrastructureConfigurationArchUnitNetTests : ArchUnitNetBas
     }
 
     [Fact]
-    internal void InfrastructureConfigurationsShouldHaveConfigurationPostfix()
+    internal void InfrastructureConfigurationsShouldHaveConfigurationSuffix()
     {
         // Arrange
         var rule = infrastructureDataConfigurations.Should().HaveNameEndingWith("Configuration");

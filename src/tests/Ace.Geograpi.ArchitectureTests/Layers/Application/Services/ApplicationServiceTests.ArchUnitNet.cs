@@ -7,6 +7,16 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Application.Services;
 public sealed class ApplicationServiceArchUnitNetTests : ArchUnitNetBase
 {
     [Fact]
+    internal void ApplicationServicesShouldBeDefined()
+    {
+        // Arrange / Act
+        var types = applicationServices.GetObjects(architecture);
+
+        // Assert
+        types.Should().NotBeEmpty();
+    }
+
+    [Fact]
     internal void ApplicationServicesShouldMatchNamespace()
     {
         // Arrange
@@ -17,7 +27,7 @@ public sealed class ApplicationServiceArchUnitNetTests : ArchUnitNetBase
     }
 
     [Fact]
-    internal void ApplicationServicesShouldHaveServicePostfix()
+    internal void ApplicationServicesShouldHaveServiceSuffix()
     {
         // Arrange
         var rule = applicationServices.Should().HaveNameEndingWith("Service");

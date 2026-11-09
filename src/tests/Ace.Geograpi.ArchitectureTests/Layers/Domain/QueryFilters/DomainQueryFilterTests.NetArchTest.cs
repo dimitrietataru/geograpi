@@ -6,6 +6,16 @@ namespace Ace.Geograpi.ArchitectureTests.Layers.Domain.QueryFilters;
 public sealed class DomainQueryFilterNetArchTestTests : NetArchTestBase
 {
     [Fact]
+    internal void DomainQueryFiltersShouldBeDefined()
+    {
+        // Arrange / Act
+        var types = domainQueryFilters.GetTypes();
+
+        // Assert
+        types.Should().NotBeEmpty();
+    }
+
+    [Fact]
     internal void DomainQueryFiltersShouldMatchNamespace()
     {
         // Arrange
@@ -15,11 +25,11 @@ public sealed class DomainQueryFilterNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 
     [Fact]
-    internal void DomainQueryFiltersShouldHaveQueryFilterPostfix()
+    internal void DomainQueryFiltersShouldHaveQueryFilterSuffix()
     {
         // Arrange
         var rule = domainQueryFilters.Should().HaveNameEndingWith("QueryFilter", StringComparison.Ordinal);
@@ -28,7 +38,7 @@ public sealed class DomainQueryFilterNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 
     [Fact]
@@ -41,7 +51,7 @@ public sealed class DomainQueryFilterNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 
     [Fact]
@@ -54,6 +64,6 @@ public sealed class DomainQueryFilterNetArchTestTests : NetArchTestBase
         var result = rule.GetResult();
 
         // Assert
-        result.IsSuccessful.Should().BeTrue();
+        result.ShouldBeSuccessful();
     }
 }
