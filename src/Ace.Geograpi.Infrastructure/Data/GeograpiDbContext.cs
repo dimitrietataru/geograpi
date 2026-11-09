@@ -11,7 +11,7 @@ internal sealed class GeograpiDbContext : DbContext
     }
 
     public DbSet<ContinentEntity> Continents { get; set; } = default!;
-    public DbSet<CountryEntity> Counties { get; set; } = default!;
+    public DbSet<CountryEntity> Countries { get; set; } = default!;
 
     protected sealed override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

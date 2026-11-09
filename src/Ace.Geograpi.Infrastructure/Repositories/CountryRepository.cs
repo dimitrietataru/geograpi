@@ -71,7 +71,7 @@ internal sealed class CountryRepository
     public sealed override async Task<int> CountAsync(
         CountryQueryFilter filter, CancellationToken cancellation = default)
     {
-        int count = await base.CountAsync(cancellation);
+        int count = await base.CountAsync(filter, cancellation);
 
         return count;
     }
@@ -139,7 +139,7 @@ internal sealed class CountryRepository
 
         var countryNames = records.Select(c => c.Name).ToHashSet(StringComparer.Ordinal);
         var dbCountries = await DbContext
-            .Counties
+            .Countries
             .AsTracking()
             .Where(c => countryNames.Contains(c.Name))
             .OrderBy(c => c.Name)
@@ -153,7 +153,7 @@ internal sealed class CountryRepository
         {
             var country = Mapper.Map<CountryEntity>(entryToAdd);
             country.ContinentId = dbContinentsByCode[entryToAdd.ContinentCode];
-            DbContext.Counties.Add(country);
+            DbContext.Countries.Add(country);
         }
 
         foreach (var entryToUpdate in countriestoUpdate)
