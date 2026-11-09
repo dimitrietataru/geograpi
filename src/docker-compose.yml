@@ -1,5 +1,3 @@
-version: '3.4'
-
 services:
   ace.geograpi.api:
     image: ${DOCKER_REGISTRY-}acegeograpiweb
@@ -18,7 +16,7 @@ services:
       - ./.containers/ace-geograpi-api-logs:/app/Logs
 
   ace.geograpi.db:
-    image: postgres:latest
+    image: postgres:16.15
     container_name: ace.geograpi.db
     restart: always
     environment:
@@ -48,7 +46,7 @@ services:
         - ./.containers/rabbitmq/log/:/var/log/rabbitmq
 
   pgadmin:
-    image: dpage/pgadmin4:latest
+    image: dpage/pgadmin4:9.19
     container_name: pg-admin
     restart: always
     depends_on:
