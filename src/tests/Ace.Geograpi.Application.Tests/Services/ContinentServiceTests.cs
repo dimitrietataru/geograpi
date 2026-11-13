@@ -15,8 +15,8 @@ public sealed class ContinentServiceTests
         ContinentService,
         IContinentRepository,
         ContinentModel,
-        ContinentRootModel,
         int,
+        ContinentRootModel,
         ContinentQueryFilter,
         ContinentExchangeDto>
 {

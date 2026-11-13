@@ -1,5 +1,6 @@
 using Ace.Geograpi.Domain.ImportExport.Dtos;
 using Ace.Geograpi.Domain.Models;
+using Ace.Geograpi.Domain.Models.Root;
 using Ace.Geograpi.Domain.QueryFilters;
 using Ace.Geograpi.Domain.Repositories;
 using Ace.Geograpi.Domain.Services;
@@ -12,49 +13,17 @@ using CatNip.Domain.Query;
 namespace Ace.Geograpi.Application.Services;
 
 public sealed class CountryService
-    : AceService<ICountryRepository, CountryModel, int, CountryQueryFilter, CountryExchangeDto>, ICountryService
+    : AceService<ICountryRepository, CountryModel, int, CountryRootModel, CountryQueryFilter, CountryExchangeDto>, ICountryService
 {
     public CountryService(ICountryRepository repository, ICsvConverter csvConverter, IExcelConverter excelConverter)
         : base(repository, csvConverter, excelConverter)
     {
     }
 
-    public sealed override async Task<IEnumerable<CountryModel>> GetAllAsync(
-        CancellationToken cancellation = default)
-    {
-        var countries = await base.GetAllAsync(cancellation);
-
-        return countries;
-    }
-
-    public sealed override async Task<IEnumerable<TModelRoot>> GetAllAsync<TModelRoot>(
-        CancellationToken cancellation = default)
-    {
-        var countries = await base.GetAllAsync<TModelRoot>(cancellation);
-
-        return countries;
-    }
-
-    public sealed override async Task<int> CountAsync(
-        CancellationToken cancellation = default)
-    {
-        int count = await base.CountAsync(cancellation);
-
-        return count;
-    }
-
-    public sealed override async Task<QueryResponse<CountryModel>> GetAsync(
+    public sealed override async Task<QueryResponse<CountryRootModel>> GetAsync(
         QueryRequest<CountryQueryFilter> request, CancellationToken cancellation = default)
     {
         var result = await base.GetAsync(request, cancellation);
-
-        return result;
-    }
-
-    public sealed override async Task<QueryResponse<TModelRoot>> GetAsync<TModelRoot>(
-        QueryRequest<CountryQueryFilter> request, CancellationToken cancellation = default)
-    {
-        var result = await base.GetAsync<TModelRoot>(request, cancellation);
 
         return result;
     }
@@ -65,6 +34,14 @@ public sealed class CountryService
         int count = await base.CountAsync(filter, cancellation);
 
         return count;
+    }
+
+    public sealed override async Task<bool> ExistsAsync(
+        CountryQueryFilter filter, CancellationToken cancellation = default)
+    {
+        bool exists = await base.ExistsAsync(filter, cancellation);
+
+        return exists;
     }
 
     public sealed override async Task<CountryModel> GetByIdAsync(
@@ -81,6 +58,22 @@ public sealed class CountryService
         bool exists = await base.ExistsAsync(id, cancellation);
 
         return exists;
+    }
+
+    public sealed override async Task<IEnumerable<CountryModel>> GetAllAsync(
+        CancellationToken cancellation = default)
+    {
+        var countries = await base.GetAllAsync(cancellation);
+
+        return countries;
+    }
+
+    public sealed override async Task<int> CountAsync(
+        CancellationToken cancellation = default)
+    {
+        int count = await base.CountAsync(cancellation);
+
+        return count;
     }
 
     public sealed override async Task<CountryModel> CreateAsync(

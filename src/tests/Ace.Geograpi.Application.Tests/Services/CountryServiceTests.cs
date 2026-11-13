@@ -15,8 +15,8 @@ public sealed class CountryServiceTests
         CountryService,
         ICountryRepository,
         CountryModel,
-        CountryRootModel,
         int,
+        CountryRootModel,
         CountryQueryFilter,
         CountryExchangeDto>
 {

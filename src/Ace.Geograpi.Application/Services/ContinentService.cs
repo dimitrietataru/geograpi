@@ -1,5 +1,6 @@
 using Ace.Geograpi.Domain.ImportExport.Dtos;
 using Ace.Geograpi.Domain.Models;
+using Ace.Geograpi.Domain.Models.Root;
 using Ace.Geograpi.Domain.QueryFilters;
 using Ace.Geograpi.Domain.Repositories;
 using Ace.Geograpi.Domain.Services;
@@ -12,49 +13,17 @@ using CatNip.Domain.Query;
 namespace Ace.Geograpi.Application.Services;
 
 public sealed class ContinentService
-    : AceService<IContinentRepository, ContinentModel, int, ContinentQueryFilter, ContinentExchangeDto>, IContinentService
+    : AceService<IContinentRepository, ContinentModel, int, ContinentRootModel, ContinentQueryFilter, ContinentExchangeDto>, IContinentService
 {
     public ContinentService(IContinentRepository repository, ICsvConverter csvConverter, IExcelConverter excelConverter)
         : base(repository, csvConverter, excelConverter)
     {
     }
 
-    public sealed override async Task<IEnumerable<ContinentModel>> GetAllAsync(
-        CancellationToken cancellation = default)
-    {
-        var continents = await base.GetAllAsync(cancellation);
-
-        return continents;
-    }
-
-    public override async Task<IEnumerable<TModelRoot>> GetAllAsync<TModelRoot>(
-        CancellationToken cancellation = default)
-    {
-        var continents = await base.GetAllAsync<TModelRoot>(cancellation);
-
-        return continents;
-    }
-
-    public sealed override async Task<int> CountAsync(
-        CancellationToken cancellation = default)
-    {
-        int count = await base.CountAsync(cancellation);
-
-        return count;
-    }
-
-    public sealed override async Task<QueryResponse<ContinentModel>> GetAsync(
+    public sealed override async Task<QueryResponse<ContinentRootModel>> GetAsync(
         QueryRequest<ContinentQueryFilter> request, CancellationToken cancellation = default)
     {
         var result = await base.GetAsync(request, cancellation);
-
-        return result;
-    }
-
-    public sealed override async Task<QueryResponse<TModelRoot>> GetAsync<TModelRoot>(
-        QueryRequest<ContinentQueryFilter> request, CancellationToken cancellation = default)
-    {
-        var result = await base.GetAsync<TModelRoot>(request, cancellation);
 
         return result;
     }
@@ -65,6 +34,14 @@ public sealed class ContinentService
         int count = await base.CountAsync(filter, cancellation);
 
         return count;
+    }
+
+    public sealed override async Task<bool> ExistsAsync(
+        ContinentQueryFilter filter, CancellationToken cancellation = default)
+    {
+        bool exists = await base.ExistsAsync(filter, cancellation);
+
+        return exists;
     }
 
     public sealed override async Task<ContinentModel> GetByIdAsync(
@@ -81,6 +58,22 @@ public sealed class ContinentService
         bool exists = await base.ExistsAsync(id, cancellation);
 
         return exists;
+    }
+
+    public sealed override async Task<IEnumerable<ContinentModel>> GetAllAsync(
+        CancellationToken cancellation = default)
+    {
+        var continents = await base.GetAllAsync(cancellation);
+
+        return continents;
+    }
+
+    public sealed override async Task<int> CountAsync(
+        CancellationToken cancellation = default)
+    {
+        int count = await base.CountAsync(cancellation);
+
+        return count;
     }
 
     public sealed override async Task<ContinentModel> CreateAsync(
