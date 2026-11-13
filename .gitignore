@@ -19,3 +19,10 @@
 
 # Logs
 [Ll]ogs/
+
+# Agents / Instructions
+.claude/
+AGENTS.md
+CLAUDE.md
+CLAUDE.local.md
+STYLE.md
