@@ -7,7 +7,7 @@
   <ItemGroup>
     <PackageReference Include="CatNip.Application" Version="4.5.0" />
     <PackageReference Include="FluentValidation" Version="12.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="10.0.14" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="10.0.15" />
   </ItemGroup>
 
   <ItemGroup>
