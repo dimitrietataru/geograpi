@@ -14,7 +14,7 @@ namespace Ace.Geograpi.Web.Controllers;
 [ApiVersion("1.0")]
 [Route("api/v{version:apiVersion}/continents")]
 [Produces("application/json")]
-public sealed class ContinentController : AceController<IContinentService, ContinentModel, ContinentRootModel, int, ContinentQueryFilter, ContinentExchangeDto>
+public sealed class ContinentController : AceController<IContinentService, ContinentModel, int, ContinentRootModel, ContinentQueryFilter, ContinentExchangeDto>
 {
     public ContinentController(IContinentService service)
         : base(service)

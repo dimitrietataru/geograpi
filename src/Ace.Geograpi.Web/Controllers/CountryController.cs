@@ -14,7 +14,7 @@ namespace Ace.Geograpi.Web.Controllers;
 [ApiVersion("1.0")]
 [Route("api/v{version:apiVersion}/countries")]
 [Produces("application/json")]
-public sealed class CountryController : AceController<ICountryService, CountryModel, CountryRootModel, int, CountryQueryFilter, CountryExchangeDto>
+public sealed class CountryController : AceController<ICountryService, CountryModel, int, CountryRootModel, CountryQueryFilter, CountryExchangeDto>
 {
     public CountryController(ICountryService service)
         : base(service)

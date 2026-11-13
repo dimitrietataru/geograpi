@@ -6,7 +6,7 @@ using CatNip.Presentation.IntegrationTest.XUnit.Controllers;
 namespace Ace.Geograpi.Web.IntegrationTests.Controllers;
 
 public sealed class ContinentControllerTests
-    : AceControllerIntegrationTests<ContinentModel, ContinentRootModel, int, ContinentQueryFilter>,
+    : AceControllerIntegrationTests<ContinentModel, int, ContinentRootModel, ContinentQueryFilter>,
     IClassFixture<WebIntegrationTestFactory>
 {
     private readonly HttpClient geograpiClient;

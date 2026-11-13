@@ -13,8 +13,8 @@ public sealed class ContinentControllerTests
         ContinentController,
         IContinentService,
         ContinentModel,
-        ContinentRootModel,
         int,
+        ContinentRootModel,
         ContinentQueryFilter,
         ContinentExchangeDto>
 {

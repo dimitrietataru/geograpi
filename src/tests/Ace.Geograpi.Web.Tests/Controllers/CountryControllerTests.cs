@@ -13,8 +13,8 @@ public sealed class CountryControllerTests
         CountryController,
         ICountryService,
         CountryModel,
-        CountryRootModel,
         int,
+        CountryRootModel,
         CountryQueryFilter,
         CountryExchangeDto>
 {
