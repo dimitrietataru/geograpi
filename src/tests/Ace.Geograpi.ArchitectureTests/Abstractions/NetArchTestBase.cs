@@ -38,32 +38,39 @@ public abstract class NetArchTestBase : AbstractArchitectureTest
 
     protected static readonly PredicateList domainModels = DomainTypes
         .That().ImplementInterface(typeof(IModel))
-        .Or().ImplementInterface(typeof(IModel<>))
-        .Or().Inherit(typeof(TraceableModel<>))
-        .Or().Inherit(typeof(TraceableModel<,>));
+        .Or().ImplementInterface(typeof(ICrudModel<>))
+        .Or().ImplementInterface(typeof(IAceModel<>))
+        .Or().ImplementInterface(typeof(IAceModel<,>))
+        .Or().Inherit(typeof(Model))
+        .Or().Inherit(typeof(CrudModel<>))
+        .Or().Inherit(typeof(AceModel<>))
+        .Or().Inherit(typeof(AceModel<,>));
 
     protected static readonly PredicateList domainQueryFilters = DomainTypes
         .That().ImplementInterface(typeof(IFilteringRequest))
-        .Or().Inherit(typeof(QueryFilter<>))
-        .Or().Inherit(typeof(QueryFilter<,>));
+        .Or().Inherit(typeof(QueryFilter<>));
 
     protected static readonly PredicateList domainRepositories = DomainTypes
-        .That().ImplementInterface(typeof(ICrudRepository<>))
+        .That().ImplementInterface(typeof(IRepository<>))
         .Or().ImplementInterface(typeof(ICrudRepository<,>))
-        .Or().ImplementInterface(typeof(IAceRepository<,,,>));
+        .Or().ImplementInterface(typeof(IAceRepository<,,,,>))
+        .Or().ImplementInterface(typeof(IAceRepository<,,,,,>));
 
     protected static readonly PredicateList domainServices = DomainTypes
-        .That().ImplementInterface(typeof(ICrudService<>))
+        .That().ImplementInterface(typeof(IService<>))
         .Or().ImplementInterface(typeof(ICrudService<,>))
-        .Or().ImplementInterface(typeof(IAceService<,,,>));
+        .Or().ImplementInterface(typeof(IAceService<,,,,>))
+        .Or().ImplementInterface(typeof(IAceService<,,,,,>));
 
     protected static readonly PredicateList applicationServices = ApplicationTypes
-        .That().ImplementInterface(typeof(ICrudService<>))
+        .That().ImplementInterface(typeof(IService<>))
         .Or().ImplementInterface(typeof(ICrudService<,>))
-        .Or().ImplementInterface(typeof(IAceService<,,,>))
-        .Or().Inherit(typeof(CrudService<,>))
+        .Or().ImplementInterface(typeof(IAceService<,,,,>))
+        .Or().ImplementInterface(typeof(IAceService<,,,,,>))
+        .Or().Inherit(typeof(Service<,>))
         .Or().Inherit(typeof(CrudService<,,>))
-        .Or().Inherit(typeof(AceService<,,,,>));
+        .Or().Inherit(typeof(AceService<,,,,,>))
+        .Or().Inherit(typeof(AceService<,,,,,,>));
 
     protected static readonly PredicateList applicationValidators = ApplicationTypes
         .That().ImplementInterface(typeof(IValidator<>))
@@ -71,20 +78,20 @@ public abstract class NetArchTestBase : AbstractArchitectureTest
 
     protected static readonly PredicateList infrastructureDataConfigurations = InfrastructureTypes
         .That().ImplementInterface(typeof(IEntityTypeConfiguration<>))
-        .Or().Inherit(typeof(TraceableEntityConfiguration<,>))
-        .Or().Inherit(typeof(TraceableEntityConfiguration<,,>))
         .Or().Inherit(typeof(EntityConfiguration<>))
-        .Or().Inherit(typeof(EntityConfiguration<,>));
+        .Or().Inherit(typeof(CrudEntityConfiguration<,>))
+        .Or().Inherit(typeof(AceEntityConfiguration<,>))
+        .Or().Inherit(typeof(AceEntityConfiguration<,,>));
 
     protected static readonly PredicateList infrastructureDataEntities = InfrastructureTypes
         .That().ImplementInterface(typeof(IEntity))
-        .Or().ImplementInterface(typeof(IEntity<>))
-        .Or().ImplementInterface(typeof(ITraceableEntity<>))
-        .Or().ImplementInterface(typeof(ITraceableEntity<,>))
+        .Or().ImplementInterface(typeof(ICrudEntity<>))
+        .Or().ImplementInterface(typeof(IAceEntity<>))
+        .Or().ImplementInterface(typeof(IAceEntity<,>))
         .Or().Inherit(typeof(Entity))
-        .Or().Inherit(typeof(Entity<>))
-        .Or().Inherit(typeof(TraceableEntity<>))
-        .Or().Inherit(typeof(TraceableEntity<,>));
+        .Or().Inherit(typeof(CrudEntity<>))
+        .Or().Inherit(typeof(AceEntity<>))
+        .Or().Inherit(typeof(AceEntity<,>));
 
     protected static readonly PredicateList infrastructureCsvMaps = InfrastructureTypes
         .That().Inherit(typeof(ClassMap<>))
@@ -112,17 +119,18 @@ public abstract class NetArchTestBase : AbstractArchitectureTest
         .Or().Inherit(typeof(ConsumerDefinition<>));
 
     protected static readonly PredicateList infrastructureRepositories = InfrastructureTypes
-        .That().ImplementInterface(typeof(ICrudRepository<>))
+        .That().ImplementInterface(typeof(IRepository<>))
         .Or().ImplementInterface(typeof(ICrudRepository<,>))
-        .Or().ImplementInterface(typeof(IAceRepository<,,,>))
-        .Or().Inherit(typeof(CrudRepository<,,>))
+        .Or().ImplementInterface(typeof(IAceRepository<,,,,>))
+        .Or().ImplementInterface(typeof(IAceRepository<,,,,,>))
+        .Or().Inherit(typeof(Repository<,,>))
         .Or().Inherit(typeof(CrudRepository<,,,>))
-        .Or().Inherit(typeof(AceRepository<,,,,,>));
+        .Or().Inherit(typeof(AceRepository<,,,,,,>))
+        .Or().Inherit(typeof(AceRepository<,,,,,,,>));
 
     protected static readonly PredicateList webControllers = WebTypes
-        .That().Inherit(typeof(CrudController<,>))
+        .That().Inherit(typeof(Controller<,>))
         .Or().Inherit(typeof(CrudController<,,>))
-        .Or().Inherit(typeof(CrudController<,,,>))
-        .Or().Inherit(typeof(AceController<,,,,>))
-        .Or().Inherit(typeof(AceController<,,,,,>));
+        .Or().Inherit(typeof(AceController<,,,,,>))
+        .Or().Inherit(typeof(AceController<,,,,,,>));
 }

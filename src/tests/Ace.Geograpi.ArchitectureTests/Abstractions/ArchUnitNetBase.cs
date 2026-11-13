@@ -12,6 +12,7 @@ using CatNip.Domain.Repositories;
 using CatNip.Domain.Services;
 using CatNip.Infrastructure.Data.Entities.Interfaces;
 using CatNip.Infrastructure.ImportExport.Mappings;
+using CatNip.Infrastructure.Repositories;
 using CatNip.Presentation.Controllers;
 
 namespace Ace.Geograpi.ArchitectureTests.Abstractions;
@@ -71,9 +72,13 @@ public abstract class ArchUnitNetBase : AbstractArchitectureTest
             .Classes()
             .That().ResideInAssembly(domainAssembly)
             .And().ImplementInterface(typeof(IModel))
-            ////.Or().ImplementInterface(typeof(IModel<>))
-            ////.Or().AreAssignableTo(typeof(TraceableModel<>))
-            ////.Or().AreAssignableTo(typeof(TraceableModel<,>))
+            ////.Or().ImplementInterface(typeof(ICrudModel<>))
+            ////.Or().ImplementInterface(typeof(IAceModel<>))
+            ////.Or().ImplementInterface(typeof(IAceModel<,>))
+            ////.Or().AreAssignableTo(typeof(Model))
+            ////.Or().AreAssignableTo(typeof(CrudModel<>))
+            ////.Or().AreAssignableTo(typeof(AceModel<>))
+            ////.Or().AreAssignableTo(typeof(AceModel<,>))
             .As("Domain models");
 
     protected static readonly GivenClassesConjunctionWithDescription domainQueryFilters =
@@ -82,37 +87,40 @@ public abstract class ArchUnitNetBase : AbstractArchitectureTest
             .That().ResideInAssembly(domainAssembly)
             .And().ImplementInterface(typeof(IFilteringRequest))
             ////.Or().AreAssignableTo(typeof(QueryFilter<>))
-            ////.Or().AreAssignableTo(typeof(QueryFilter<,>))
             .As("Domain query filters");
 
     protected static readonly GivenInterfacesConjunctionWithDescription domainRepositories =
         ArchRuleDefinition
             .Interfaces()
             .That().ResideInAssembly(domainAssembly)
-            ////.And().ImplementInterface(typeof(ICrudRepository<>))
-            .And().ImplementInterface(typeof(ICrudRepository<,>))
-            ////.And().ImplementInterface(typeof(IAceRepository<,,>))
+            .And().ImplementInterface(typeof(IRepository<>))
+            ////.Or().ImplementInterface(typeof(ICrudRepository<,>))
+            ////.Or().ImplementInterface(typeof(IAceRepository<,,,,>))
+            ////.Or().ImplementInterface(typeof(IAceRepository<,,,,,>))
             .As("Domain repositories");
 
     protected static readonly GivenInterfacesConjunctionWithDescription domainServices =
         ArchRuleDefinition
             .Interfaces()
             .That().ResideInAssembly(domainAssembly)
-            ////.And().ImplementInterface(typeof(ICrudService<>))
-            .And().ImplementInterface(typeof(ICrudService<,>))
-            ////.And().ImplementInterface(typeof(IAceService<,,>))
+            .And().ImplementInterface(typeof(IService<>))
+            ////.Or().ImplementInterface(typeof(ICrudService<,>))
+            ////.Or().ImplementInterface(typeof(IAceService<,,,,>))
+            ////.Or().ImplementInterface(typeof(IAceService<,,,,,>))
             .As("Domain services");
 
     protected static readonly GivenClassesConjunctionWithDescription applicationServices =
         ArchRuleDefinition
             .Classes()
             .That().ResideInAssembly(applicationAssembly)
-            .And().ImplementInterface(typeof(ICrudService<>))
+            .And().ImplementInterface(typeof(IService<>))
             ////.Or().ImplementInterface(typeof(ICrudService<,>))
-            .Or().ImplementInterface(typeof(IAceService<,,,>))
-            ////.Or().AreAssignableTo(typeof(CrudService<,>))
+            ////.Or().ImplementInterface(typeof(IAceService<,,,,>))
+            ////.Or().ImplementInterface(typeof(IAceService<,,,,,>))
+            ////.Or().AreAssignableTo(typeof(Service<,>))
             ////.Or().AreAssignableTo(typeof(CrudService<,,>))
-            ////.Or().AreAssignableTo(typeof(AceService<,,,,>))
+            ////.Or().AreAssignableTo(typeof(AceService<,,,,,>))
+            ////.Or().AreAssignableTo(typeof(AceService<,,,,,,>))
             .As("Application services");
 
     protected static readonly GivenClassesConjunctionWithDescription applicationValidators =
@@ -128,10 +136,10 @@ public abstract class ArchUnitNetBase : AbstractArchitectureTest
             .Classes()
             .That().ResideInAssembly(infrastructureAssembly)
             .And().ImplementInterface(typeof(IEntityTypeConfiguration<>))
-            ////.Or().AreAssignableTo(typeof(TraceableEntityConfiguration<,>))
-            ////.Or().AreAssignableTo(typeof(TraceableEntityConfiguration<,,>))
             ////.Or().AreAssignableTo(typeof(EntityConfiguration<>))
-            ////.Or().AreAssignableTo(typeof(EntityConfiguration<,>))
+            ////.Or().AreAssignableTo(typeof(CrudEntityConfiguration<,>))
+            ////.Or().AreAssignableTo(typeof(AceEntityConfiguration<,>))
+            ////.Or().AreAssignableTo(typeof(AceEntityConfiguration<,,>))
             .As("Infrastructure data configurations");
 
     protected static readonly GivenClassesConjunctionWithDescription infrastructureDataEntities =
@@ -139,13 +147,13 @@ public abstract class ArchUnitNetBase : AbstractArchitectureTest
             .Classes()
             .That().ResideInAssembly(infrastructureAssembly)
             .And().ImplementInterface(typeof(IEntity))
-            ////.Or().ImplementInterface(typeof(IEntity<>))
-            ////.Or().ImplementInterface(typeof(ITraceableEntity<>))
-            ////.Or().ImplementInterface(typeof(ITraceableEntity<,>))
+            ////.Or().ImplementInterface(typeof(ICrudEntity<>))
+            ////.Or().ImplementInterface(typeof(IAceEntity<>))
+            ////.Or().ImplementInterface(typeof(IAceEntity<,>))
             ////.Or().AreAssignableTo(typeof(Entity))
-            ////.Or().AreAssignableTo(typeof(Entity<>))
-            ////.Or().AreAssignableTo(typeof(TraceableEntity<>))
-            ////.Or().AreAssignableTo(typeof(TraceableEntity<,>))
+            ////.Or().AreAssignableTo(typeof(CrudEntity<>))
+            ////.Or().AreAssignableTo(typeof(AceEntity<>))
+            ////.Or().AreAssignableTo(typeof(AceEntity<,>))
             .As("Infrastructure data entities");
 
     protected static readonly GivenClassesConjunctionWithDescription infrastructureCsvMaps =
@@ -173,7 +181,7 @@ public abstract class ArchUnitNetBase : AbstractArchitectureTest
             .Or().ImplementInterface(typeof(ITwoWayProfile<,>))
             ////.Or().AreAssignableTo(typeof(AbstractOneWayProfile<,>))
             ////.Or().AreAssignableTo(typeof(AbstractTwoWayProfile<,>))
-            .Or().AreAssignableTo(typeof(Profile))
+            ////.Or().AreAssignableTo(typeof(Profile))
             .As("Infrastructure mappers");
 
     protected static readonly GivenClassesConjunctionWithDescription infrastructureConsumers =
@@ -205,22 +213,31 @@ public abstract class ArchUnitNetBase : AbstractArchitectureTest
         ArchRuleDefinition
             .Classes()
             .That().ResideInAssembly(infrastructureAssembly)
-            .And().ImplementInterface(typeof(ICrudRepository<>))
+            .And().ImplementInterface(typeof(IRepository<>))
             ////.Or().ImplementInterface(typeof(ICrudRepository<,>))
-            .Or().ImplementInterface(typeof(IAceRepository<,,,>))
-            ////.Or().AreAssignableTo(typeof(CrudRepository<,,>))
+            ////.Or().ImplementInterface(typeof(IAceRepository<,,,,>))
+            ////.Or().ImplementInterface(typeof(IAceRepository<,,,,,>))
+            .Or().AreAssignableTo(typeof(Repository<,,>))
             ////.Or().AreAssignableTo(typeof(CrudRepository<,,,>))
-            ////.Or().AreAssignableTo(typeof(AceRepository<,,,,,>))
+            ////.Or().AreAssignableTo(typeof(AceRepository<,,,,,,>))
+            ////.Or().AreAssignableTo(typeof(AceRepository<,,,,,,,>))
             .As("Infrastructure repositories");
 
     protected static readonly GivenClassesConjunctionWithDescription webControllers =
         ArchRuleDefinition
             .Classes()
-            .That().ResideInAssembly(webAssembly)
-            ////.And().AreAssignableTo(typeof(CrudController<,>))
-            ////.And().AreAssignableTo(typeof(CrudController<,,>))
-            ////.And().AreAssignableTo(typeof(CrudController<,,,>))
-            ////.And().AreAssignableTo(typeof(AceController<,,,,>))
-            .And().AreAssignableTo(typeof(AceController<,,,,,>))
+            ////.That().AreAssignableTo(typeof(Controller<,>))
+            .That().AreAssignableTo(typeof(CrudController<,,>))
+            .Or().AreAssignableTo(typeof(AceController<,,,,,>))
+            .Or().AreAssignableTo(typeof(AceController<,,,,,,>))
+            .And().ResideInAssembly(webAssembly)
+
+
+
+            //.That().ResideInAssembly(webAssembly)
+            //.And().AreAssignableTo(typeof(Controller<,>))
+            //.Or().AreAssignableTo(typeof(CrudController<,,>))
+            //.Or().AreAssignableTo(typeof(AceController<,,,,,>))
+            //.Or().AreAssignableTo(typeof(AceController<,,,,,,>))
             .As("Web controllers");
 }
