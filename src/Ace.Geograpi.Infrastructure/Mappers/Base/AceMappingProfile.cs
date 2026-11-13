@@ -1,13 +1,13 @@
 using CatNip.Domain.Models;
 using CatNip.Infrastructure.Data.Entities;
 
-namespace Ace.Geograpi.Infrastructure.Mappers.Traceable;
+namespace Ace.Geograpi.Infrastructure.Mappers.Base;
 
-public sealed class TraceableIntMappingProfile : TwoWayProfile<TraceableEntity<int>, TraceableModel<int>>
+public sealed class AceMappingProfile : TwoWayProfile<AceEntity<int>, AceModel<int>>
 {
     public sealed override void ConfigureLeftToRightMapping()
     {
-        CreateMap<TraceableEntity<int>, TraceableModel<int>>()
+        CreateMap<AceEntity<int>, AceModel<int>>()
             .IgnoreAllPropertiesWithAnInaccessibleSetter()
             .IncludeAllDerived()
             .ForMember(
@@ -35,7 +35,7 @@ public sealed class TraceableIntMappingProfile : TwoWayProfile<TraceableEntity<i
 
     public sealed override void ConfigureRightToLeftMapping()
     {
-        CreateMap<TraceableModel<int>, TraceableEntity<int>>()
+        CreateMap<AceModel<int>, AceEntity<int>>()
             .IgnoreAllPropertiesWithAnInaccessibleSetter()
             .IncludeAllDerived()
             .ForMember(

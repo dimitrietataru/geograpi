@@ -1,5 +1,6 @@
 using Ace.Geograpi.Domain.ImportExport.Dtos;
 using Ace.Geograpi.Domain.Models;
+using Ace.Geograpi.Domain.Models.Root;
 using Ace.Geograpi.Domain.QueryFilters;
 using Ace.Geograpi.Domain.Repositories;
 using Ace.Geograpi.Infrastructure.Data;
@@ -13,49 +14,17 @@ using CatNip.Infrastructure.Repositories;
 namespace Ace.Geograpi.Infrastructure.Repositories;
 
 internal sealed class ContinentRepository
-    : AceRepository<GeograpiDbContext, ContinentEntity, ContinentModel, int, ContinentQueryFilter, ContinentExchangeDto>, IContinentRepository
+    : AceRepository<GeograpiDbContext, ContinentEntity, ContinentModel, int, ContinentRootModel, ContinentQueryFilter, ContinentExchangeDto>, IContinentRepository
 {
     public ContinentRepository(GeograpiDbContext dbContext, IMapper mapper)
         : base(dbContext, mapper)
     {
     }
 
-    public sealed override async Task<IEnumerable<ContinentModel>> GetAllAsync(
-        CancellationToken cancellation = default)
-    {
-        var continents = await base.GetAllAsync(cancellation);
-
-        return continents;
-    }
-
-    public sealed override async Task<IEnumerable<TModelRoot>> GetAllAsync<TModelRoot>(
-        CancellationToken cancellation = default)
-    {
-        var continents = await base.GetAllAsync<TModelRoot>(cancellation);
-
-        return continents;
-    }
-
-    public sealed override async Task<int> CountAsync(
-        CancellationToken cancellation = default)
-    {
-        int count = await base.CountAsync(cancellation);
-
-        return count;
-    }
-
-    public sealed override async Task<QueryResponse<ContinentModel>> GetAsync(
+    public sealed override async Task<QueryResponse<ContinentRootModel>> GetAsync(
         QueryRequest<ContinentQueryFilter> request, CancellationToken cancellation = default)
     {
         var result = await base.GetAsync(request, cancellation);
-
-        return result;
-    }
-
-    public sealed override async Task<QueryResponse<TModelRoot>> GetAsync<TModelRoot>(
-        QueryRequest<ContinentQueryFilter> request, CancellationToken cancellation = default)
-    {
-        var result = await base.GetAsync<TModelRoot>(request, cancellation);
 
         return result;
     }
@@ -92,6 +61,22 @@ internal sealed class ContinentRepository
         return exists;
     }
 
+    public sealed override async Task<IEnumerable<ContinentModel>> GetAllAsync(
+        CancellationToken cancellation = default)
+    {
+        var continents = await base.GetAllAsync(cancellation);
+
+        return continents;
+    }
+
+    public sealed override async Task<int> CountAsync(
+        CancellationToken cancellation = default)
+    {
+        int count = await base.CountAsync(cancellation);
+
+        return count;
+    }
+
     public sealed override async Task<ContinentModel> CreateAsync(
         ContinentModel model, CancellationToken cancellation = default)
     {
@@ -113,7 +98,7 @@ internal sealed class ContinentRepository
     }
 
     public sealed override async Task<ImportResponse> ImportAsync(
-        ICollection<ContinentExchangeDto> records, CancellationToken cancellation)
+        ICollection<ContinentExchangeDto> records, CancellationToken cancellation = default)
     {
         var continentCodes = records.OrderBy(c => c.Code).Select(c => c.Code).ToHashSet(StringComparer.Ordinal);
         var dbContinents = await DbContext
@@ -135,19 +120,13 @@ internal sealed class ContinentRepository
 
         foreach (var entryToUpdate in continentsToUpdate)
         {
-            var dbEntry = dbContinents.Single(c => string.Equals(entryToUpdate.Name, c.Name, StringComparison.Ordinal));
+            var dbEntry = dbContinents.Single(c => string.Equals(entryToUpdate.Code, c.Code, StringComparison.Ordinal));
             Mapper.Map(entryToUpdate, dbEntry);
         }
 
         await CommitAsync(cancellation);
 
         return ImportResponse.Success(records.Count, continentsToAdd.Count, continentsToUpdate.Count);
-    }
-
-    protected sealed override IQueryable<ContinentEntity> BuildIncludeQuery(
-        IQueryable<ContinentEntity> query)
-    {
-        return query.Include(c => c.Countries);
     }
 
     protected sealed override IQueryable<ContinentEntity> BuildFilteringQuery(
@@ -176,12 +155,6 @@ internal sealed class ContinentRepository
         return query;
     }
 
-    protected sealed override IQueryable<ContinentEntity> BuildDefaultSortingQuery(
-        IQueryable<ContinentEntity> query)
-    {
-        return query.OrderBy(c => c.Id);
-    }
-
     protected sealed override IQueryable<ContinentEntity> BuildSortingQuery(
         IQueryable<ContinentEntity> query, ISortingRequest sortingRequest)
     {
@@ -195,5 +168,17 @@ internal sealed class ContinentRepository
             ("name", SortDirection.Descending) => query.OrderByDescending(c => c.Name),
             _ => query
         };
+    }
+
+    protected sealed override IQueryable<ContinentEntity> BuildIncludeQuery(
+        IQueryable<ContinentEntity> query)
+    {
+        return query.Include(c => c.Countries);
+    }
+
+    protected sealed override IQueryable<ContinentEntity> BuildDefaultSortingQuery(
+        IQueryable<ContinentEntity> query)
+    {
+        return query.OrderBy(c => c.Id);
     }
 }

@@ -1,7 +1,6 @@
 using Ace.CSharp.DataFaker;
 using Ace.Geograpi.Domain.ImportExport.Dtos;
 using Ace.Geograpi.Domain.Symbols.Data;
-using Bogus;
 
 namespace Ace.Geograpi.Infrastructure.IntegrationTests.Fakers;
 

@@ -6,9 +6,9 @@ using Ace.Geograpi.Infrastructure.Data.Migrations;
 using Ace.Geograpi.Infrastructure.Data.Migrations.Interfaces;
 using Ace.Geograpi.Infrastructure.ImportExport;
 using Ace.Geograpi.Infrastructure.Mappers;
+using Ace.Geograpi.Infrastructure.Mappers.Base;
 using Ace.Geograpi.Infrastructure.Mappers.Exchange;
 using Ace.Geograpi.Infrastructure.Mappers.Root;
-using Ace.Geograpi.Infrastructure.Mappers.Traceable;
 using Ace.Geograpi.Infrastructure.MessageBus;
 using Ace.Geograpi.Infrastructure.MessageBus.Consumers.Continents;
 using Ace.Geograpi.Infrastructure.MessageBus.Consumers.Countries;
@@ -95,8 +95,8 @@ public static class DependencyInjection
     {
         services.AddAutoMapper(config =>
         {
-            config.AddProfile<ModelIntMappingProfile>();
-            config.AddProfile<TraceableIntMappingProfile>();
+            config.AddProfile<CrudMappingProfile>();
+            config.AddProfile<AceMappingProfile>();
 
             config.AddProfile<ContinentMappingProfile>();
             config.AddProfile<CountryMappingProfile>();

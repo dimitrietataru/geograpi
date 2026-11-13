@@ -868,6 +868,9 @@ dotnet_diagnostic.CA1056.severity = none
 dotnet_diagnostic.CA1056.severity = none
 [**[Mm]odel{s,}**.cs]
 dotnet_diagnostic.CA1056.severity = none
+## CA1501: Avoid excessive inheritance
+[**[Rr]epository.cs]
+dotnet_diagnostic.CA1501.severity = none
 ## CA1515: Consider making public types internal
 [**[Cc]ontroller{s,}**.cs]
 dotnet_diagnostic.CA1515.severity = none

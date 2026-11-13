@@ -6,7 +6,7 @@ using CatNip.Infrastructure.Data.Configurations;
 
 namespace Ace.Geograpi.Infrastructure.Data.Configurations;
 
-internal sealed class CountryConfiguration : TraceableEntityConfiguration<CountryEntity, int>
+internal sealed class CountryConfiguration : AceEntityConfiguration<CountryEntity, int>
 {
     public static CountryConfiguration Instance => new();
 

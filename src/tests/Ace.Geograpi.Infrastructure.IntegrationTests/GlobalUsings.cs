@@ -1,4 +1,5 @@
 global using Ace.CSharp.StructuredAutoMapper.Abstractions.Test;
+global using Bogus;
 global using FluentAssertions;
 global using System;
 global using System.Collections.Generic;

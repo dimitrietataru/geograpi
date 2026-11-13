@@ -1,4 +1,3 @@
-using Bogus;
 using CatNip.Domain.Models.Interfaces;
 using CatNip.Infrastructure.Data.Entities.Interfaces;
 
@@ -6,8 +5,8 @@ namespace Ace.Geograpi.Infrastructure.IntegrationTests.Fakers.Extensions;
 
 public static partial class FakerExtensions
 {
-    public static Faker<T> ConfigureTraceableEntity<T>(this Faker<T> faker)
-        where T : class, ITraceableEntity<int, int>
+    public static Faker<T> ConfigureAceEntity<T>(this Faker<T> faker)
+        where T : class, IAceEntity<int, int>
     {
         faker.RuleFor(e => e.CreatedAt, f => f.Date.PastOffset(yearsToGoBack: 1));
         faker.RuleFor(e => e.CreatedBy, f => f.Random.Int(min: 1, max: 999));
@@ -22,8 +21,8 @@ public static partial class FakerExtensions
         return faker;
     }
 
-    public static Faker<T> ConfigureTraceableModel<T>(this Faker<T> faker)
-        where T : class, ITraceableModel<int, int>
+    public static Faker<T> ConfigureAceModel<T>(this Faker<T> faker)
+        where T : class, IAceModel<int, int>
     {
         faker.RuleFor(m => m.CreatedAt, f => f.Date.PastOffset(yearsToGoBack: 1));
         faker.RuleFor(m => m.CreatedBy, f => f.Random.Int(min: 1, max: 999));

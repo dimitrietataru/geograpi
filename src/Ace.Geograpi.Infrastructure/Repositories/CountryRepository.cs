@@ -1,5 +1,6 @@
 using Ace.Geograpi.Domain.ImportExport.Dtos;
 using Ace.Geograpi.Domain.Models;
+using Ace.Geograpi.Domain.Models.Root;
 using Ace.Geograpi.Domain.QueryFilters;
 using Ace.Geograpi.Domain.Repositories;
 using Ace.Geograpi.Infrastructure.Data;
@@ -13,59 +14,19 @@ using CatNip.Infrastructure.Repositories;
 namespace Ace.Geograpi.Infrastructure.Repositories;
 
 internal sealed class CountryRepository
-    : AceRepository<GeograpiDbContext, CountryEntity, CountryModel, int, CountryQueryFilter, CountryExchangeDto>, ICountryRepository
+    : AceRepository<GeograpiDbContext, CountryEntity, CountryModel, int, CountryRootModel, CountryQueryFilter, CountryExchangeDto>, ICountryRepository
 {
     public CountryRepository(GeograpiDbContext dbContext, IMapper mapper)
         : base(dbContext, mapper)
     {
     }
 
-    public sealed override async Task<IEnumerable<CountryModel>> GetAllAsync(
-        CancellationToken cancellation = default)
-    {
-        var countries = await base.GetAllAsync(cancellation);
-
-        return countries;
-    }
-
-    public sealed override async Task<IEnumerable<TModelRoot>> GetAllAsync<TModelRoot>(
-        CancellationToken cancellation = default)
-    {
-        var countries = await base.GetAllAsync<TModelRoot>(cancellation);
-
-        return countries;
-    }
-
-    public sealed override async Task<int> CountAsync(
-        CancellationToken cancellation = default)
-    {
-        int count = await base.CountAsync(cancellation);
-
-        return count;
-    }
-
-    public sealed override async Task<QueryResponse<CountryModel>> GetAsync(
+    public sealed override async Task<QueryResponse<CountryRootModel>> GetAsync(
         QueryRequest<CountryQueryFilter> request, CancellationToken cancellation = default)
     {
         var result = await base.GetAsync(request, cancellation);
 
         return result;
-    }
-
-    public sealed override async Task<QueryResponse<TModelRoot>> GetAsync<TModelRoot>(
-        QueryRequest<CountryQueryFilter> request, CancellationToken cancellation = default)
-    {
-        var result = await base.GetAsync<TModelRoot>(request, cancellation);
-
-        return result;
-    }
-
-    public sealed override async Task<bool> ExistsAsync(
-        CountryQueryFilter filter, CancellationToken cancellation = default)
-    {
-        bool exists = await base.ExistsAsync(filter, cancellation);
-
-        return exists;
     }
 
     public sealed override async Task<int> CountAsync(
@@ -74,6 +35,14 @@ internal sealed class CountryRepository
         int count = await base.CountAsync(filter, cancellation);
 
         return count;
+    }
+
+    public sealed override async Task<bool> ExistsAsync(
+        CountryQueryFilter filter, CancellationToken cancellation = default)
+    {
+        bool exists = await base.ExistsAsync(filter, cancellation);
+
+        return exists;
     }
 
     public sealed override async Task<CountryModel> GetByIdAsync(
@@ -90,6 +59,22 @@ internal sealed class CountryRepository
         bool exists = await base.ExistsAsync(id, cancellation);
 
         return exists;
+    }
+
+    public sealed override async Task<IEnumerable<CountryModel>> GetAllAsync(
+        CancellationToken cancellation = default)
+    {
+        var countries = await base.GetAllAsync(cancellation);
+
+        return countries;
+    }
+
+    public sealed override async Task<int> CountAsync(
+        CancellationToken cancellation = default)
+    {
+        int count = await base.CountAsync(cancellation);
+
+        return count;
     }
 
     public sealed override async Task<CountryModel> CreateAsync(
@@ -113,7 +98,7 @@ internal sealed class CountryRepository
     }
 
     public sealed override async Task<ImportResponse> ImportAsync(
-        ICollection<CountryExchangeDto> records, CancellationToken cancellation)
+        ICollection<CountryExchangeDto> records, CancellationToken cancellation = default)
     {
         var continentCodes = records.OrderBy(c => c.ContinentCode).Select(c => c.ContinentCode).ToHashSet(StringComparer.Ordinal);
         var dbContinentsByCode = await DbContext
@@ -169,12 +154,6 @@ internal sealed class CountryRepository
         return ImportResponse.Success(records.Count, countriesToAdd.Count, countriestoUpdate.Count);
     }
 
-    protected sealed override IQueryable<CountryEntity> BuildIncludeQuery(
-        IQueryable<CountryEntity> query)
-    {
-        return query.Include(c => c.Continent);
-    }
-
     protected sealed override IQueryable<CountryEntity> BuildFilteringQuery(
         IQueryable<CountryEntity> query, CountryQueryFilter request)
     {
@@ -206,12 +185,6 @@ internal sealed class CountryRepository
         return query;
     }
 
-    protected sealed override IQueryable<CountryEntity> BuildDefaultSortingQuery(
-        IQueryable<CountryEntity> query)
-    {
-        return query.OrderBy(c => c.Name);
-    }
-
     protected sealed override IQueryable<CountryEntity> BuildSortingQuery(
         IQueryable<CountryEntity> query, ISortingRequest sortingRequest)
     {
@@ -231,5 +204,17 @@ internal sealed class CountryRepository
             ("population", SortDirection.Descending) => query.OrderByDescending(c => c.Population).ThenByDescending(c => c.Name),
             _ => query
         };
+    }
+
+    protected sealed override IQueryable<CountryEntity> BuildIncludeQuery(
+        IQueryable<CountryEntity> query)
+    {
+        return query.Include(c => c.Continent);
+    }
+
+    protected sealed override IQueryable<CountryEntity> BuildDefaultSortingQuery(
+        IQueryable<CountryEntity> query)
+    {
+        return query.OrderBy(c => c.Name);
     }
 }

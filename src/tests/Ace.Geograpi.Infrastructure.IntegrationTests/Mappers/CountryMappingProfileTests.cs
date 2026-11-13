@@ -2,7 +2,7 @@ using Ace.Geograpi.Domain.Models;
 using Ace.Geograpi.Infrastructure.Data.Entities;
 using Ace.Geograpi.Infrastructure.IntegrationTests.Fakers;
 using Ace.Geograpi.Infrastructure.Mappers;
-using Ace.Geograpi.Infrastructure.Mappers.Traceable;
+using Ace.Geograpi.Infrastructure.Mappers.Base;
 
 namespace Ace.Geograpi.Infrastructure.IntegrationTests.Mappers;
 
@@ -73,7 +73,7 @@ public sealed class CountryMappingProfileTests
         };
 
     protected sealed override IEnumerable<Type> RelatedMappingProfiles =>
-        [typeof(TraceableIntMappingProfile), typeof(ModelIntMappingProfile)];
+        [typeof(CrudMappingProfile), typeof(AceMappingProfile)];
 
     [Fact]
     public sealed override void GivenMapFromLeftToRightWhenSourceIsNullThenHandlesGracefully()

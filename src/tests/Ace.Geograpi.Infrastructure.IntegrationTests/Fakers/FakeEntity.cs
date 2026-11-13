@@ -2,7 +2,6 @@ using Ace.CSharp.DataFaker;
 using Ace.Geograpi.Domain.Symbols.Data;
 using Ace.Geograpi.Infrastructure.Data.Entities;
 using Ace.Geograpi.Infrastructure.IntegrationTests.Fakers.Extensions;
-using Bogus;
 
 namespace Ace.Geograpi.Infrastructure.IntegrationTests.Fakers;
 
@@ -10,8 +9,8 @@ internal sealed class FakeEntity : AbstractDataFaker<FakeEntity>
 {
     private Faker<ContinentEntity> FakeContinentEntity =>
         new Faker<ContinentEntity>(locale: LocaleCode)
-            .ConfigureEntityId()
-            .ConfigureTraceableEntity()
+            .ConfigureCrudEntityId()
+            .ConfigureAceEntity()
             .RuleFor(
                 continent => continent.Code,
                 f => f.PickRandom(
@@ -60,8 +59,8 @@ internal sealed class FakeEntity : AbstractDataFaker<FakeEntity>
 
     private Faker<CountryEntity> FakeCountryEntity =>
         new Faker<CountryEntity>(locale: LocaleCode)
-            .ConfigureEntityId()
-            .ConfigureTraceableEntity()
+            .ConfigureCrudEntityId()
+            .ConfigureAceEntity()
             .RuleFor(
                 country => country.ContinentId,
                 f => f.Random.Int(min: 1))

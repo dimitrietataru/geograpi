@@ -2,7 +2,7 @@ using CatNip.Infrastructure.Data.Entities;
 
 namespace Ace.Geograpi.Infrastructure.Data.Entities;
 
-public sealed class CountryEntity : TraceableEntity<int>
+public sealed class CountryEntity : AceEntity<int>
 {
     public int ContinentId { get; set; }
 
