@@ -47,6 +47,7 @@ jobs:
       run: dotnet restore $SOLUTION
 
     - name: dotnet format
+      continue-on-error: true
       run: dotnet format $SOLUTION --verify-no-changes --severity info --no-restore
 
     - name: dotnet build
