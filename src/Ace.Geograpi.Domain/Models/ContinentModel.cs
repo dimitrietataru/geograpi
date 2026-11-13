@@ -2,7 +2,7 @@ using CatNip.Domain.Models;
 
 namespace Ace.Geograpi.Domain.Models;
 
-public sealed class ContinentModel : TraceableModel<int>
+public sealed class ContinentModel : AceModel<int>
 {
     /// <summary>
     /// Alpha-2
