@@ -7,8 +7,10 @@ services:
       context: .
       dockerfile: Ace.Geograpi.Web/Dockerfile
     depends_on:
-      - "ace.geograpi.db"
-      - "ace.geograpi.mq"
+      ace.geograpi.db:
+        condition: service_healthy
+      ace.geograpi.mq:
+        condition: service_started
     ports:
       - 42000:443
       - 43000:80
@@ -16,17 +18,22 @@ services:
       - ./.containers/ace-geograpi-api-logs:/app/Logs
 
   ace.geograpi.db:
-    image: postgres:16.15
+    image: postgres:18.7
     container_name: ace.geograpi.db
     restart: always
     environment:
       - POSTGRES_DB=geograpi
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h ace.geograpi.db -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
     ports:
       - 5432:5432
     volumes:
-      - ./.containers/ace-geograpi-db:/var/lib/postgresql/data
+      - ./.containers/ace-geograpi-db:/var/lib/postgresql
 
   ace.geograpi.mq:
     image: rabbitmq:4-management-alpine
