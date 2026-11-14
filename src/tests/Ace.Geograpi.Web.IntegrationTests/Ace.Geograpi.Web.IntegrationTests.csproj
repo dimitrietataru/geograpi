@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CatNip.Presentation.IntegrationTest.XUnit" Version="5.0.0-alpha1" />
+    <PackageReference Include="CatNip.Presentation.IntegrationTest.XUnit" Version="5.0.0-alpha2" />
     <PackageReference Include="FluentAssertions" Version="[7.2.0]" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="10.0.15" />
     <PackageReference Include="Testcontainers.PostgreSql" Version="4.16.0" />

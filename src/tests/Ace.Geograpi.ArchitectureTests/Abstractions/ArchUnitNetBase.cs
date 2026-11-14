@@ -231,13 +231,5 @@ public abstract class ArchUnitNetBase : AbstractArchitectureTest
             .Or().AreAssignableTo(typeof(AceController<,,,,,>))
             .Or().AreAssignableTo(typeof(AceController<,,,,,,>))
             .And().ResideInAssembly(webAssembly)
-
-
-
-            //.That().ResideInAssembly(webAssembly)
-            //.And().AreAssignableTo(typeof(Controller<,>))
-            //.Or().AreAssignableTo(typeof(CrudController<,,>))
-            //.Or().AreAssignableTo(typeof(AceController<,,,,,>))
-            //.Or().AreAssignableTo(typeof(AceController<,,,,,,>))
             .As("Web controllers");
 }

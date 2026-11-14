@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CatNip.Presentation.Test.XUnit" Version="5.0.0-alpha1" />
+    <PackageReference Include="CatNip.Presentation.Test.XUnit" Version="5.0.0-alpha2" />
     <PackageReference Include="coverlet.MTP" Version="10.1.0" />
     <PackageReference Include="ReportGenerator" Version="5.6.0" GeneratePathProperty="true" />
     <PackageReference Include="xunit.v3" Version="4.0.3" />
